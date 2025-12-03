@@ -14,9 +14,20 @@ def find_interface_by_ip(ip_address):
                     return interface
     return None
 
+def get_host_ip():
+    for interface in netifaces.interfaces():
+        addr = netifaces.ifaddresses(interface)
+        if netifaces.AF_INET in addr:
+            print(addr[netifaces.AF_INET][0]['addr'])
+
 ip_address = "192.168.0.102"
 interface_name = find_interface_by_ip(ip_address)
 if interface_name:
     print(f"The interface for IP {ip_address} is: {interface_name}")
 else:
     print(f"No interface found for IP {ip_address}")
+
+
+
+
+
