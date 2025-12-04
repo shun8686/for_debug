@@ -1,12 +1,13 @@
 import psutil
+import socket
 
 def get_192_ip_interfaces():
     interface_ips = {}
-    
+
     for interface_name, addrs in psutil.net_if_addrs().items():
         ip_list = []
         for addr in addrs:
-            if addr.family == psutil.AF_INET and addr.address.startswith("192."):
+            if addr.family == socket.AF_INET and addr.address.startswith("192."):
                 ip_list.append(addr.address)
         
         if ip_list:
@@ -16,6 +17,7 @@ def get_192_ip_interfaces():
 
 if __name__ == "__main__":
     result = get_192_ip_interfaces()
+    
     if result:
         print("=== 192.开头IP对应的网卡信息 ===")
         for if_name, ips in result.items():
