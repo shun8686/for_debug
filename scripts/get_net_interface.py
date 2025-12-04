@@ -1,26 +1,26 @@
-import ipaddress
 import psutil
-import socket
 
-def get_nic_name():
-    net_io_stats = psutil.net_if_addrs()
-    interfaces_with_192_ips = {}
-
-    for interface, addrs in net_io_stats.items():
+def get_192_ip_interfaces():
+    interface_ips = {}
+    
+    for interface_name, addrs in psutil.net_if_addrs().items():
+        ip_list = []
         for addr in addrs:
-            if addr.family == socket.AF_INET:
-                try:
-                    ip = ipaddress.ip_address(addr.address)
-                except ValueError:
-                    continue
-                if ip.is_private and ip.network.network_address == ipaddress.IPv4Network('192.0.0.0/8').network_address:
-                    interfaces_with_192_ips[interface] = addr.address
+            if addr.family == psutil.AF_INET and addr.address.startswith("192."):
+                ip_list.append(addr.address)
+        
+        if ip_list:
+            interface_ips[interface_name] = ip_list
+    
+    return interface_ips
 
-    return interfaces_with_192_ips
-
-interfaces = get_nic_name()
-for interface, ip in interfaces.items():
-    print(f"Interface: {interface}, IP Address: {ip}")
-
-
-
+if __name__ == "__main__":
+    result = get_192_ip_interfaces()
+    if result:
+        print("=== 192.开头IP对应的网卡信息 ===")
+        for if_name, ips in result.items():
+            print(f"网卡名: {if_name}")
+            print(f"  192.开头IP: {', '.join(ips)}")
+            print("-" * 50)
+    else:
+        print("未找到任何192.开头的IPv4地址对应的网卡")
