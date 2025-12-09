@@ -1,0 +1,12 @@
+==================1. for multi node=================
+modify run_multi.sh, then run it!
+
+# do not forget to clear resources after test
+sh delete_k8s_multi.sh
+
+
+==================2. for single node================
+# Run as:
+# ./run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num}
+
+./run_single_base.sh /data/d00662834/1206/sglang test/srt/ascend_k8s/test_ascend_qwen3_coder_480b_a35b_instruct_w8a8_quarot_in16k_out10k.py 16

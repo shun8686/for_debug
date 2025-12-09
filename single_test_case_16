@@ -1,0 +1,3 @@
+test/srt/ascend_k8s/test_ascend_Qwen3_235B_in2048_out2048_bs78.py
+test/srt/ascend_k8s/test_ascend_qwen3_coder_480b_a35b_instruct_w8a8_quarot_in16k_out10k.py
+test/srt/ascend_k8s/test_ascend_deepseek_r1_w4a8_single_in3500_out1500_50ms.py
