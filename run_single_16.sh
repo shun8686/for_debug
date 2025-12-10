@@ -7,7 +7,8 @@ testcases=$(cat single_test_case_16)
 max_thread_num=1
 
 i=1
-log_path=log/$(date "+%Y-%m-%d_%H_%M_%S")
+timestamp=$(date "+%Y-%m-%d_%H_%M_%S")
+log_path=log/${timestamp}
 mkdir ${log_path}
 for test_case in ${testcases}
 do
@@ -29,12 +30,14 @@ do
 
 done
 
+i=1
 for test_case in ${testcases}
 do
   echo "Run failed: ${test_case}"
   is_failed=$(cat ${log_path}/single_npu${npu_num}_$i.log | grep FAILED)
   if [ -n "${is_failed}" ];then
     mv ${log_path}/single_npu${npu_num}_$i.log  ${log_path}/single_npu${npu_num}_$i.log_failed
+    echo "${test_case}" >> retry_single_test_case_npu${npu_num}_${timestamp}
   fi
   ((i++))
 done
