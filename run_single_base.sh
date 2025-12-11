@@ -8,6 +8,11 @@ if [ "$#" -lt 3 ];then
   exit 1
 fi
 
+if [ ! -f "${sglang_source_path}/${test_case}" ]; then
+  echo "Testcase file is not exist: ${sglang_source_path}/${test_case}"
+  exit 1
+fi
+
 export KUBECONFIG=/data/.cache/kb.yaml
 export NAMESPACE=sglang-single-debug
 export KUBE_JOB_NAME=sglang-single-$(uuidgen)
