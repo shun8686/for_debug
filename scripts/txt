@@ -1,1 +1,11 @@
-https://cas-bridge.xethub.hf.co/xet-bridge-us/689585baf9aeb989e4077f24/2bceca677b5d57353a987e5fec03710623ba39f02e740a707191113737c8a913?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20251212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251212T100219Z&X-Amz-Expires=3600&X-Amz-Signature=d7ac453f874c1419604db826dd006855b3c9e6e09d56510ecb2973bc9eaccece&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=62171e3b6a99db28e0b3159d&response-content-disposition=attachment%3B+filename*%3DUTF-8%27%27model.safetensors%3B+filename%3D%22model.safetensors%22%3B&x-id=GetObject&Expires=1765537339&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc2NTUzNzMzOX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82ODk1ODViYWY5YWViOTg5ZTQwNzdmMjQvMmJjZWNhNjc3YjVkNTczNTNhOTg3ZTVmZWMwMzcxMDYyM2JhMzlmMDJlNzQwYTcwNzE5MTExMzczN2M4YTkxMyoifV19&Signature=P8mNQ7%7ErYVc3dgLT6RhuyOZhlcqV5z1KBV7bUzsbBorl%7EwtqngKhm-4ib0d%7EQyJk9y2lyAkbZ8-nvyPaobS6KzB2SCQaysMBcyjY1FArwdz4cHIvv%7EIgJAGYM5ggb5TpM8h2hbZvDY59ONb6raUK63Q8p39c7uFQxp8Y-ftY00kVRUCdMqPAUN%7EE9Cr-cKwfROiIH2Zqrh38cnQRtMxivnsicPaJmaAoyt229u9nBF4UpGe3MfJJCWF7r4IQ-bPHQXMpjIMgRBgdv6YO0%7EC-ozwcwSyu60o1JVsf0Mvl9uNIf%7E%7ExprlLnHvEsk3E8bTnoH6CrJugyxm98tyhdS34lw__&Key-Pair-Id=K2L8F4GPSG1IFC
+import os
+os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
+from huggingface_hub import snapshot_download
+
+
+model_path = "./"
+snapshot_download(
+            repo_id="Zhihu-ai/Zhi-Create-Qwen3-32B-Eagle3",
+            local_dir=model_path,
+            max_workers=8
+)
