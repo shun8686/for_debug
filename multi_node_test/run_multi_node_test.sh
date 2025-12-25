@@ -38,6 +38,7 @@ while true; do
   fi
 done
 
+pip install kubernetes
 pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
 
 echo "{ \"image\": $image,\
