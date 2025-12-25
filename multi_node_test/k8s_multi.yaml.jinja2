@@ -130,9 +130,9 @@ spec:
                bash $SGLANG_SOURCE_PATH/test/nightly/ascend/performance/run_ascend_testcase.sh {{ test_case }}
           resources:
             requests:
-              huawei.com/ascend-1980: 16
+              huawei.com/ascend-1980: 8
             limits:
-              huawei.com/ascend-1980: 16
+              huawei.com/ascend-1980: 8
           volumeMounts:
           - name: ascend-910-config
             mountPath: /user/serverid/devindex/config
@@ -155,7 +155,7 @@ spec:
             path: /data
         - name: cache
           hostPath:
-            path: /data/ascend-ci-share-pkking-sglang
+            path: /data
         - name: ascend-910-config
           configMap:
             name: rings-config-ascend-sglang-test
@@ -171,7 +171,7 @@ spec:
             value: "npu-class-service"
             effect: "NoSchedule"
         nodeSelector:
-          accelerator/huawei-npu: ascend-snt9c
+          accelerator/huawei-npu: ascend-1980
           nodestatus: debug
         restartPolicy: OnFailure
 
