@@ -13,11 +13,6 @@ if [ ! -f ${sglang_source_path}/${test_case} ]; then
   exit 1
 fi
 
-if [ -z "${image}" ];then
-  image="swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann8.3.rc1-a3"
-fi
-echo "image: ${image}"
-
 export KUBECONFIG=/data/.cache/kb.yaml
 export NAMESPACE=sglang-kernel-npu
 export KUBE_JOB_NAME=sglang-npu-multi
