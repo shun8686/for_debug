@@ -12,7 +12,7 @@ pip config set global.index-url http://${CACHING_URL}/pypi/simple
 pip config set global.extra-index-url "https://pypi.tuna.tsinghua.edu.cn/simple"
 pip config set global.trusted-host "${CACHING_URL} pypi.tuna.tsinghua.edu.cn"
 
-pip install kubernetes
+pip3 install kubernetes
 pip3 install xgrammar==0.1.25
 
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
