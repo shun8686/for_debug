@@ -2,7 +2,6 @@ sglang_source_path=$1
 test_case=$2
 node_size=$3
 image=$4
-debug=$5
 
 if [ "$#" -lt 3 ];then
   echo "Param num is less than 3. Exit."
@@ -20,8 +19,8 @@ fi
 echo "image: ${image}"
 
 export KUBECONFIG=/data/.cache/kb.yaml
-export NAMESPACE=sglang-multi-debug
-export KUBE_JOB_NAME=sglang-multi-debug
+export NAMESPACE=sglang-kernel-npu
+export KUBE_JOB_NAME=sglang-npu-multi
 export KUBE_JOB_TYPE=multi
 export KUBE_CONFIG_MAP=sglang-info
 export KUBE_YAML_FILE=k8s_multi.yaml
@@ -44,13 +43,6 @@ while true; do
   fi
 done
 
-current_date=$(date +%Y%m%d)
-tc_name=${test_case##*/}
-tc_name=${tc_name%.*}
-test_data_output_path=/data/d00662834/metrics/${current_date}
-mkdir -p ${test_data_output_path}
-metrics_data_file=/data/d00662834/metrics/${current_date}/${tc_name}.txt
-
 pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
 
 echo "{ \"image\": $image,\
@@ -60,16 +52,11 @@ echo "{ \"image\": $image,\
 	\"kube_config_map\": \"$KUBE_CONFIG_MAP\",\
 	\"node_size\": $node_size,\
 	\"sglang_source_path\": \"$sglang_source_path\",\
-        \"metrics_data_file\": \"$metrics_data_file\",\
 	\"test_case\": \"$test_case\" }"|\
     jinja2 ${SCRIPT_PATH}/k8s_multi.yaml.jinja2 -o ${SCRIPT_PATH}/${KUBE_YAML_FILE}
 
 cd ${SCRIPT_PATH}
 python3 -u run_ascend_ci.py
 
-if [ -z "${debug}" ];then
-  kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE}
-  rm -rf ${SCRIPT_PATH}/${KUBE_YAML_FILE}
-  sleep 30
-fi
-
+kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE}
+rm -rf ${SCRIPT_PATH}/${KUBE_YAML_FILE}
