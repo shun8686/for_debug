@@ -1,0 +1,81 @@
+sglang_source_path=$1
+test_case=$2
+prefill_size=$3
+decode_size=$4
+router_size=1
+image=$5
+debug=$6
+
+if [ "$#" -lt 4 ];then
+  echo "Param num is less than 4. Exit."
+  exit 1
+fi
+
+if [ ! -f ${sglang_source_path}/${test_case} ]; then
+  echo "Testcase file is not exist: ${sglang_source_path}/${test_case}"
+  exit 1
+fi
+
+if [ -z "${image}" ];then
+  image="swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann8.3.rc1-a3"
+fi
+echo "image: ${image}"
+
+export KUBECONFIG=/data/.cache/kb.yaml
+export NAMESPACE=sglang-multi-debug
+export KUBE_JOB_NAME=sglang-multi-debug
+export KUBE_JOB_TYPE=pd-separation
+export KUBE_CONFIG_MAP=sglang-info
+export KUBE_YAML_FILE=k8s_pd_separation.yaml
+echo "KUBE_JOB_NAME: $KUBE_JOB_NAME"
+SCRIPT_PATH=$(dirname $(readlink -f $0))
+
+# Clear resources
+kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE} --ignore-not-found=true || true
+
+pod_name_prefix="${KUBE_JOB_NAME}-sglang"
+echo "kube name space: $NAMESPACE, pod name prefix: ${pod_name_prefix}"
+while true; do
+  if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then
+    echo "Found exist sglang job, sleeping for 30 seconds..."
+    sleep 30
+    kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true
+  else
+    echo "No sglang job exist, start test case..."
+    break
+  fi
+done
+
+current_date=$(date +%Y%m%d)
+tc_name=${test_case##*/}
+tc_name=${tc_name%.*}
+test_data_output_path=/data/d00662834/metrics/${current_date}
+mkdir -p ${test_data_output_path}
+metrics_data_file=/data/d00662834/metrics/${current_date}/${tc_name}.txt
+
+pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
+
+echo "{ \"image\": $image,\
+	\"name_space\": \"$NAMESPACE\",\
+	\"kube_job_name\": \"$KUBE_JOB_NAME\",\
+	\"kube_config\": \"$KUBECONFIG\",\
+	\"kube_config_map\": \"$KUBE_CONFIG_MAP\",\
+	\"prefill_size\": $prefill_size,\
+	\"decode_size\": $decode_size,\
+	\"router_size\": $router_size,\
+	\"sglang_source_path\": \"$sglang_source_path\",\
+        \"metrics_data_file\": \"$metrics_data_file\",\
+	\"test_case\": \"$test_case\" }"|\
+    jinja2 ${SCRIPT_PATH}/k8s_pd_separation.yaml.jinja2 -o ${SCRIPT_PATH}/${KUBE_YAML_FILE}
+
+cd ${SCRIPT_PATH}
+python3 -u run_ascend_ci.py
+
+kubectl logs -n $NAMESPACE ${KUBE_JOB_NAME}-sglang-prefill-0 > log/${tc_name}_prefill-0.log
+kubectl logs -n $NAMESPACE ${KUBE_JOB_NAME}-sglang-decode-0  > log/${tc_name}_decode-0.log
+
+if [ -z "${debug}" ];then
+  kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE}
+  sleep 60
+fi
+
