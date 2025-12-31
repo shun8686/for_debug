@@ -1,5 +1,6 @@
 import unittest
 import os
+import time
 
 from types import SimpleNamespace
 from test_ascend_multi_mix_utils import TestMultiMixUtils
@@ -63,7 +64,7 @@ MODEL_CONFIG = {
     ]
 }
 
-class TestQwen3_235B(TestMultiMixUtils):
+class TestDeepseekR1(TestMultiMixUtils):
     model_config = MODEL_CONFIG
 
     def test_deepseek_r1(self):
@@ -85,6 +86,8 @@ class TestQwen3_235B(TestMultiMixUtils):
                 metrics["accuracy"],
                 0.95,
             )
+        else:
+            time.sleep(3600)
 
 
 if __name__ == "__main__":
