@@ -62,8 +62,6 @@ MODEL_CONFIG = {
         "1",
         "--speculative-num-draft-tokens",
         "2",
-#        "--speculative-draft-model-quantization",
-#        "unquant",
     ]
 }
 
