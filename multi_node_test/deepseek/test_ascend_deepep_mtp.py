@@ -102,6 +102,7 @@ class TestDeepseekR1(CustomTestCase):
                 0.95,
             )
         else:
+            print("The worker node is ready!")
             time.sleep(3600)
 
 if __name__ == "__main__":

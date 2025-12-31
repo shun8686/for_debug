@@ -97,6 +97,17 @@ def query_master_node_ip():
         print(f"Can not find master node in configmap: {configmap.data=}")
     return master_node_ip
 
+def check_configmap_ready():
+    while True:
+        configmap = query_configmap(CONFIGMAP_NAME, NAMESPACE)
+        if configmap.data is None or query_master_node_ip() is None:
+            print(f"configmap is None, wait for 15s ......")
+            time.sleep(15)
+            continue
+        else:
+            print(f"monitor {configmap.data=}")
+            break
+
 # launch node
 def launch_node(config):
     print(f"launch_node start ......")
@@ -105,28 +116,11 @@ def launch_node(config):
     pod_index = int(hostname.rsplit("-", 1)[-1])
 
     # monitor configmap to generate dist-init-addr and node-rank
-    isReady = False
+    check_configmap_ready()
     dist_init_addr = None
-    while not isReady:
-        configmap = query_configmap(CONFIGMAP_NAME, NAMESPACE)
-        if configmap.data == None:
-            print(f"configmap is None, wait for 15s ......")
-            time.sleep(15)
-            continue
-        print(f"monitor {configmap.data=}")
-
-        master_node_ip = None
-        for pod_name in configmap.data:
-            if pod_name.endswith("sglang-node-0"):
-                master_node_ip = configmap.data[pod_name]
-                break
-        master_node_ip = query_master_node_ip()
-        if master_node_ip == None:
-            continue
-
-        dist_init_addr = f"{master_node_ip}:5000"
-        print(f"launch_node {dist_init_addr=}")
-        isReady = True
+    master_node_ip = query_master_node_ip()
+    dist_init_addr = f"{master_node_ip}:5000"
+    print(f"launch_node {dist_init_addr=}")
 
     special_args = [
         "--dist-init-addr",
