@@ -132,7 +132,6 @@ def launch_node(config):
         print(f"ENV_VAR {key}:{value}")
         os.environ[key] = value
     
-
     print(f"Starting node, {node_ip=} {other_args=}")
     return popen_launch_server(
         config["model_path"],
@@ -143,20 +142,23 @@ def launch_node(config):
         ],
     )
 
+def wait_server_ready(url, timeout=LOCAL_TIMEOUT):
+    print(f"Waiting for the server to start...")
+    start_time = time.perf_counter()
+    while True:
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                print(f"Server {url} is ready!")
+                return
+        except Exception:
+            pass
+
+        if time.perf_counter() - start_time > timeout:
+            raise RuntimeError(f"Server {url} failed to start in {timeout}s")
+        time.sleep(10)
+
 class TestMultiMixUtils(CustomTestCase):
-    model = None
-    dataset_name = None
-    dataset_path = None
-    request_rate = None
-    max_concurrency = None
-    num_prompts = None
-    input_len = None
-    output_len = None
-    random_range_ratio = None
-    ttft = None
-    tpot = None
-    output_token_throughput = None
-    metrics_data_file = os.getenv("METRICS_DATA_FILE")
 
     @classmethod
     def setUpClass(cls):
@@ -165,59 +167,9 @@ class TestMultiMixUtils(CustomTestCase):
         cls.role = "master" if hostname.endswith("sglang-node-0") else "worker"
         print(f"Init {cls.local_ip} {cls.role=}!")
 
-    def wait_server_ready(self, url, timeout=LOCAL_TIMEOUT):
-        print(f"Waiting for the server to start...")
-        start_time = time.perf_counter()
-        while True:
-            try:
-                response = requests.get(url)
-                if response.status_code == 200:
-                    print(f"Server {url} is ready!")
-                    return
-            except Exception:
-                pass
-
-            if time.perf_counter() - start_time > timeout:
-                raise RuntimeError(f"Server {url} failed to start in {timeout}s")
-            time.sleep(10)
-
-    def run_throughput(self):
+    def start_server(self):
         sglang_thread = threading.Thread(
             target=launch_node, args=(self.model_config,)
         )
         sglang_thread.start()
 
-        if self.role == "master":
-            master_node_ip = os.getenv("POD_IP")
-            self.wait_server_ready(f"http://{master_node_ip}:{SERVICE_PORT}" + "/health")
-            print(f"Wait 120s, starting run benchmark ......")
-            time.sleep(120)
-
-            metrics = run_bench_serving(
-                host=master_node_ip,
-                port=SERVICE_PORT,
-                model_path=self.model_config.get("model_path"),
-                dataset_name=self.dataset_name,
-                request_rate=self.request_rate,
-                max_concurrency=self.max_concurrency,
-                num_prompts=self.num_prompts,
-                input_len=self.input_len,
-                output_len=self.output_len,
-                random_range_ratio=self.random_range_ratio,
-                result_file=self.metrics_data_file,
-            )
-            self.assertLessEqual(
-                float(metrics['mean_tpot']),
-                self.tpot * 1.02,
-            )
-            self.assertGreaterEqual(
-                float(metrics['total_tps']),
-                self.output_token_throughput * 0.98,
-            )
-            self.assertLessEqual(
-                float(metrics['mean_ttft']),
-                self.ttft * 1.02,
-            )
-        else:
-            print("Worker node is running.")
-            time.sleep(LOCAL_TIMEOUT)
