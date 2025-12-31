@@ -86,13 +86,13 @@ class TestDeepseekR1(TestMultiMixUtils):
             )
 
             metrics = run_eval_few_shot_gsm8k(args)
+            print(f"metrics is : {metrics}")
             self.assertGreaterEqual(
                 metrics["accuracy"],
                 0.95,
             )
         else:
             time.sleep(3600)
-
 
 if __name__ == "__main__":
     unittest.main()
