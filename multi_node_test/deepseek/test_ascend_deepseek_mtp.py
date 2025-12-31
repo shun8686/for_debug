@@ -20,6 +20,8 @@ MODEL_CONFIG = {
         "GLOO_SOCKET_IFNAME": NIC_NAME,
         "HCCL_BUFFSIZE": "1024",
         "SGLANG_NPU_USE_MLAPO": "1",
+        "SGLANG_ENABLE_OVERLAP_PLAN_STREAM": "1",
+        "SGLANG_ENABLE_SPEC_V2": "1",
     },
     "other_args": [
         "--trust-remote-code",

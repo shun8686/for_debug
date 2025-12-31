@@ -22,9 +22,12 @@ MODEL_CONFIG = {
         "SGLANG_DEEPEP_NUM_MAX_DISPATCH_TOKENS_PER_RANK": "32",
         "SGLANG_NPU_USE_MLAPO": "1",
         "SGLANG_NPU_USE_EINSUM_MM": "1",
+        "SGLANG_ENABLE_OVERLAP_PLAN_STREAM": "1",
+        "SGLANG_ENABLE_SPEC_V2": "1",
         "HCCL_INTRA_PCIE_ENABLE": "1",
         "HCCL_INTRA_ROCE_ENABLE": "0",
         "ASCEND_MF_TRANSFER_PROTOCOL": "device_rdma",
+
     },
     "other_args": [
         "--trust-remote-code",
