@@ -3,8 +3,7 @@ import os
 import time
 
 from types import SimpleNamespace
-from test_ascend_multi_mix_utils import TestMultiMixUtils
-from test_ascend_multi_mix_utils import NIC_NAME, SERVICE_PORT
+from test_ascend_multi_mix_utils import NIC_NAME, SERVICE_PORT, start_server, wait_server_ready
 from sglang.test.few_shot_gsm8k import run_eval as run_eval_few_shot_gsm8k
 
 
@@ -68,11 +67,20 @@ MODEL_CONFIG = {
     ]
 }
 
-class TestDeepseekR1(TestMultiMixUtils):
-    model_config = MODEL_CONFIG
+class TestDeepseekR1(CustomTestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.model_config = MODEL_CONFIG
+        cls.local_ip = os.getenv("POD_IP")
+        hostname = os.getenv("HOSTNAME")
+        cls.role = "master" if hostname.endswith("sglang-node-0") else "worker"
+        print(f"Init {cls.local_ip} {cls.role=}!")
 
     def test_deepseek_r1(self):
-        self.start_server()
+        start_server(self.model_config)
+        wait_server_ready()
+        
         if self.role == "master":
             master_node_ip = os.getenv("POD_IP")
             args = SimpleNamespace(

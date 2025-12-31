@@ -9,7 +9,6 @@ import socket
 from kubernetes import client, config
 from kubernetes.client.rest import ApiException
 from sglang.test.test_utils import (
-    CustomTestCase,
     popen_launch_server,
 )
 
@@ -87,6 +86,17 @@ def run_bench_serving(host, port, model_path=None, dataset_name=None, request_ra
     }
     return result
 
+def query_master_node_ip():
+    master_node_ip = None
+    configmap = query_configmap(CONFIGMAP_NAME, NAMESPACE)
+    for pod_name in configmap.data:
+        if pod_name.endswith("sglang-node-0"):
+            master_node_ip = configmap.data[pod_name]
+            break
+    if master_node_ip == None:
+        print(f"Can not find master node in configmap: {configmap.data=}")
+    return master_node_ip
+
 # launch node
 def launch_node(config):
     print(f"launch_node start ......")
@@ -110,8 +120,8 @@ def launch_node(config):
             if pod_name.endswith("sglang-node-0"):
                 master_node_ip = configmap.data[pod_name]
                 break
+        master_node_ip = query_master_node_ip()
         if master_node_ip == None:
-            print(f"Can not find master node in configmap: {configmap.data=}")
             continue
 
         dist_init_addr = f"{master_node_ip}:5000"
@@ -142,8 +152,16 @@ def launch_node(config):
         ],
     )
 
-def wait_server_ready(url, timeout=LOCAL_TIMEOUT):
+def start_server(model_config):
+    sglang_thread = threading.Thread(
+        target=launch_node, args=(model_config,)
+    )
+    sglang_thread.start()
+
+def wait_server_ready(timeout=LOCAL_TIMEOUT):
     print(f"Waiting for the server to start...")
+    master_node_ip = query_master_node_ip()
+    url = f"http://{master_node_ip}:{SERVICE_PORT}" + "/health"
     start_time = time.perf_counter()
     while True:
         try:
@@ -157,19 +175,3 @@ def wait_server_ready(url, timeout=LOCAL_TIMEOUT):
         if time.perf_counter() - start_time > timeout:
             raise RuntimeError(f"Server {url} failed to start in {timeout}s")
         time.sleep(10)
-
-class TestMultiMixUtils(CustomTestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        cls.local_ip = os.getenv("POD_IP")
-        hostname = os.getenv("HOSTNAME")
-        cls.role = "master" if hostname.endswith("sglang-node-0") else "worker"
-        print(f"Init {cls.local_ip} {cls.role=}!")
-
-    def start_server(self):
-        sglang_thread = threading.Thread(
-            target=launch_node, args=(self.model_config,)
-        )
-        sglang_thread.start()
-
