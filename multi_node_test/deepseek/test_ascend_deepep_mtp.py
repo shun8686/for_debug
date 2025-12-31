@@ -4,8 +4,8 @@ import time
 
 from types import SimpleNamespace
 from test_ascend_multi_mix_utils import NIC_NAME, SERVICE_PORT, start_server, wait_server_ready
-from sglang.test.few_shot_gsm8k import run_eval as run_eval_few_shot_gsm8k
-from sglang.test.test_utils import CustomTestCase
+from sglang.test.few_shot_gsm8k import run_eval as run_eval_few_shot_gsm8k # type: ignore
+from sglang.test.test_utils import CustomTestCase # type: ignore
 
 
 MODEL_PATH = "/root/.cache/modelscope/hub/models/vllm-ascend/DeepSeek-R1-0528-W8A8"
@@ -80,10 +80,11 @@ class TestDeepseekR1(CustomTestCase):
 
     def test_deepseek_r1(self):
         start_server(self.model_config)
-        wait_server_ready()
-        
+       
         if self.role == "master":
             master_node_ip = os.getenv("POD_IP")
+            url = f"http://{master_node_ip}:{SERVICE_PORT}" + "/health"
+            wait_server_ready(url)
             args = SimpleNamespace(
                 num_shots=5,
                 data_path=None,

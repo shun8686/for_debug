@@ -8,7 +8,7 @@ import socket
 
 from kubernetes import client, config
 from kubernetes.client.rest import ApiException
-from sglang.test.test_utils import (
+from sglang.test.test_utils import ( # type: ignore
     popen_launch_server,
 )
 
@@ -158,10 +158,8 @@ def start_server(model_config):
     )
     sglang_thread.start()
 
-def wait_server_ready(timeout=LOCAL_TIMEOUT):
-    print(f"Waiting for the server to start...")
-    master_node_ip = query_master_node_ip()
-    url = f"http://{master_node_ip}:{SERVICE_PORT}" + "/health"
+def wait_server_ready(url, timeout=LOCAL_TIMEOUT):
+    print(f"Waiting for the server to start...{url=}")
     start_time = time.perf_counter()
     while True:
         try:
