@@ -13,6 +13,8 @@ if [ ! -f ${sglang_source_path}/${test_case} ]; then
   exit 1
 fi
 
+SCRIPT_PATH=$(dirname $(readlink -f $0))
+
 export KUBECONFIG=/data/.cache/kb.yaml
 export NAMESPACE=sglang-kernel-npu
 export KUBE_JOB_NAME=sglang-npu-multi
@@ -20,7 +22,6 @@ export KUBE_JOB_TYPE=multi
 export KUBE_CONFIG_MAP=sglang-info
 export KUBE_YAML_FILE=k8s_multi.yaml
 echo "KUBE_JOB_NAME: $KUBE_JOB_NAME"
-SCRIPT_PATH=$(dirname $(readlink -f $0))
 
 # Clear resources
 kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE} --ignore-not-found=true || true
@@ -42,13 +43,13 @@ pip3 install kubernetes
 pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
 
 echo "{ \"image\": $image,\
-	\"name_space\": \"$NAMESPACE\",\
-	\"kube_job_name\": \"$KUBE_JOB_NAME\",\
-	\"kube_config\": \"$KUBECONFIG\",\
-	\"kube_config_map\": \"$KUBE_CONFIG_MAP\",\
-	\"node_size\": $node_size,\
-	\"sglang_source_path\": \"$sglang_source_path\",\
-	\"test_case\": \"$test_case\" }"|\
+      \"name_space\": \"$NAMESPACE\",\
+      \"kube_job_name\": \"$KUBE_JOB_NAME\",\
+      \"kube_config\": \"$KUBECONFIG\",\
+      \"kube_config_map\": \"$KUBE_CONFIG_MAP\",\
+      \"node_size\": $node_size,\
+      \"sglang_source_path\": \"$sglang_source_path\",\
+      \"test_case\": \"$test_case\" }"|\
     jinja2 ${SCRIPT_PATH}/k8s_multi.yaml.jinja2 -o ${SCRIPT_PATH}/${KUBE_YAML_FILE}
 
 cd ${SCRIPT_PATH}
