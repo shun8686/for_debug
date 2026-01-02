@@ -1,0 +1,27 @@
+pip install pymysql
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS performance_db;"
+
+python insert_performance_data.py --log_dir ./metrics --host 127.0.0.1 --user root --password Changeme_123 --database performance_db
+
+CREATE DATABASE performance_db
+    DEFAULT CHARACTER SET = 'utf8mb4';
+CREATE USER 'grafanaReader' IDENTIFIED BY 'password';
+GRANT SELECT ON performance_db.* TO 'grafanaReader';
+
+https://grafana.org.cn/docs/grafana/latest/setup-grafana/configure-grafana/
+
+/etc/yum.repos.d/grafana.repo
+    [grafana]
+    name=grafana
+    baseurl=https://mirrors.aliyun.com/grafana/yum/rpm
+    repo_gpgcheck=0
+    enabled=1
+    gpgcheck=0
+yum makecache
+yum install -y grafana
+
+systemctl daemon-reload
+systemctl start grafana-server
+systemctl enable grafana-server
+systemctl status grafana-server
+systemctl restart grafana-server
