@@ -71,8 +71,8 @@ def insert_to_mysql(metrics, log_path, db_config):
         test_time = date_obj.strftime("%Y-%m-%d %H:%M:%S")
     except ValueError:
         # 如果目录名称不是标准日期格式，使用当前日期时间
-        print(f"目录名称 '{date_str}' 不是标准的YYYYMMDD格式，使用当前日期时间")
-        test_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"目录名称 '{date_str}' 不是标准的YYYYMMDD格式，跳过插入")
+        return
     
     # 提取日志文件的名称（不含扩展名）作为test_case
     file_name = os.path.basename(log_path)
