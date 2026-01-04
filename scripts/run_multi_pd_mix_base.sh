@@ -1,8 +1,16 @@
+#!/bin/bash
+
 sglang_source_path=$1
 test_case=$2
 node_size=$3
 image=$4
 debug=$5
+
+SCRIPT_PATH=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+echo "Run path: ${SCRIPT_PATH}"
+cd ${sglang_source_path}
+git pull
+cd ${SCRIPT_PATH}
 
 if [ "$#" -lt 3 ];then
   echo "Param num is less than 3. Exit."
@@ -26,7 +34,9 @@ export KUBE_JOB_TYPE=multi
 export KUBE_CONFIG_MAP=sglang-info
 export KUBE_YAML_FILE=k8s_multi.yaml
 echo "KUBE_JOB_NAME: $KUBE_JOB_NAME"
-SCRIPT_PATH=$(dirname $(readlink -f $0))
+
+pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple kubernetes
+pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
 
 # Clear resources
 kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE} --ignore-not-found=true || true
@@ -49,9 +59,7 @@ tc_name=${test_case##*/}
 tc_name=${tc_name%.*}
 test_data_output_path=/data/d00662834/metrics/${current_date}
 mkdir -p ${test_data_output_path}
-metrics_data_file=/data/d00662834/metrics/${current_date}/${tc_name}.txt
-
-pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
+metrics_data_file=${test_data_output_path}/${tc_name}.txt
 
 echo "{ \"image\": $image,\
 	\"name_space\": \"$NAMESPACE\",\
@@ -67,9 +75,29 @@ echo "{ \"image\": $image,\
 cd ${SCRIPT_PATH}
 python3 -u run_ascend_ci.py
 
+if [ -f ${metrics_data_file} ];then
+  sed -i "1i\Image: ${image}" ${metrics_data_file}
+fi
+
 if [ -z "${debug}" ];then
   kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE}
-  rm -rf ${SCRIPT_PATH}/${KUBE_YAML_FILE}
-  sleep 30
+
+  while true; do
+    if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then
+      echo "Found exist sglang job, sleeping for 30 seconds..."
+      sleep 30
+      kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true
+    else
+      echo "No sglang job exist."
+      break
+    fi
+  done
+
+  if [ -n "$(echo "${KUBE_YAML_FILE}" | grep -v '/')" ];then
+    cd ${SCRIPT_PATH}
+    rm -rf ${KUBE_YAML_FILE}
+  fi
 fi
+
+
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sglang_source_path=$1
 test_case=$2
 prefill_size=$3
@@ -5,6 +7,12 @@ decode_size=$4
 router_size=1
 image=$5
 debug=$6
+
+SCRIPT_PATH=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+echo "Run path: ${SCRIPT_PATH}"
+cd ${sglang_source_path}
+git pull
+cd ${SCRIPT_PATH}
 
 if [ "$#" -lt 4 ];then
   echo "Param num is less than 4. Exit."
@@ -28,7 +36,9 @@ export KUBE_JOB_TYPE=pd-separation
 export KUBE_CONFIG_MAP=sglang-info
 export KUBE_YAML_FILE=k8s_pd_separation.yaml
 echo "KUBE_JOB_NAME: $KUBE_JOB_NAME"
-SCRIPT_PATH=$(dirname $(readlink -f $0))
+
+pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple kubernetes
+pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
 
 # Clear resources
 kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE} --ignore-not-found=true || true
@@ -46,14 +56,15 @@ while true; do
   fi
 done
 
+# clean env
+bash ${SCRIPT_PATH}/pkill.sh
+
 current_date=$(date +%Y%m%d)
 tc_name=${test_case##*/}
 tc_name=${tc_name%.*}
 test_data_output_path=/data/d00662834/metrics/${current_date}
 mkdir -p ${test_data_output_path}
-metrics_data_file=/data/d00662834/metrics/${current_date}/${tc_name}.txt
-
-pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
+metrics_data_file=${test_data_output_path}/${tc_name}.txt
 
 echo "{ \"image\": $image,\
 	\"name_space\": \"$NAMESPACE\",\
@@ -71,11 +82,30 @@ echo "{ \"image\": $image,\
 cd ${SCRIPT_PATH}
 python3 -u run_ascend_ci.py
 
+if [ -f ${metrics_data_file} ];then
+  sed -i "1i\Image: ${image}" ${metrics_data_file}
+fi
+
 kubectl logs -n $NAMESPACE ${KUBE_JOB_NAME}-sglang-prefill-0 > log/${tc_name}_prefill-0.log
 kubectl logs -n $NAMESPACE ${KUBE_JOB_NAME}-sglang-decode-0  > log/${tc_name}_decode-0.log
+kubectl logs -n $NAMESPACE ${KUBE_JOB_NAME}-sglang-router-0 > log/${tc_name}_router-0.log
 
 if [ -z "${debug}" ];then
   kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE}
-  sleep 60
-fi
 
+  while true; do
+    if kubectl get po -A -n $NAMESPACE | grep -q "${pod_name_prefix}"; then
+      echo "Found exist sglang job, sleeping for 30 seconds..."
+      sleep 30
+      kubectl get pods | grep "${pod_name_prefix}" | awk '{print $1}' | xargs kubectl delete pod -n $NAMESPACE || true
+    else
+      echo "No sglang job exist."
+      break
+    fi
+  done
+
+  if [ -n "$(echo "${KUBE_YAML_FILE}" | grep -v '/')" ];then
+    cd ${SCRIPT_PATH}
+    rm -rf ${KUBE_YAML_FILE}
+  fi
+fi

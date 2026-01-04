@@ -1,0 +1,2018 @@
+Run path: /data/d00662834/debug
+warning: redirecting to https://gh-proxy.org/https:/github.com/shun8686/sglang.git/
+Already up to date.
+image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231
+KUBE_JOB_NAME: sglang-multi-debug
+Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: kubernetes in /root/anaconda3/lib/python3.13/site-packages (34.1.0)
+Requirement already satisfied: certifi>=14.05.14 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2025.11.12)
+Requirement already satisfied: six>=1.9.0 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.5.3 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.9.0.post0)
+Requirement already satisfied: pyyaml>=5.4.1 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (6.0.3)
+Requirement already satisfied: google-auth>=1.0.1 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.45.0)
+Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (1.8.0)
+Requirement already satisfied: requests in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.32.5)
+Requirement already satisfied: requests-oauthlib in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.0.0)
+Requirement already satisfied: urllib3<2.4.0,>=1.24.2 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.3.0)
+Requirement already satisfied: durationpy>=0.7 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (0.10)
+Requirement already satisfied: cachetools<7.0,>=2.0.0 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (5.5.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (0.4.2)
+Requirement already satisfied: rsa<5,>=3.1.4 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (4.9.1)
+Requirement already satisfied: pyasn1>=0.1.3 in /root/anaconda3/lib/python3.13/site-packages (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes) (0.6.1)
+Requirement already satisfied: charset_normalizer<4,>=2 in /root/anaconda3/lib/python3.13/site-packages (from requests->kubernetes) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /root/anaconda3/lib/python3.13/site-packages (from requests->kubernetes) (3.11)
+Requirement already satisfied: oauthlib>=3.0.0 in /root/anaconda3/lib/python3.13/site-packages (from requests-oauthlib->kubernetes) (3.3.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: jinja2-cli in /root/anaconda3/lib/python3.13/site-packages (0.8.2)
+Requirement already satisfied: jinja2 in /root/anaconda3/lib/python3.13/site-packages (from jinja2-cli) (3.1.6)
+Requirement already satisfied: MarkupSafe>=2.0 in /root/anaconda3/lib/python3.13/site-packages (from jinja2->jinja2-cli) (3.0.2)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+error: the path "/data/d00662834/debug/k8s_pd_separation.yaml" does not exist
+kube name space: sglang-multi-debug, pod name prefix: sglang-multi-debug-sglang
+No sglang job exist, start test case...
+=========192.168.0.184==========
+=========192.168.0.60==========
+=========192.168.0.77==========
+=========192.168.0.81==========
+Apply k8s yaml... KUBE_NAME_SPACE:sglang-multi-debug, KUBE_CONFIG_MAP:sglang-info, KUBE_JOB_TYPE:pd-separation, KUBE_YAML_FILE:k8s_pd_separation.yaml
+configmap/rings-config-ascend-sglang-test created
+configmap/sglang-info created
+role.rbac.authorization.k8s.io/ascend-sglang-configmap-access created
+rolebinding.rbac.authorization.k8s.io/ascend-sglang-configmap-binding created
+role.rbac.authorization.k8s.io/ascend-sglang-pod-access created
+rolebinding.rbac.authorization.k8s.io/ascend-sglang-pod-binding created
+job.batch.volcano.sh/sglang-multi-debug created
+
+Waiting all pods to running...
+Pod: sglang-multi-debug-sglang-decode-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Running
+Pod: sglang-multi-debug-sglang-decode-1, status: Running
+Pod: sglang-multi-debug-sglang-prefill-0, status: Running
+Pod: sglang-multi-debug-sglang-prefill-1, status: Running
+Pod: sglang-multi-debug-sglang-router-0, status: Running
+All sglang Pod is Running !
+ConfigMap sglang-info already exists. Updating...
+ConfigMap sglang-info updated successfully.
+{'api_version': 'v1',
+ 'binary_data': None,
+ 'data': {'sglang-multi-debug-sglang-decode-0': '192.168.0.60',
+          'sglang-multi-debug-sglang-decode-1': '192.168.0.184',
+          'sglang-multi-debug-sglang-prefill-0': '192.168.0.77',
+          'sglang-multi-debug-sglang-prefill-1': '192.168.0.81',
+          'sglang-multi-debug-sglang-router-0': '192.168.0.184'},
+ 'immutable': None,
+ 'kind': 'ConfigMap',
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2026, 1, 3, 17, 48, 48, tzinfo=tzutc()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': None,
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:data': {'.': {},
+                                                           'f:sglang-multi-debug-sglang-decode-0': {},
+                                                           'f:sglang-multi-debug-sglang-decode-1': {},
+                                                           'f:sglang-multi-debug-sglang-prefill-0': {},
+                                                           'f:sglang-multi-debug-sglang-prefill-1': {},
+                                                           'f:sglang-multi-debug-sglang-router-0': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2026, 1, 3, 17, 49, 8, tzinfo=tzutc())}],
+              'name': 'sglang-info',
+              'namespace': 'sglang-multi-debug',
+              'owner_references': None,
+              'resource_version': '128747169',
+              'self_link': None,
+              'uid': 'bec4edec-2560-4b23-906e-cf2e3e6de247'}}
+Starting to monitor logs for Pod: sglang-multi-debug-sglang-router-0
+Namespace: sglang-multi-debug
+Timeout set to: 10800 seconds
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Looking in indexes: http://cache-service.nginx-pypi-cache.svc.cluster.local/pypi/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting kubernetes
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/ca/ec/65f7d563aa4a62dd58777e8f6aa882f15db53b14eb29aba0c28a20f7eb26/kubernetes-34.1.0-py2.py3-none-any.whl (2.0 MB)
+Requirement already satisfied: certifi>=14.05.14 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2025.11.12)
+Requirement already satisfied: six>=1.9.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.9.0.post0)
+Requirement already satisfied: pyyaml>=5.4.1 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (6.0.3)
+Collecting google-auth>=1.0.1 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c6/97/451d55e05487a5cd6279a01a7e34921858b16f7dc8aa38a2c684743cd2b3/google_auth-2.45.0-py2.py3-none-any.whl (233 kB)
+Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/34/db/b10e48aa8fff7407e67470363eac595018441cf32d5e1001567a7aeba5d2/websocket_client-1.9.0-py3-none-any.whl (82 kB)
+Requirement already satisfied: requests in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.32.5)
+Collecting requests-oauthlib (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Collecting urllib3<2.4.0,>=1.24.2 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c8/19/4ec628951a74043532ca2cf5d97b7b14863931476d117c471e8e2b1eb39f/urllib3-2.3.0-py3-none-any.whl (128 kB)
+Collecting durationpy>=0.7 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/b0/0d/9feae160378a3553fa9a339b0e9c1a048e147a4127210e286ef18b730f03/durationpy-0.10-py3-none-any.whl (3.9 kB)
+Collecting cachetools<7.0,>=2.0.0 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/2c/fc/1d7b80d0eb7b714984ce40efc78859c022cd930e402f599d8ca9e39c78a4/cachetools-6.2.4-py3-none-any.whl (11 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/47/8d/d529b5d697919ba8c11ad626e835d4039be708a35b0d22de83a269a6682c/pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/64/8d/0133e4eb4beed9e425d9a98ed6e081a55d195481b7632472be1af08d2f6b/rsa-4.9.1-py3-none-any.whl (34 kB)
+Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c8/f1/d6a797abb14f6283c0ddff96bbdd46937f64122b8c925cab503dd37f8214/pyasn1-0.6.1-py3-none-any.whl (83 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.11)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Installing collected packages: durationpy, websocket-client, urllib3, pyasn1, oauthlib, cachetools, rsa, pyasn1-modules, requests-oauthlib, google-auth, kubernetes
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 2.5.0
+    Uninstalling urllib3-2.5.0:
+      Successfully uninstalled urllib3-2.5.0
+
+Successfully installed cachetools-6.2.4 durationpy-0.10 google-auth-2.45.0 kubernetes-34.1.0 oauthlib-3.3.1 pyasn1-0.6.1 pyasn1-modules-0.4.2 requests-oauthlib-2.0.0 rsa-4.9.1 urllib3-2.3.0 websocket-client-1.9.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  732k  100  732k    0     0   977k      0 --:--:-- --:--:-- --:--:--  978k
+performance
+vm.swappiness = 0
+kernel.numa_balancing = 0
+kernel.sched_migration_cost_ns = 50000
+Running test case test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k_20ms.py
+The nic name matched is enp23s0f3
+The nic name matched is enp23s0f3
+Nic name: enp23s0f3
+Init 192.168.0.184 cls.role='router'!
+[CI Test Method] Test_DeepSeek_R1_W8A8_2P1D_In3500_Out1024.test_throughput
+Starting router in thread...
+launch_router start ......Waiting for router to be ready at http://127.0.0.1:6688/health
+
+Discovered 4 worker nodes (prefill: 2, decode: 2)
+Discovered 4 worker nodes
+Successfully queried ConfigMap sglang-info in namespace sglang-multi-debug
+Retrieved ConfigMap data: {'sglang-multi-debug-sglang-decode-0': '192.168.0.60', 'sglang-multi-debug-sglang-decode-1': '192.168.0.184', 'sglang-multi-debug-sglang-prefill-0': '192.168.0.77', 'sglang-multi-debug-sglang-prefill-1': '192.168.0.81', 'sglang-multi-debug-sglang-router-0': '192.168.0.184'}
+ConfigMap monitoring complete: prefill_url=['192.168.0.77:8000', '192.168.0.81:8000'], decode_url=['192.168.0.60:8000'], bootstrap_ports=['8995', '8996'], node_ip_list=['192.168.0.60', '192.168.0.77', '192.168.0.81']
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.60:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 2 more nodes to be ready...
+Node 192.168.0.60:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 2 more nodes to be ready...
+Node 192.168.0.60:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 2 more nodes to be ready...
+Node 192.168.0.60:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 2 more nodes to be ready...
+Node 192.168.0.60:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.60:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.60:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.60:8000 is ready
+Node 192.168.0.77:8000 is ready
+Node 192.168.0.81:8000 is ready
+All 3 nodes' ports are ready!
+Setting ENV_VAR SGLANG_DP_ROUND_ROBIN=1
+Starting router with command: python3 -u -m sglang_router.launch_router --host 127.0.0.1 --port 6688 --pd-disaggregation --policy cache_aware --mini-lb --prefill http://192.168.0.77:8000 8995 --prefill http://192.168.0.81:8000 8996 --decode http://192.168.0.60:8000
+Router process started with PID: 809
+/usr/local/python3.11.13/lib/python3.11/subprocess.py:1127: ResourceWarning: subprocess 809 is still running
+  _warn("subprocess %s is still running" % self.pid,
+[33mMiniLB is only for debugging purposes, it only supports random policy![0m
+[MiniLB] Overriding policy to random
+INFO:     Started server process [810]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:6688 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54334 - "GET /health HTTP/1.1" 200 OK
+Router http://127.0.0.1:6688/health is ready!
+Waiting 120 seconds for the server to fully initialize...
+Starting benchmark with parameters: {'host': '127.0.0.1', 'port': '6688', 'model_path': '/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', 'dataset_name': 'random', 'request_rate': 16, 'max_concurrency': 768, 'num_prompts': 768, 'input_len': 3500, 'output_len': 1024, 'random_range_ratio': 1, 'result_file': '/data/d00662834/metrics/20260104/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k_20ms.txt'}
+The metrics result file: /data/d00662834/metrics/20260104/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k_20ms.txt
+Command: python3 -m sglang.bench_serving --backend sglang --model /root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8 --host 127.0.0.1 --port 6688 --dataset-name random --request-rate 16 --max-concurrency 768 --num-prompts 768 --random-input-len 3500 --random-output-len 1024 --random-range-ratio 1
+INFO:     127.0.0.1:50756 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46332 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46340 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46362 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46366 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46372 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46388 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46402 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46410 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46412 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46416 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46428 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46432 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46446 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46462 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46468 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46494 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46500 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46506 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46510 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46518 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46526 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46542 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46556 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46564 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46570 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46582 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46598 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46600 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46606 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46620 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46632 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46646 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46648 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46664 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46680 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46682 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46702 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46714 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46716 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46718 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46720 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46726 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46738 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46740 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46744 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46754 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46766 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46774 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46780 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46788 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46792 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46802 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46816 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46820 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46832 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46844 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46860 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46874 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46888 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46898 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46906 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46920 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46928 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46944 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46952 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46962 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46964 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46976 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46990 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46992 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47008 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47020 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47028 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47030 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47042 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47054 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47058 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47068 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47070 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47082 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47092 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47094 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47098 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47106 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47112 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47124 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47128 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47142 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47156 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47164 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47168 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47184 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47200 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47214 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47228 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47234 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47244 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47250 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47264 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47280 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47288 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47302 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47318 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47334 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47342 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47348 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47364 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47370 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47378 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47388 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47390 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47404 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47420 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47434 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52220 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52234 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52242 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52256 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52266 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52276 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52286 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52290 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52302 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52304 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52310 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52326 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52334 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52348 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52356 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52360 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52368 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52372 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52388 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52404 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52414 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52416 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52432 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52448 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52462 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52470 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52474 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52492 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52506 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52516 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52532 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52538 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52540 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52552 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52566 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52570 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52576 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52590 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52618 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52634 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52640 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52646 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52652 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52658 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52660 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52664 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52670 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52674 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52678 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52690 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52702 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52704 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52706 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52722 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52732 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52746 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52754 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52764 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52768 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52780 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52784 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52794 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52802 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52814 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52830 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52846 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52856 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52870 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52876 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52890 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52892 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52900 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52904 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52908 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52920 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52934 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52940 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52946 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52954 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52964 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52976 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52992 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53002 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53016 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53032 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53044 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53046 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53050 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53058 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53074 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53076 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53088 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53092 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53102 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53114 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53130 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53138 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53140 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53154 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53166 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53168 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53172 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53178 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53182 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53188 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53194 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53202 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53206 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53218 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53224 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53236 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53238 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53248 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53262 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53266 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53274 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53278 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53288 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53304 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53308 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53318 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53324 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53334 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53344 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53350 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53370 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53372 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53378 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53384 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53396 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53398 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53402 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53416 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53426 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53438 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53448 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53456 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53464 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53476 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53492 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53508 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53510 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53512 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53524 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53540 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53552 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53556 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53558 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53572 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43964 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43974 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43982 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43996 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44002 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44010 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44024 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44040 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44054 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44070 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44086 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44102 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44118 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44126 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44134 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44142 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44144 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44152 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44160 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44170 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44176 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44178 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44182 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44190 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44202 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44214 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44218 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44226 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44240 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44256 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44262 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44268 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44270 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44286 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44294 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44302 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44308 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44324 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44332 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44346 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44348 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44360 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44376 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44380 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44384 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44398 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44402 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44414 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44422 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44430 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44432 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44440 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44442 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44456 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44468 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44472 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44484 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44492 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44502 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44518 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44528 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44538 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44548 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44562 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44576 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44588 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44600 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44602 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44618 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44628 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44634 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44644 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44650 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44654 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44668 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44674 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44690 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44696 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44700 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44714 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44722 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44728 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44744 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44754 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44756 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44758 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44770 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44780 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44788 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44796 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44808 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44814 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44824 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44826 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44836 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44842 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44856 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44868 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44874 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44882 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44898 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44902 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44912 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44924 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44930 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44946 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44956 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44962 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44978 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44988 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45000 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45008 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45018 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45028 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45030 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45038 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45054 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45060 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45062 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45070 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45086 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45094 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45102 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45110 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45120 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45136 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45140 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45142 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45152 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45154 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45166 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45168 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45176 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45186 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45198 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45208 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45218 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45224 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45236 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45248 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45252 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45268 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45276 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45284 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45300 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45302 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45306 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45322 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45338 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45346 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45358 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45370 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45384 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45394 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45404 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39148 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39164 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39168 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39170 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39178 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39194 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39208 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39224 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39232 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39244 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39246 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39252 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39266 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39276 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39286 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39300 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39316 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39324 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39338 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39368 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39382 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39388 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39400 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39404 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39406 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39418 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39434 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39444 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39456 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39468 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39476 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39490 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39502 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39504 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39516 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39532 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39546 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39562 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39568 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39574 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39578 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39584 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39596 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39604 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39620 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39622 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39628 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39634 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39638 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39654 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39664 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39668 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39684 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39696 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39712 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39714 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39722 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39742 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39756 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39764 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39768 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39772 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39776 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39786 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39800 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39810 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39818 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39822 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39832 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39834 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39850 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39860 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39862 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39872 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39880 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39886 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39890 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39892 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39898 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39906 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39914 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39920 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39922 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39932 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39934 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39944 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39948 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39962 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39970 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39976 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39984 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40000 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40004 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40012 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40026 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40032 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40048 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40064 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40078 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40088 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40104 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40116 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40122 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40128 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40130 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40136 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40150 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40164 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40166 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40176 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40182 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40194 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40198 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40202 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40204 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40206 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40220 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40222 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40226 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40228 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40244 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40254 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40266 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40268 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40280 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40288 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40294 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40300 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40316 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40328 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40344 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40358 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40364 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40366 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40380 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40390 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40402 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40412 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40416 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40430 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40442 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40452 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40454 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40466 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40486 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40490 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40498 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40514 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40516 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48586 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48600 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48608 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48620 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48622 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48634 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48638 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48644 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48658 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48670 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48672 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48682 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48688 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48690 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48702 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48718 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48722 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48744 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48754 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48758 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48768 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48780 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48782 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48790 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48796 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48798 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48808 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48818 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48826 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48832 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48836 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48852 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48856 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48872 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48884 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48898 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48912 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48922 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48928 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48944 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48948 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48958 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48972 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48976 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48988 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48998 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49006 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49008 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49022 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49038 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49046 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49056 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49058 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49068 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49084 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49096 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49100 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49110 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49112 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49114 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49118 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49120 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49122 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49130 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49134 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49146 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49148 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49160 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49168 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49180 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49196 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49202 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49206 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49214 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49222 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49234 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49240 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49248 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49250 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49254 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49266 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49276 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49280 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49296 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49300 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49314 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49322 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49326 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49340 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49350 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49362 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49364 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49376 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49386 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49400 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49404 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49408 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49418 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49422 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49434 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49436 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49450 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49462 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49464 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49470 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49472 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49478 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49490 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49498 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49508 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49524 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49536 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49544 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49556 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49564 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49576 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49580 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49590 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49598 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49612 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49618 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49632 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49642 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49658 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49666 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49676 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49682 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49700 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49704 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49706 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49718 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49720 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49732 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49742 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49758 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49770 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49782 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49786 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49794 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49804 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49812 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49824 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49836 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49838 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49840 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49848 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49852 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49860 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49868 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49876 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49882 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49896 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49898 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49902 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49918 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49934 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49946 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49954 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49970 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49974 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49986 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49992 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49996 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37102 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37104 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37120 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37128 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37132 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37146 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37152 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37154 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37166 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37176 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37182 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37192 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37200 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37216 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37224 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37226 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37230 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44264 - "GET /get_server_info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41986 - "GET /get_server_info HTTP/1.1" 200 OK
+metrics is benchmark_args=Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=768, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1024, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=768, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=768, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1024, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=768, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+
+#Input tokens: 2688000
+#Output tokens: 786432
+Starting warmup with 1 sequences...
+Warmup completed with 1 sequences. Starting main benchmark run...
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    16.0      
+Max request concurrency:                 768       
+Successful requests:                     768       
+Benchmark duration (s):                  527.10    
+Total input tokens:                      2688000   
+Total input text tokens:                 2688000   
+Total input vision tokens:               0         
+Total generated tokens:                  786432    
+Total generated tokens (retokenized):    784463    
+Request throughput (req/s):              1.46      
+Input token throughput (tok/s):          5099.57   
+Output token throughput (tok/s):         1491.99   
+Peak output token throughput (tok/s):    1849.00   
+Peak concurrent requests:                763       
+Total token throughput (tok/s):          6591.56   
+Concurrency:                             375.68    
+Accept length:                           2.95      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   257844.65 
+Median E2E Latency (ms):                 258291.79 
+---------------Time to First Token----------------
+Mean TTFT (ms):                          237283.38 
+Median TTFT (ms):                        239193.95 
+P99 TTFT (ms):                           446187.64 
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          20.10     
+Median TPOT (ms):                        18.94     
+P99 TPOT (ms):                           42.77     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           20.10     
+Median ITL (ms):                         14.66     
+P95 ITL (ms):                            28.60     
+P99 ITL (ms):                            56.40     
+Max ITL (ms):                            2948.30   
+==================================================
+
+Retrying benchmark...
+The metrics result file: /data/d00662834/metrics/20260104/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k_20ms.txt
+Command: python3 -m sglang.bench_serving --backend sglang --model /root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8 --host 127.0.0.1 --port 6688 --dataset-name random --request-rate 16 --max-concurrency 768 --num-prompts 768 --random-input-len 3500 --random-output-len 1024 --random-range-ratio 1
+INFO:     127.0.0.1:53290 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53296 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53306 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53312 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53328 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53344 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53350 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53358 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53378 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53394 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53396 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53406 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53418 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53432 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53440 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53446 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53460 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53462 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53464 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53474 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53476 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53492 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40806 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40818 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40830 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40832 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40834 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40846 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40860 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40864 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40868 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40880 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40894 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40904 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40916 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40928 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40934 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40942 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40944 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40954 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40960 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40962 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40972 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40984 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40998 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41006 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41018 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41034 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41048 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41054 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41056 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41064 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41072 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41076 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41078 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41080 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41084 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41090 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41102 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41112 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41128 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41140 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41142 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41152 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41166 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41180 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41192 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41198 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41214 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41224 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41238 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41240 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41246 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41248 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41256 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41264 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41272 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41284 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41292 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41298 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41314 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41320 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41334 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41336 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41348 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41350 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41362 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41368 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41384 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41388 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41400 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41412 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41416 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41420 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41428 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41440 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41442 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41452 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41454 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41468 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41480 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41488 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41490 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41500 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41516 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41528 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41544 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41546 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41558 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41570 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41572 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41574 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41586 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41588 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41594 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41604 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41608 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41616 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41624 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41630 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41632 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41636 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41640 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41646 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41656 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41664 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41674 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41688 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41700 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41712 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41720 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41724 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41736 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41750 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41752 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41764 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41770 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41776 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41786 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41798 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41810 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41826 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41834 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41850 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41862 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41864 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41878 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41884 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41892 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41894 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41908 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41916 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41918 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41930 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41936 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41940 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41954 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41968 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41974 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41986 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41992 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41994 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42000 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42002 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42006 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42008 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42024 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42040 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42046 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42056 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42064 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42078 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42088 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42096 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41418 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41434 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41446 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41460 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41470 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41474 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41492 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41504 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41512 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41526 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41538 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41552 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41554 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41560 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41576 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41590 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41592 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41606 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41612 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41628 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41644 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41650 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41658 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41666 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41668 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41676 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41684 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41690 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41702 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41704 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41708 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41718 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41722 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41732 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41734 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41744 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41754 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41760 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41774 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41788 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41800 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41802 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41814 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41816 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41828 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41832 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41836 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41852 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41858 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41866 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41868 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41886 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41896 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41910 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41920 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41932 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41942 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41946 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41952 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41962 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41966 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41982 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41996 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42010 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42026 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42030 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42038 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42042 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42058 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42072 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42080 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42094 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42110 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42120 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42134 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42146 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42154 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42162 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42174 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42178 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42188 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42212 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42228 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42232 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42234 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42240 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42252 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42260 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42276 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42282 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42292 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42304 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42306 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42320 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42322 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42338 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42348 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42362 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42378 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42384 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42396 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42400 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42412 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42416 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42428 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42436 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42438 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42454 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42456 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42460 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42466 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42494 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42496 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42502 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42514 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42520 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42526 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42528 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42534 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42550 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42558 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42568 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42576 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42580 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42586 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42588 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42602 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42608 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42618 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42622 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42638 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42644 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42646 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42660 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42662 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42670 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42680 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42682 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42690 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42712 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42722 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42728 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42742 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42756 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42768 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42778 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46286 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46298 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46310 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46324 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46340 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46368 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46380 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46396 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46410 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46424 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46428 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46442 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46450 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46464 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46476 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46486 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46488 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46494 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46496 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46500 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46504 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46508 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46510 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46520 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46532 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46542 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46546 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46552 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46564 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46572 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46576 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46582 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46598 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46610 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46616 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46620 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46624 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46632 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46644 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46652 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46664 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46674 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46676 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46682 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46706 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46722 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46734 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46740 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46756 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46770 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46772 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46774 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46790 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46794 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46800 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46810 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46816 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46820 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46832 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46834 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46842 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46852 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46864 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46866 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46872 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46884 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46886 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46900 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46914 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46920 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46930 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46932 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46936 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46940 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46946 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46962 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46966 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46980 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46988 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46998 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47010 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47020 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47024 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47036 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47048 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47058 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47064 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47072 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47086 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47102 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47118 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47128 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47134 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47146 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47150 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47156 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47172 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47182 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47192 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47204 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47206 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47218 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47234 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47240 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47248 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47252 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47256 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47272 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47288 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47292 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47306 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47318 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47332 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47344 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47360 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47372 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47382 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47384 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47388 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47396 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47402 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47412 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47426 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47434 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47438 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47454 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47458 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47474 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47484 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47488 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47492 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47504 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47514 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47520 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47528 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47540 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47542 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47550 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47556 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47572 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47588 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47592 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47606 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47616 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47630 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47636 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47638 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47652 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38426 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38442 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38450 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38456 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38472 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38492 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38502 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38508 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38514 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38520 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38530 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38532 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38548 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38556 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38572 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38584 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38598 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38600 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38610 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38620 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38636 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38646 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38652 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38664 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38674 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38688 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38690 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38712 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38714 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38716 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38738 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38744 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38748 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38762 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38768 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38784 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38790 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38792 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38804 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38814 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38818 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38828 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38832 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38842 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38846 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38856 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38864 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38880 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38894 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38900 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38914 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38918 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38922 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38924 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38934 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38940 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38942 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38954 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38958 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38970 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38976 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38982 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38994 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38998 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39008 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39024 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39028 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39040 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39052 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39060 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39074 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39090 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39098 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39108 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39120 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39130 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39138 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39154 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39162 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39168 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39172 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39176 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39178 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39180 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39192 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39202 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39204 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39216 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39224 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39232 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39246 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39256 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39270 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39286 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39298 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39308 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39316 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39318 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39332 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39348 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39360 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39376 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39386 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39392 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39402 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39416 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39420 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39430 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39444 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39456 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39464 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39480 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39494 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39498 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39502 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39510 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39516 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39518 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39520 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39532 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39534 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39546 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39552 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39568 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39572 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39582 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39592 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39602 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39608 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39618 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39632 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39640 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39654 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39668 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39670 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39678 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39688 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39696 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39702 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39716 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39744 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39760 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39764 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39770 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39782 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39794 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39796 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39810 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39816 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39826 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39830 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39838 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39848 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39858 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39872 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39882 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39888 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39892 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60074 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60076 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60086 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60094 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60098 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60104 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60110 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60118 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60134 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60138 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60140 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60146 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60162 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60174 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60178 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60194 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60206 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60218 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60220 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60236 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60250 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60256 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60264 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60266 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60272 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60274 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60288 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60296 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60308 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60310 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60314 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60328 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60338 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60348 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60356 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60362 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60378 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60390 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60394 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60396 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60402 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60414 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60424 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60434 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60446 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60454 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60478 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60494 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60496 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60504 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60512 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60522 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60528 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60536 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60540 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60552 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60556 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60568 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60572 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60588 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60604 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60610 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60624 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60638 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60646 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60648 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60662 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60674 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60686 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60710 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60726 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60736 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60742 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60752 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60764 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60778 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60780 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60782 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60790 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60794 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60804 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60810 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60818 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60828 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60838 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60842 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60846 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60848 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60856 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60872 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60884 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60896 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60898 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60912 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60918 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60934 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60948 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60960 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60974 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60980 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60996 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32772 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32788 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32804 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32806 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32810 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32812 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32828 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32834 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32844 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32856 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32858 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32862 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32868 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32878 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32882 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:32892 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60058 - "GET /get_server_info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48260 - "GET /get_server_info HTTP/1.1" 200 OK
+metrics is benchmark_args=Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=768, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1024, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=768, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=768, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1024, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=768, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+
+#Input tokens: 2688000
+#Output tokens: 786432
+Starting warmup with 1 sequences...
+Warmup completed with 1 sequences. Starting main benchmark run...
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    16.0      
+Max request concurrency:                 768       
+Successful requests:                     768       
+Benchmark duration (s):                  488.93    
+Total input tokens:                      2688000   
+Total input text tokens:                 2688000   
+Total input vision tokens:               0         
+Total generated tokens:                  786432    
+Total generated tokens (retokenized):    783956    
+Request throughput (req/s):              1.57      
+Input token throughput (tok/s):          5497.72   
+Output token throughput (tok/s):         1608.48   
+Peak output token throughput (tok/s):    1876.00   
+Peak concurrent requests:                705       
+Total token throughput (tok/s):          7106.20   
+Concurrency:                             349.58    
+Accept length:                           2.99      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   222551.68 
+Median E2E Latency (ms):                 224087.51 
+---------------Time to First Token----------------
+Mean TTFT (ms):                          203150.75 
+Median TTFT (ms):                        204215.98 
+P99 TTFT (ms):                           409750.37 
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          18.96     
+Median TPOT (ms):                        18.82     
+P99 TPOT (ms):                           26.02     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           18.96     
+Median ITL (ms):                         14.81     
+P95 ITL (ms):                            28.53     
+P99 ITL (ms):                            56.15     
+Max ITL (ms):                            416.75    
+==================================================
+
+.
+----------------------------------------------------------------------
+Ran 1 test in 1889.909s
+
+OK
+
+Successfully detected complete test completion pattern!
+Monitoring completed successfully. Script exiting.
+configmap "rings-config-ascend-sglang-test" deleted
+configmap "sglang-info" deleted
+role.rbac.authorization.k8s.io "ascend-sglang-configmap-access" deleted
+rolebinding.rbac.authorization.k8s.io "ascend-sglang-configmap-binding" deleted
+role.rbac.authorization.k8s.io "ascend-sglang-pod-access" deleted
+rolebinding.rbac.authorization.k8s.io "ascend-sglang-pod-binding" deleted
+job.batch.volcano.sh "sglang-multi-debug" deleted
+Found exist sglang job, sleeping for 30 seconds...
+error: resource(s) were provided, but no name was specified
+Found exist sglang job, sleeping for 30 seconds...
+error: resource(s) were provided, but no name was specified
+No sglang job exist.

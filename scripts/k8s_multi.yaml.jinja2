@@ -126,10 +126,12 @@ spec:
             value: "{{ name_space }}"
           - name: KUBE_CONFIG_MAP
             value: "{{ kube_config_map }}"
+          - name: HF_ENDPOINT
+            value: "https://hf-mirror.com"
           command: ["/bin/bash", "-c"]
           args:
             - |
-               bash $SGLANG_SOURCE_PATH/test/nightly/ascend/performance/run_ascend_testcase.sh {{ test_case }}
+               bash $SGLANG_SOURCE_PATH/test/registered/ascend/performance/run_ascend_testcase.sh {{ test_case }}
           resources:
             requests:
               huawei.com/ascend-1980: 16

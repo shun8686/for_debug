@@ -1,0 +1,63 @@
+===========================PD-SEPARATION==================================
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w4a8_1p1d_16p_in2k_out2k_50ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_deepseek_r1_w4a8_1p1d_16p_in2k_out2k_50ms.py 1 1 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_deepseek_r1_w4a8_1p1d_16p_in2k_out2k_50ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w4a8_1p1d_16p_in3k5_out1k5_50ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_deepseek_r1_w4a8_1p1d_16p_in3k5_out1k5_50ms.py 1 1 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_deepseek_r1_w4a8_1p1d_16p_in3k5_out1k5_50ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k_20ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k_20ms.py 2 2 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k_20ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_20ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_20ms.py 2 2 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_20ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_50ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_50ms.py 2 2 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_50ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k9_out1k_20ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k9_out1k_20ms.py 2 2 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k9_out1k_20ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in6k_out1k6_15ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in6k_out1k6_15ms.py 2 2 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_deepseek_r1_w8a8_2p1d_32p_in6k_out1k6_15ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_480b_w8a8_1p1d_24p_in3k5_out1k5_50ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_qwen3_480b_w8a8_1p1d_24p_in3k5_out1k5_50ms.py 1 2 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_qwen3_480b_w8a8_1p1d_24p_in3k5_out1k5_50ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_1p1d_24p_in3k5_out1k5_50ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_1p1d_24p_in3k5_out1k5_50ms.py 1 2 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_qwen3_235b_w8a8_1p1d_24p_in3k5_out1k5_50ms.py.log 2>&1
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_v3.2_w8a8_1p1d_32p_in64k_out1k_30ms.py
+bash run_pd_separation_base.sh /data/d00662834/1211_dev/sglang test/nightly/ascend/performance/test_ascend_deepseek_v3.2_w8a8_1p1d_32p_in64k_out1k_30ms.py 2 2 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231 > log/test_ascend_deepseek_v3.2_w8a8_1p1d_32p_in64k_out1k_30ms.py.log 2>&1
+cat: log/1.log: No such file or directory
+cat: log/1.log: No such file or directory
+cat: log/2.log: No such file or directory
+cat: log/2.log: No such file or directory
+cat: log/2.log: No such file or directory
+cat: log/2.log: No such file or directory
+cat: log/2.log: No such file or directory
+cat: log/2.log: No such file or directory
+cat: log/2.log: No such file or directory
+cat: log/2.log: No such file or directory
+===========================MULTI-NODE==================================
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_480b_w8a8_16p_in3k5_out1k5_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_16p_in2k_out2k_50ms.py
+===========================SINGLE-NODE==================================
+Run test cases: 16|test/nightly/ascend/performance/test_ascend_deepseek_r1_w4a8_8p_in2k_out2k_50ms.py
+16|test/nightly/ascend/performance/test_ascend_deepseek_r1_w4a8_8p_in3k5_out1k5_50ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in2k_out2k_50ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in2k_out2k_100ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in3k5_out1k5_50ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_235b_bf16_8p_in11k_out1k_10ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_30b_w8a8_1p_in3k5_out1k5_50ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_480b_w8a8_8p_in3k5_out1k5_50ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_next_80b_w8a8_2p_in3k5_out1k5_50ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_32b_w8a8_4p_in6k_out1k5_17.9ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_32b_bf16_4p_in4k_out1k5_11ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_32b_bf16_8p_in18k_out4k_7ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_32b_w8a8_2p_in3k5_out1k5_50ms.py
+16|test/nightly/ascend/performance/test_ascend_qwen3_32b_w8a8_2p_in2k_out2k_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w4a8_8p_in2k_out2k_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_deepseek_r1_w4a8_8p_in3k5_out1k5_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in2k_out2k_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in2k_out2k_100ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in3k5_out1k5_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_235b_bf16_8p_in11k_out1k_10ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_30b_w8a8_1p_in3k5_out1k5_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_480b_w8a8_8p_in3k5_out1k5_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_next_80b_w8a8_2p_in3k5_out1k5_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_32b_w8a8_4p_in6k_out1k5_17.9ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_32b_bf16_4p_in4k_out1k5_11ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_32b_bf16_8p_in18k_out4k_7ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_32b_w8a8_2p_in3k5_out1k5_50ms.py
+testcase : test/nightly/ascend/performance/test_ascend_qwen3_32b_w8a8_2p_in2k_out2k_50ms.py

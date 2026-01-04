@@ -124,10 +124,12 @@ spec:
             value: "{{ name_space }}"
           - name: KUBE_CONFIG_MAP
             value: "{{ kube_config_map }}"
+          - name: HF_ENDPOINT
+            value: "https://hf-mirror.com"
           command: ["/bin/bash", "-c"]
           args:
             - |
-               bash $SGLANG_SOURCE_PATH/test/nightly/ascend/performance/run_ascend_testcase.sh {{ test_case }}
+               bash $SGLANG_SOURCE_PATH/test/registered/ascend/performance/run_ascend_testcase.sh {{ test_case }}
           resources:
             requests:
               huawei.com/ascend-1980: 16
@@ -210,10 +212,12 @@ spec:
             value: "{{ name_space }}"
           - name: KUBE_CONFIG_MAP
             value: "{{ kube_config_map }}"
+          - name: HF_ENDPOINT
+            value: "https://hf-mirror.com"
           command: ["/bin/bash", "-c"]
           args:
             - |
-               bash $SGLANG_SOURCE_PATH/test/nightly/ascend/performance/run_ascend_testcase.sh {{ test_case }}
+               bash $SGLANG_SOURCE_PATH/test/registered/ascend/performance/run_ascend_testcase.sh {{ test_case }}
           resources:
             requests:
               huawei.com/ascend-1980: 16
@@ -230,8 +234,8 @@ spec:
             mountPath: /root/script
           - name: share
             mountPath: /data
-          - name: modelscope
-            mountPath: /root/.cache/modelscope
+          - name: cache
+            mountPath: /root/.cache
         volumes:
         - name: kube-config
           hostPath:
@@ -239,9 +243,9 @@ spec:
         - name: share
           hostPath:
             path: /data
-        - name: modelscope
+        - name: cache
           hostPath:
-            path: /data/ascend-ci-share-pkking-sglang/modelscope
+            path: /data/ascend-ci-share-pkking-sglang
         - name: ascend-910-config
           configMap:
             name: rings-config-ascend-sglang-test
@@ -298,10 +302,12 @@ spec:
             value: "{{ name_space }}"
           - name: KUBE_CONFIG_MAP
             value: "{{ kube_config_map }}"
+          - name: HF_ENDPOINT
+            value: "https://hf-mirror.com"
           command: ["/bin/bash", "-c"]
           args:
             - |
-               bash $SGLANG_SOURCE_PATH/test/nightly/ascend/performance/run_ascend_testcase.sh {{ test_case }}
+               bash $SGLANG_SOURCE_PATH/test/registered/ascend/performance/run_ascend_testcase.sh {{ test_case }}
           resources:
             requests:
               cpu: "4"
@@ -318,8 +324,8 @@ spec:
             mountPath: /root/script
           - name: share
             mountPath: /data
-          - name: modelscope
-            mountPath: /root/.cache/modelscope
+          - name: cache
+            mountPath: /root/.cache
         volumes:
         - name: kube-config
           hostPath:
@@ -327,9 +333,9 @@ spec:
         - name: share
           hostPath:
             path: /data
-        - name: modelscope
+        - name: cache
           hostPath:
-            path: /data/ascend-ci-share-pkking-sglang/modelscope
+            path: /data/ascend-ci-share-pkking-sglang
         - name: ascend-910-config
           configMap:
             name: rings-config-ascend-sglang-test

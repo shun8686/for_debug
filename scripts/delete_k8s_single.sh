@@ -1,4 +1,5 @@
 export KUBECONFIG=/data/.cache/kb.yaml
 
-kubectl delete -f k8s_single.yaml
+yaml=$1
+kubectl delete -f ${yaml}
 

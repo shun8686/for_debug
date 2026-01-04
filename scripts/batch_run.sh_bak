@@ -1,0 +1,157 @@
+sglang_source_path=/data/d00662834/1211_dev/sglang
+#export PYTHONPATH=$sglang_source_path/python:$PYTHONPATH
+image="swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231"
+#image="swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann8.3.rc1-a3"
+SCRIPT_PATH=$(dirname $(readlink -f $0))
+cd $SCRIPT_PATH
+
+echo "==================PD-Separation================"
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_v3.2_w8a8_1p1d_32p_in64k_out1k_30ms.py
+prefill_size=2
+decode_size=2
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w4a8_1p1d_16p_in2k_out2k_50ms.py
+prefill_size=1
+decode_size=1
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w4a8_1p1d_16p_in3k5_out1k5_50ms.py
+prefill_size=1
+decode_size=1
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k_20ms.py
+prefill_size=2
+decode_size=2
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_20ms.py
+prefill_size=2
+decode_size=2
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image}  > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_50ms.py
+prefill_size=2
+decode_size=2
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image}  > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k9_out1k_20ms.py
+prefill_size=2
+decode_size=2
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in6k_out1k6_15ms.py
+prefill_size=2
+decode_size=2
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_480b_w8a8_1p1d_24p_in3k5_out1k5_50ms.py
+prefill_size=1
+decode_size=2
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_235b_w8a8_1p1d_24p_in3k5_out1k5_50ms.py
+prefill_size=1
+decode_size=2
+echo "==========${test_case}==============="
+bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+
+echo "===========================MULTI-NODE=================================="
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_480b_w8a8_16p_in3k5_out1k5_50ms.py
+node_size=2
+echo "==========${test_case}==============="
+bash run_multi_pd_mix_base.sh ${sglang_source_path} ${test_case} ${node_size} ${image}  > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_235b_w8a8_16p_in2k_out2k_50ms.py
+node_size=2
+echo "==========${test_case}==============="
+bash run_multi_pd_mix_base.sh ${sglang_source_path} ${test_case} ${node_size} ${image}  > log/${test_case##*/}.log 2>&1
+
+echo "===========================SINGLE-NODE=================================="
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w4a8_8p_in2k_out2k_50ms.py
+npu_num=16
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_deepseek_r1_w4a8_8p_in3k5_out1k5_50ms.py
+npu_num=16
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in2k_out2k_50ms.py
+npu_num=16
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in2k_out2k_100ms.py
+npu_num=16
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_235b_w8a8_8p_in3k5_out1k5_50ms.py
+npu_num=16
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_235b_bf16_8p_in11k_out1k_10ms.py
+npu_num=16
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_30b_w8a8_1p_in3k5_out1k5_50ms.py
+npu_num=2
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_480b_w8a8_8p_in3k5_out1k5_50ms.py
+npu_num=16
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_next_80b_w8a8_2p_in3k5_out1k5_50ms.py
+npu_num=4
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_32b_w8a8_4p_in6k_out1k5_17.9ms.py
+npu_num=8
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_32b_bf16_4p_in4k_out1k5_11ms.py
+npu_num=8
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_32b_bf16_8p_in18k_out4k_7ms.py
+npu_num=16
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_32b_w8a8_2p_in3k5_out1k5_50ms.py
+npu_num=4
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+test_case=test/registered/ascend/performance/test_ascend_qwen3_32b_w8a8_2p_in2k_out2k_50ms.py
+npu_num=4
+echo "==========${test_case}==============="
+bash run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num} ${image} > log/${test_case##*/}.log 2>&1
+
+
+
+
+

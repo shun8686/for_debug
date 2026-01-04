@@ -1,0 +1,18 @@
+==================1. for pd separation======================
+# Run as:
+# sh run_pd_separation_base.sh {sglang_source_path} {test_case_path} {prefill_size} {decode_size}
+
+# do not forget to clear resources after test
+sh delete_k8s_multi.sh
+
+==================2. for pd mix multi nodes=================
+# Run as:
+# sh run_multi_pd_mix.sh ${sglang_source_path} ${test_case} ${node_size}
+
+# do not forget to clear resources after test
+sh delete_k8s_multi.sh
+
+==================3. for pd mix single node=================
+# Run as:
+# ./run_single_base.sh ${sglang_source_path} ${test_case} ${npu_num}
+

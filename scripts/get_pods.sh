@@ -1,5 +1,6 @@
 export KUBECONFIG=/data/.cache/kb.yaml
 
-match_str="sglang-multi-debug"
+match_str1="sglang-multi-debug"
+match_str2="sglang-single-debug"
 
-kubectl get pods -A -o wide | grep ${match_str}
+kubectl get pods -A -o wide | grep -E "${match_str1}|${match_str2}"

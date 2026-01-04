@@ -1,0 +1,1196 @@
+Run path: /data/d00662834/debug
+warning: redirecting to https://gh-proxy.org/https:/github.com/shun8686/sglang.git/
+Already up to date.
+image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231
+KUBE_JOB_NAME: sglang-multi-debug
+Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: kubernetes in /root/anaconda3/lib/python3.13/site-packages (34.1.0)
+Requirement already satisfied: certifi>=14.05.14 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2025.11.12)
+Requirement already satisfied: six>=1.9.0 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.5.3 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.9.0.post0)
+Requirement already satisfied: pyyaml>=5.4.1 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (6.0.3)
+Requirement already satisfied: google-auth>=1.0.1 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.45.0)
+Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (1.8.0)
+Requirement already satisfied: requests in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.32.5)
+Requirement already satisfied: requests-oauthlib in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.0.0)
+Requirement already satisfied: urllib3<2.4.0,>=1.24.2 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.3.0)
+Requirement already satisfied: durationpy>=0.7 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (0.10)
+Requirement already satisfied: cachetools<7.0,>=2.0.0 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (5.5.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (0.4.2)
+Requirement already satisfied: rsa<5,>=3.1.4 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (4.9.1)
+Requirement already satisfied: pyasn1>=0.1.3 in /root/anaconda3/lib/python3.13/site-packages (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes) (0.6.1)
+Requirement already satisfied: charset_normalizer<4,>=2 in /root/anaconda3/lib/python3.13/site-packages (from requests->kubernetes) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /root/anaconda3/lib/python3.13/site-packages (from requests->kubernetes) (3.11)
+Requirement already satisfied: oauthlib>=3.0.0 in /root/anaconda3/lib/python3.13/site-packages (from requests-oauthlib->kubernetes) (3.3.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: jinja2-cli in /root/anaconda3/lib/python3.13/site-packages (0.8.2)
+Requirement already satisfied: jinja2 in /root/anaconda3/lib/python3.13/site-packages (from jinja2-cli) (3.1.6)
+Requirement already satisfied: MarkupSafe>=2.0 in /root/anaconda3/lib/python3.13/site-packages (from jinja2->jinja2-cli) (3.0.2)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+error: the path "/data/d00662834/debug/k8s_pd_separation.yaml" does not exist
+kube name space: sglang-multi-debug, pod name prefix: sglang-multi-debug-sglang
+No sglang job exist, start test case...
+=========192.168.0.184==========
+=========192.168.0.60==========
+=========192.168.0.77==========
+=========192.168.0.81==========
+Apply k8s yaml... KUBE_NAME_SPACE:sglang-multi-debug, KUBE_CONFIG_MAP:sglang-info, KUBE_JOB_TYPE:pd-separation, KUBE_YAML_FILE:k8s_pd_separation.yaml
+configmap/rings-config-ascend-sglang-test created
+configmap/sglang-info created
+role.rbac.authorization.k8s.io/ascend-sglang-configmap-access created
+rolebinding.rbac.authorization.k8s.io/ascend-sglang-configmap-binding created
+role.rbac.authorization.k8s.io/ascend-sglang-pod-access created
+rolebinding.rbac.authorization.k8s.io/ascend-sglang-pod-binding created
+job.batch.volcano.sh/sglang-multi-debug created
+
+Waiting all pods to running...
+Pod: sglang-multi-debug-sglang-decode-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Running
+Pod: sglang-multi-debug-sglang-decode-1, status: Running
+Pod: sglang-multi-debug-sglang-prefill-0, status: Running
+Pod: sglang-multi-debug-sglang-prefill-1, status: Running
+Pod: sglang-multi-debug-sglang-router-0, status: Running
+All sglang Pod is Running !
+ConfigMap sglang-info already exists. Updating...
+ConfigMap sglang-info updated successfully.
+{'api_version': 'v1',
+ 'binary_data': None,
+ 'data': {'sglang-multi-debug-sglang-decode-0': '192.168.0.184',
+          'sglang-multi-debug-sglang-decode-1': '192.168.0.60',
+          'sglang-multi-debug-sglang-prefill-0': '192.168.0.77',
+          'sglang-multi-debug-sglang-prefill-1': '192.168.0.81',
+          'sglang-multi-debug-sglang-router-0': '192.168.0.60'},
+ 'immutable': None,
+ 'kind': 'ConfigMap',
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2026, 1, 3, 18, 22, 27, tzinfo=tzutc()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': None,
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:data': {'.': {},
+                                                           'f:sglang-multi-debug-sglang-decode-0': {},
+                                                           'f:sglang-multi-debug-sglang-decode-1': {},
+                                                           'f:sglang-multi-debug-sglang-prefill-0': {},
+                                                           'f:sglang-multi-debug-sglang-prefill-1': {},
+                                                           'f:sglang-multi-debug-sglang-router-0': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2026, 1, 3, 18, 22, 47, tzinfo=tzutc())}],
+              'name': 'sglang-info',
+              'namespace': 'sglang-multi-debug',
+              'owner_references': None,
+              'resource_version': '128771864',
+              'self_link': None,
+              'uid': 'a5faa7f7-894a-4aa5-bde4-025d278fe0ee'}}
+Starting to monitor logs for Pod: sglang-multi-debug-sglang-router-0
+Namespace: sglang-multi-debug
+Timeout set to: 10800 seconds
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Looking in indexes: http://cache-service.nginx-pypi-cache.svc.cluster.local/pypi/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting kubernetes
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/ca/ec/65f7d563aa4a62dd58777e8f6aa882f15db53b14eb29aba0c28a20f7eb26/kubernetes-34.1.0-py2.py3-none-any.whl (2.0 MB)
+Requirement already satisfied: certifi>=14.05.14 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2025.11.12)
+Requirement already satisfied: six>=1.9.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.9.0.post0)
+Requirement already satisfied: pyyaml>=5.4.1 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (6.0.3)
+Collecting google-auth>=1.0.1 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c6/97/451d55e05487a5cd6279a01a7e34921858b16f7dc8aa38a2c684743cd2b3/google_auth-2.45.0-py2.py3-none-any.whl (233 kB)
+Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/34/db/b10e48aa8fff7407e67470363eac595018441cf32d5e1001567a7aeba5d2/websocket_client-1.9.0-py3-none-any.whl (82 kB)
+Requirement already satisfied: requests in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.32.5)
+Collecting requests-oauthlib (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Collecting urllib3<2.4.0,>=1.24.2 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c8/19/4ec628951a74043532ca2cf5d97b7b14863931476d117c471e8e2b1eb39f/urllib3-2.3.0-py3-none-any.whl (128 kB)
+Collecting durationpy>=0.7 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/b0/0d/9feae160378a3553fa9a339b0e9c1a048e147a4127210e286ef18b730f03/durationpy-0.10-py3-none-any.whl (3.9 kB)
+Collecting cachetools<7.0,>=2.0.0 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/2c/fc/1d7b80d0eb7b714984ce40efc78859c022cd930e402f599d8ca9e39c78a4/cachetools-6.2.4-py3-none-any.whl (11 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/47/8d/d529b5d697919ba8c11ad626e835d4039be708a35b0d22de83a269a6682c/pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/64/8d/0133e4eb4beed9e425d9a98ed6e081a55d195481b7632472be1af08d2f6b/rsa-4.9.1-py3-none-any.whl (34 kB)
+Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c8/f1/d6a797abb14f6283c0ddff96bbdd46937f64122b8c925cab503dd37f8214/pyasn1-0.6.1-py3-none-any.whl (83 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.11)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Installing collected packages: durationpy, websocket-client, urllib3, pyasn1, oauthlib, cachetools, rsa, pyasn1-modules, requests-oauthlib, google-auth, kubernetes
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 2.5.0
+    Uninstalling urllib3-2.5.0:
+      Successfully uninstalled urllib3-2.5.0
+
+Successfully installed cachetools-6.2.4 durationpy-0.10 google-auth-2.45.0 kubernetes-34.1.0 oauthlib-3.3.1 pyasn1-0.6.1 pyasn1-modules-0.4.2 requests-oauthlib-2.0.0 rsa-4.9.1 urllib3-2.3.0 websocket-client-1.9.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  1  732k    1 11396    0     0  18236      0  0:00:41 --:--:--  0:00:41 18233
+100  732k  100  732k    0     0   949k      0 --:--:-- --:--:-- --:--:--  948k
+performance
+vm.swappiness = 0
+kernel.numa_balancing = 0
+kernel.sched_migration_cost_ns = 50000
+Running test case test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_20ms.py
+The nic name matched is enp23s0f3
+The nic name matched is enp23s0f3
+Nic name: enp23s0f3
+Init 192.168.0.60 cls.role='router'!
+[CI Test Method] Test_DeepSeek_R1_W8A8_2P1D.test_throughput
+Starting router in thread...
+launch_router start ......Waiting for router to be ready at http://127.0.0.1:6688/health
+
+Discovered 4 worker nodes (prefill: 2, decode: 2)
+Discovered 4 worker nodes
+Successfully queried ConfigMap sglang-info in namespace sglang-multi-debug
+Retrieved ConfigMap data: {'sglang-multi-debug-sglang-decode-0': '192.168.0.184', 'sglang-multi-debug-sglang-decode-1': '192.168.0.60', 'sglang-multi-debug-sglang-prefill-0': '192.168.0.77', 'sglang-multi-debug-sglang-prefill-1': '192.168.0.81', 'sglang-multi-debug-sglang-router-0': '192.168.0.60'}
+ConfigMap monitoring complete: prefill_url=['192.168.0.77:8000', '192.168.0.81:8000'], decode_url=['192.168.0.184:8000'], bootstrap_ports=['8995', '8996'], node_ip_list=['192.168.0.184', '192.168.0.77', '192.168.0.81']
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is not ready yet
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 2 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 2 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is not ready yet
+Waiting for 2 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 192.168.0.184:8000 is ready
+Node 192.168.0.77:8000 is not ready yet
+Node 192.168.0.81:8000 is ready
+Waiting for 1 more nodes to be ready...
+Timeout: Not all nodes are ready after 3600 seconds
+Exception in thread Thread-2 (launch_router):
+Traceback (most recent call last):
+  File "/usr/local/python3.11.13/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/usr/local/python3.11.13/lib/python3.11/threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "/data/d00662834/1211_dev/sglang/test/nightly/ascend/performance/test_ascend_disaggregation_utils.py", line 146, in launch_router
+    raise RuntimeError("Failed to wait for all nodes to be ready")
+RuntimeError: Failed to wait for all nodes to be ready
+Traceback (most recent call last):
+  File "/usr/local/python3.11.13/lib/python3.11/site-packages/sglang/srt/utils/common.py", line 2527, in retry
+    return fn()
+           ^^^^
+  File "/usr/local/python3.11.13/lib/python3.11/site-packages/sglang/test/test_utils.py", line 1704, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.13/lib/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/d00662834/1211_dev/sglang/test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_20ms.py", line 155, in test_throughput
+    self.run_throughput()
+  File "/data/d00662834/1211_dev/sglang/test/nightly/ascend/performance/test_ascend_disaggregation_utils.py", line 347, in run_throughput
+    wait_router_ready(health_check_url)
+  File "/data/d00662834/1211_dev/sglang/test/nightly/ascend/performance/test_ascend_disaggregation_utils.py", line 311, in wait_router_ready
+    raise RuntimeError(f"Server {url} failed to start in {timeout}s")
+RuntimeError: Server http://127.0.0.1:6688/health failed to start in 3600s
+E
+======================================================================
+ERROR: test_throughput (__main__.Test_DeepSeek_R1_W8A8_2P1D.test_throughput)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/local/python3.11.13/lib/python3.11/site-packages/sglang/srt/utils/common.py", line 2527, in retry
+    return fn()
+           ^^^^
+  File "/usr/local/python3.11.13/lib/python3.11/site-packages/sglang/test/test_utils.py", line 1704, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.13/lib/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/d00662834/1211_dev/sglang/test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_20ms.py", line 155, in test_throughput
+    self.run_throughput()
+  File "/data/d00662834/1211_dev/sglang/test/nightly/ascend/performance/test_ascend_disaggregation_utils.py", line 347, in run_throughput
+    wait_router_ready(health_check_url)
+  File "/data/d00662834/1211_dev/sglang/test/nightly/ascend/performance/test_ascend_disaggregation_utils.py", line 311, in wait_router_ready
+    raise RuntimeError(f"Server {url} failed to start in {timeout}s")
+RuntimeError: Server http://127.0.0.1:6688/health failed to start in 3600s
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python3.11.13/lib/python3.11/site-packages/sglang/test/test_utils.py", line 1703, in _callTestMethod
+    retry(
+  File "/usr/local/python3.11.13/lib/python3.11/site-packages/sglang/srt/utils/common.py", line 2535, in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+Exception: retry() exceed maximum number of retries.
+
+----------------------------------------------------------------------
+Ran 1 test in 3600.593s
+
+FAILED (errors=1)
+Finished test case test/nightly/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in3k5_out1k5_20ms.py
+
+Error: Pod logs ended but target pattern was not detected
+configmap "rings-config-ascend-sglang-test" deleted
+configmap "sglang-info" deleted
+role.rbac.authorization.k8s.io "ascend-sglang-configmap-access" deleted
+rolebinding.rbac.authorization.k8s.io "ascend-sglang-configmap-binding" deleted
+role.rbac.authorization.k8s.io "ascend-sglang-pod-access" deleted
+rolebinding.rbac.authorization.k8s.io "ascend-sglang-pod-binding" deleted
+job.batch.volcano.sh "sglang-multi-debug" deleted
+Found exist sglang job, sleeping for 30 seconds...
+error: resource(s) were provided, but no name was specified
+No sglang job exist.

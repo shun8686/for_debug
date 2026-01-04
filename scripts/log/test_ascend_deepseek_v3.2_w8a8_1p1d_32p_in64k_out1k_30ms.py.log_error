@@ -1,0 +1,431 @@
+image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1230
+run_pd_separation_base.sh: line 25: cd: 3469043{sglang_source_path}: No such file or directory
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+KUBE_JOB_NAME: sglang-multi-debug
+Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: kubernetes in /root/anaconda3/lib/python3.13/site-packages (34.1.0)
+Requirement already satisfied: certifi>=14.05.14 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2025.11.12)
+Requirement already satisfied: six>=1.9.0 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.5.3 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.9.0.post0)
+Requirement already satisfied: pyyaml>=5.4.1 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (6.0.3)
+Requirement already satisfied: google-auth>=1.0.1 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.45.0)
+Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (1.8.0)
+Requirement already satisfied: requests in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.32.5)
+Requirement already satisfied: requests-oauthlib in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.0.0)
+Requirement already satisfied: urllib3<2.4.0,>=1.24.2 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (2.3.0)
+Requirement already satisfied: durationpy>=0.7 in /root/anaconda3/lib/python3.13/site-packages (from kubernetes) (0.10)
+Requirement already satisfied: cachetools<7.0,>=2.0.0 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (5.5.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (0.4.2)
+Requirement already satisfied: rsa<5,>=3.1.4 in /root/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes) (4.9.1)
+Requirement already satisfied: pyasn1>=0.1.3 in /root/anaconda3/lib/python3.13/site-packages (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes) (0.6.1)
+Requirement already satisfied: charset_normalizer<4,>=2 in /root/anaconda3/lib/python3.13/site-packages (from requests->kubernetes) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /root/anaconda3/lib/python3.13/site-packages (from requests->kubernetes) (3.11)
+Requirement already satisfied: oauthlib>=3.0.0 in /root/anaconda3/lib/python3.13/site-packages (from requests-oauthlib->kubernetes) (3.3.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: jinja2-cli in /root/anaconda3/lib/python3.13/site-packages (0.8.2)
+Requirement already satisfied: jinja2 in /root/anaconda3/lib/python3.13/site-packages (from jinja2-cli) (3.1.6)
+Requirement already satisfied: MarkupSafe>=2.0 in /root/anaconda3/lib/python3.13/site-packages (from jinja2->jinja2-cli) (3.0.2)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+kube name space: sglang-multi-debug, pod name prefix: sglang-multi-debug-sglang
+No sglang job exist, start test case...
+=========192.168.0.184==========
+=========192.168.0.60==========
+=========192.168.0.77==========
+=========192.168.0.81==========
+Apply k8s yaml... KUBE_NAME_SPACE:sglang-multi-debug, KUBE_CONFIG_MAP:sglang-info, KUBE_JOB_TYPE:pd-separation, KUBE_YAML_FILE:k8s_pd_separation.yaml
+configmap/rings-config-ascend-sglang-test created
+configmap/sglang-info created
+role.rbac.authorization.k8s.io/ascend-sglang-configmap-access created
+rolebinding.rbac.authorization.k8s.io/ascend-sglang-configmap-binding created
+role.rbac.authorization.k8s.io/ascend-sglang-pod-access created
+rolebinding.rbac.authorization.k8s.io/ascend-sglang-pod-binding created
+job.batch.volcano.sh/sglang-multi-debug created
+
+Waiting all pods to running...
+Pod: sglang-multi-debug-sglang-decode-0, status: Running
+Pod: sglang-multi-debug-sglang-decode-1, status: Running
+Pod: sglang-multi-debug-sglang-prefill-0, status: Running
+Pod: sglang-multi-debug-sglang-prefill-1, status: Running
+Pod: sglang-multi-debug-sglang-router-0, status: Running
+All sglang Pod is Running !
+ConfigMap sglang-info already exists. Updating...
+ConfigMap sglang-info updated successfully.
+{'api_version': 'v1',
+ 'binary_data': None,
+ 'data': {'sglang-multi-debug-sglang-decode-0': '192.168.0.184',
+          'sglang-multi-debug-sglang-decode-1': '192.168.0.77',
+          'sglang-multi-debug-sglang-prefill-0': '192.168.0.81',
+          'sglang-multi-debug-sglang-prefill-1': '192.168.0.60',
+          'sglang-multi-debug-sglang-router-0': '192.168.0.77'},
+ 'immutable': None,
+ 'kind': 'ConfigMap',
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2025, 12, 31, 1, 48, 59, tzinfo=tzutc()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': None,
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:data': {'.': {},
+                                                           'f:sglang-multi-debug-sglang-decode-0': {},
+                                                           'f:sglang-multi-debug-sglang-decode-1': {},
+                                                           'f:sglang-multi-debug-sglang-prefill-0': {},
+                                                           'f:sglang-multi-debug-sglang-prefill-1': {},
+                                                           'f:sglang-multi-debug-sglang-router-0': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2025, 12, 31, 1, 49, 5, tzinfo=tzutc())}],
+              'name': 'sglang-info',
+              'namespace': 'sglang-multi-debug',
+              'owner_references': None,
+              'resource_version': '124903114',
+              'self_link': None,
+              'uid': '3c812810-d495-4189-89d5-23dd1225fe85'}}
+Starting to monitor logs for Pod: sglang-multi-debug-sglang-router-0
+Namespace: sglang-multi-debug
+Timeout set to: 10800 seconds
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Looking in indexes: http://cache-service.nginx-pypi-cache.svc.cluster.local/pypi/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting kubernetes
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/ca/ec/65f7d563aa4a62dd58777e8f6aa882f15db53b14eb29aba0c28a20f7eb26/kubernetes-34.1.0-py2.py3-none-any.whl (2.0 MB)
+Requirement already satisfied: certifi>=14.05.14 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2025.11.12)
+Requirement already satisfied: six>=1.9.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.9.0.post0)
+Requirement already satisfied: pyyaml>=5.4.1 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (6.0.3)
+Collecting google-auth>=1.0.1 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c6/97/451d55e05487a5cd6279a01a7e34921858b16f7dc8aa38a2c684743cd2b3/google_auth-2.45.0-py2.py3-none-any.whl (233 kB)
+Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/34/db/b10e48aa8fff7407e67470363eac595018441cf32d5e1001567a7aeba5d2/websocket_client-1.9.0-py3-none-any.whl (82 kB)
+Requirement already satisfied: requests in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.32.5)
+Collecting requests-oauthlib (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Collecting urllib3<2.4.0,>=1.24.2 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c8/19/4ec628951a74043532ca2cf5d97b7b14863931476d117c471e8e2b1eb39f/urllib3-2.3.0-py3-none-any.whl (128 kB)
+Collecting durationpy>=0.7 (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/b0/0d/9feae160378a3553fa9a339b0e9c1a048e147a4127210e286ef18b730f03/durationpy-0.10-py3-none-any.whl (3.9 kB)
+Collecting cachetools<7.0,>=2.0.0 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/2c/fc/1d7b80d0eb7b714984ce40efc78859c022cd930e402f599d8ca9e39c78a4/cachetools-6.2.4-py3-none-any.whl (11 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/47/8d/d529b5d697919ba8c11ad626e835d4039be708a35b0d22de83a269a6682c/pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/64/8d/0133e4eb4beed9e425d9a98ed6e081a55d195481b7632472be1af08d2f6b/rsa-4.9.1-py3-none-any.whl (34 kB)
+Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/c8/f1/d6a797abb14f6283c0ddff96bbdd46937f64122b8c925cab503dd37f8214/pyasn1-0.6.1-py3-none-any.whl (83 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.11)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Installing collected packages: durationpy, websocket-client, urllib3, pyasn1, oauthlib, cachetools, rsa, pyasn1-modules, requests-oauthlib, google-auth, kubernetes
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 2.5.0
+    Uninstalling urllib3-2.5.0:
+      Successfully uninstalled urllib3-2.5.0
+
+Successfully installed cachetools-6.2.4 durationpy-0.10 google-auth-2.45.0 kubernetes-34.1.0 oauthlib-3.3.1 pyasn1-0.6.1 pyasn1-modules-0.4.2 requests-oauthlib-2.0.0 rsa-4.9.1 urllib3-2.3.0 websocket-client-1.9.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  732k  100  732k    0     0  1709k      0 --:--:-- --:--:-- --:--:-- 1710k
+performance
+vm.swappiness = 0
+kernel.numa_balancing = 0
+kernel.sched_migration_cost_ns = 50000
+Running test case test/nightly/ascend/performance/test_ascend_deepseek_v3.2_w8a8_1p1d_32p_in64k_out1k_30ms.py
+The nic name matched is enp23s0f3
+The nic name matched is enp23s0f3
+Nic name: enp23s0f3
+Init 192.168.0.77 cls.role='router'!
+[CI Test Method] Test_DeepSeek_V3_2_W8A8_1P1D.test_throughput
+launch_router start ......
+launch_router nodes_count nodes_count=4
+query_configmap successfully!
+launch_router query_configmap configmap.data={'sglang-multi-debug-sglang-decode-0': '192.168.0.184', 'sglang-multi-debug-sglang-decode-1': '192.168.0.77', 'sglang-multi-debug-sglang-prefill-0': '192.168.0.81', 'sglang-multi-debug-sglang-prefill-1': '192.168.0.60', 'sglang-multi-debug-sglang-router-0': '192.168.0.77'}
+monitor configmap end, prefill_url=['192.168.0.81:8000'] decode_url=['192.168.0.184:8000'] bootstrap_ports=['8995'] node_ip_list=['192.168.0.184', '192.168.0.81']
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is not ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is not ready
+ip='192.168.0.81' 8000 is ready
+ip='192.168.0.184' 8000 is ready
+ip='192.168.0.81' 8000 is ready
+launch_router all node port are ready!
+ENV_VAR SGLANG_DP_ROUND_ROBIN=1
+Starting router, router_command_str='python3 -u -m sglang_router.launch_router --host 127.0.0.1 --port 6688 --pd-disaggregation --policy cache_aware --mini-lb --prefill http://192.168.0.81:8000 8995 --decode http://192.168.0.184:8000'
+/usr/local/python3.11.13/lib/python3.11/subprocess.py:1127: ResourceWarning: subprocess 810 is still running
+  _warn("subprocess %s is still running" % self.pid,
+[33mMiniLB is only for debugging purposes, it only supports random policy![0m
+[MiniLB] Overriding policy to random
+INFO:     Started server process [811]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:6688 (Press CTRL+C to quit)
+INFO:     127.0.0.1:39500 - "GET /health HTTP/1.1" 200 OK
+Router http://127.0.0.1:6688/health is ready!
+Wait 120, starting run benchmark ......
+The metrics result file: /data/d00662834/metrics/20251231/test_ascend_deepseek_v3.2_w8a8_1p1d_32p_in64k_out1k_30ms.txt
+command:python3 -m sglang.bench_serving --backend sglang --model /root/.cache/modelscope/hub/models/DeepSeek-V3.2-Exp-W8A8 --host 127.0.0.1 --port 6688 --dataset-name random --request-rate inf --max-concurrency 32 --num-prompts 64 --random-input-len 64000 --random-output-len 1000 --random-range-ratio 1
+INFO:     127.0.0.1:33996 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45528 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45532 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45542 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45588 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45604 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45634 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45558 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45584 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45586 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45600 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45624 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45648 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45662 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45676 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45680 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45688 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45516 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45570 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45618 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45642 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45690 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45720 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45740 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45744 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45746 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45758 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45770 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45772 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45784 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45714 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51420 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53778 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53792 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38124 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38128 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38132 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38014 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38022 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38036 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38046 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38058 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38060 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38074 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38080 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38086 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38100 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38106 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38118 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42324 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42336 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42344 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42366 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42378 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59898 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59906 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59910 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51862 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51878 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47946 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47952 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51834 - "GET /get_server_info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51842 - "GET /get_server_info HTTP/1.1" 200 OK
+metrics is benchmark_args=Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/DeepSeek-V3.2-Exp-W8A8', served_model_name=None, tokenizer=None, num_prompts=64, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=64000, random_output_len=1000, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=inf, use_trace_timestamps=False, max_concurrency=32, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/DeepSeek-V3.2-Exp-W8A8', served_model_name=None, tokenizer=None, num_prompts=64, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=64000, random_output_len=1000, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=inf, use_trace_timestamps=False, max_concurrency=32, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+
+#Input tokens: 4096000
+#Output tokens: 64000
+Starting warmup with 1 sequences...
+Warmup completed with 1 sequences. Starting main benchmark run...
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    inf       
+Max request concurrency:                 32        
+Successful requests:                     64        
+Benchmark duration (s):                  293.14    
+Total input tokens:                      4096000   
+Total input text tokens:                 4096000   
+Total input vision tokens:               0         
+Total generated tokens:                  64000     
+Total generated tokens (retokenized):    61058     
+Request throughput (req/s):              0.22      
+Input token throughput (tok/s):          13972.63  
+Output token throughput (tok/s):         218.32    
+Peak output token throughput (tok/s):    919.00    
+Peak concurrent requests:                35        
+Total token throughput (tok/s):          14190.95  
+Concurrency:                             23.85     
+Accept length:                           2.56      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   109262.65 
+Median E2E Latency (ms):                 109370.27 
+---------------Time to First Token----------------
+Mean TTFT (ms):                          69808.34  
+Median TTFT (ms):                        72341.34  
+P99 TTFT (ms):                           119390.07 
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          39.49     
+Median TPOT (ms):                        29.96     
+P99 TPOT (ms):                           82.20     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           39.50     
+Median ITL (ms):                         23.64     
+P95 ITL (ms):                            72.58     
+P99 ITL (ms):                            595.28    
+Max ITL (ms):                            5529.58   
+==================================================
+
+The metrics result file: /data/d00662834/metrics/20251231/test_ascend_deepseek_v3.2_w8a8_1p1d_32p_in64k_out1k_30ms.txt
+command:python3 -m sglang.bench_serving --backend sglang --model /root/.cache/modelscope/hub/models/DeepSeek-V3.2-Exp-W8A8 --host 127.0.0.1 --port 6688 --dataset-name random --request-rate inf --max-concurrency 32 --num-prompts 64 --random-input-len 64000 --random-output-len 1000 --random-range-ratio 1
+INFO:     127.0.0.1:45040 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40018 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40028 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40034 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40080 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40100 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40136 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40172 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40046 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40064 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40068 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40092 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40130 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40158 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40202 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40216 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40242 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40258 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40268 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40280 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40290 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40296 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40304 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40312 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40326 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40004 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40058 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40116 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40150 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40186 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40228 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40218 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49708 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55954 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55964 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37576 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37588 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34016 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34022 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34028 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39092 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39108 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39114 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39120 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52650 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35358 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35366 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35370 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35376 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56640 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56642 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44846 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44854 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44856 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43806 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43814 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43826 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38612 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38622 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38626 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48478 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48494 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48892 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48906 - "POST /generate HTTP/1.1" 200 OK
