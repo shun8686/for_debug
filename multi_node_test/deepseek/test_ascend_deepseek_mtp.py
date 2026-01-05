@@ -84,7 +84,7 @@ class TestDeepseekR1(CustomTestCase):
                 0.95,
             )
         else:
-            print("The worker node is ready!")
+            print("The worker node is running!")
             time.sleep(3600)
 
 
