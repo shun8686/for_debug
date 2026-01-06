@@ -1,4 +1,5 @@
 Image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release20260105
+deep-ep                   1.0.0+95728843.cann.8.3.rc2.b210
 sgl-kernel-npu            2025.12.25
 sglang                    0.5.6.post2
 sglang-router             0.3.0
@@ -13,4 +14,41 @@ Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_
 #Input tokens: 6553600
 #Output tokens: 6553600
 Starting warmup with 1 sequences...
-[ERROR] 2026-01-06-00:47:23 (PID:1381, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+Warmup completed with 1 sequences. Starting main benchmark run...
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    8.0       
+Max request concurrency:                 400       
+Successful requests:                     3200      
+Benchmark duration (s):                  839.89    
+Total input tokens:                      6553600   
+Total input text tokens:                 6553600   
+Total input vision tokens:               0         
+Total generated tokens:                  6553600   
+Total generated tokens (retokenized):    6534761   
+Request throughput (req/s):              3.81      
+Input token throughput (tok/s):          7802.89   
+Output token throughput (tok/s):         7802.89   
+Peak output token throughput (tok/s):    10823.00  
+Peak concurrent requests:                415       
+Total token throughput (tok/s):          15605.78  
+Concurrency:                             361.30    
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   94828.30  
+Median E2E Latency (ms):                 96221.80  
+---------------Time to First Token----------------
+Mean TTFT (ms):                          4831.38   
+Median TTFT (ms):                        3144.01   
+P99 TTFT (ms):                           20978.00  
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          43.97     
+Median TPOT (ms):                        44.90     
+P99 TPOT (ms):                           56.90     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           43.96     
+Median ITL (ms):                         37.44     
+P95 ITL (ms):                            80.15     
+P99 ITL (ms):                            137.80    
+Max ITL (ms):                            1847.32   
+==================================================
