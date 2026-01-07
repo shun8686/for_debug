@@ -1,0 +1,302 @@
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Looking in indexes: http://cache-service.nginx-pypi-cache.svc.cluster.local/pypi/simple, https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting kubernetes
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/ca/ec/65f7d563aa4a62dd58777e8f6aa882f15db53b14eb29aba0c28a20f7eb26/kubernetes-34.1.0-py2.py3-none-any.whl (2.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 9.8 MB/s  0:00:00
+Requirement already satisfied: certifi>=14.05.14 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2025.11.12)
+Requirement already satisfied: six>=1.9.0 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.9.0.post0)
+Requirement already satisfied: pyyaml>=5.4.1 in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (6.0.3)
+Collecting google-auth>=1.0.1 (from kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/c6/97/451d55e05487a5cd6279a01a7e34921858b16f7dc8aa38a2c684743cd2b3/google_auth-2.45.0-py2.py3-none-any.whl (233 kB)
+Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/34/db/b10e48aa8fff7407e67470363eac595018441cf32d5e1001567a7aeba5d2/websocket_client-1.9.0-py3-none-any.whl (82 kB)
+Requirement already satisfied: requests in /usr/local/python3.11.13/lib/python3.11/site-packages (from kubernetes) (2.32.5)
+Collecting requests-oauthlib (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Collecting urllib3<2.4.0,>=1.24.2 (from kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/c8/19/4ec628951a74043532ca2cf5d97b7b14863931476d117c471e8e2b1eb39f/urllib3-2.3.0-py3-none-any.whl (128 kB)
+Collecting durationpy>=0.7 (from kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/b0/0d/9feae160378a3553fa9a339b0e9c1a048e147a4127210e286ef18b730f03/durationpy-0.10-py3-none-any.whl (3.9 kB)
+Collecting cachetools<7.0,>=2.0.0 (from google-auth>=1.0.1->kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/2c/fc/1d7b80d0eb7b714984ce40efc78859c022cd930e402f599d8ca9e39c78a4/cachetools-6.2.4-py3-none-any.whl (11 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth>=1.0.1->kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/47/8d/d529b5d697919ba8c11ad626e835d4039be708a35b0d22de83a269a6682c/pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth>=1.0.1->kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/64/8d/0133e4eb4beed9e425d9a98ed6e081a55d195481b7632472be1af08d2f6b/rsa-4.9.1-py3-none-any.whl (34 kB)
+Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/c8/f1/d6a797abb14f6283c0ddff96bbdd46937f64122b8c925cab503dd37f8214/pyasn1-0.6.1-py3-none-any.whl (83 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/python3.11.13/lib/python3.11/site-packages (from requests->kubernetes) (3.11)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Installing collected packages: durationpy, websocket-client, urllib3, pyasn1, oauthlib, cachetools, rsa, pyasn1-modules, requests-oauthlib, google-auth, kubernetes
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 2.5.0
+    Uninstalling urllib3-2.5.0:
+      Successfully uninstalled urllib3-2.5.0
+
+Successfully installed cachetools-6.2.4 durationpy-0.10 google-auth-2.45.0 kubernetes-34.1.0 oauthlib-3.3.1 pyasn1-0.6.1 pyasn1-modules-0.4.2 requests-oauthlib-2.0.0 rsa-4.9.1 urllib3-2.3.0 websocket-client-1.9.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  732k  100  732k    0     0  1180k      0 --:--:-- --:--:-- --:--:-- 1179k
+performance
+vm.swappiness = 0
+kernel.numa_balancing = 0
+kernel.sched_migration_cost_ns = 50000
+Running test case test/registered/ascend/performance/test_ascend_deepseek_r1_w8a8_2p1d_32p_in6k_out1k6_15ms.py
+The nic name matched is enp23s0f3
+The nic name matched is enp23s0f3
+Nic name: enp23s0f3
+Init 172.22.3.245 cls.role='router'!
+[CI Test Method] Test_DeepSeek_R1_W8A8_2P1D_In6000_Out1600.test_throughput
+Starting router in thread...
+launch_router start ......Waiting for router to be ready at http://127.0.0.1:6688/health
+
+Discovered 4 worker nodes (prefill: 2, decode: 2)
+Discovered 4 worker nodes
+Successfully queried ConfigMap sglang-info in namespace sglang-multi-debug
+Retrieved ConfigMap data: {'sglang-multi-debug-sglang-decode-0': '172.22.3.191', 'sglang-multi-debug-sglang-decode-1': '172.22.3.244', 'sglang-multi-debug-sglang-prefill-0': '172.22.3.245', 'sglang-multi-debug-sglang-prefill-1': '172.22.3.209', 'sglang-multi-debug-sglang-router-0': '172.22.3.245'}
+ConfigMap monitoring complete: prefill_url=['172.22.3.245:8000', '172.22.3.209:8000'], decode_url=['172.22.3.191:8000'], bootstrap_ports=['8995', '8996'], node_ip_list=['172.22.3.191', '172.22.3.245', '172.22.3.209']
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.209:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is ready
+Node 172.22.3.209:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is ready
+Node 172.22.3.209:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is ready
+Node 172.22.3.209:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 172.22.3.191:8000 is ready
+Node 172.22.3.245:8000 is ready
+Node 172.22.3.209:8000 is ready
+All 3 nodes' ports are ready!
+Setting ENV_VAR SGLANG_DP_ROUND_ROBIN=1
+Starting router with command: python3 -u -m sglang_router.launch_router --host 127.0.0.1 --port 6688 --pd-disaggregation --policy cache_aware --mini-lb --prefill http://172.22.3.245:8000 8995 --prefill http://172.22.3.209:8000 8996 --decode http://172.22.3.191:8000
+Router process started with PID: 803
+/usr/local/python3.11.13/lib/python3.11/subprocess.py:1127: ResourceWarning: subprocess 803 is still running
+  _warn("subprocess %s is still running" % self.pid,
+[33mMiniLB is only for debugging purposes, it only supports random policy![0m
+[MiniLB] Overriding policy to random
+INFO:     Started server process [804]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:6688 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40580 - "GET /health HTTP/1.1" 200 OK
+Router http://127.0.0.1:6688/health is ready!
+Waiting 120 seconds for the server to fully initialize...
+Starting benchmark with parameters: {'host': '127.0.0.1', 'port': '6688', 'model_path': '/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', 'dataset_name': 'random', 'request_rate': 16, 'max_concurrency': 32, 'num_prompts': 32, 'input_len': 6000, 'output_len': 1600, 'random_range_ratio': 1, 'result_file': '/data/d00662834/metrics/20260107/test_ascend_deepseek_r1_w8a8_2p1d_32p_in6k_out1k6_15ms.txt'}
+The metrics result file: /data/d00662834/metrics/20260107/test_ascend_deepseek_r1_w8a8_2p1d_32p_in6k_out1k6_15ms.txt
+Command: python3 -m sglang.bench_serving --backend sglang --model /root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8 --host 127.0.0.1 --port 6688 --dataset-name random --request-rate 16 --max-concurrency 32 --num-prompts 32 --random-input-len 6000 --random-output-len 1600 --random-range-ratio 1
+INFO:     127.0.0.1:55052 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43164 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43168 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43172 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43184 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43200 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43214 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43224 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43226 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43228 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43230 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43232 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43246 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43256 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43270 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43286 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43300 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43316 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43332 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43346 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43348 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43360 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43364 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43376 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43378 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43388 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43404 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43406 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43418 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43420 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43426 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43432 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43442 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49864 - "GET /get_server_info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36694 - "GET /get_server_info HTTP/1.1" 200 OK
+metrics is benchmark_args=Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=32, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=6000, random_output_len=1600, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=32, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=32, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=6000, random_output_len=1600, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=32, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+
+#Input tokens: 192000
+#Output tokens: 51200
+Starting warmup with 1 sequences...
+Warmup completed with 1 sequences. Starting main benchmark run...
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    16.0      
+Max request concurrency:                 32        
+Successful requests:                     32        
+Benchmark duration (s):                  78.82     
+Total input tokens:                      192000    
+Total input text tokens:                 192000    
+Total input vision tokens:               0         
+Total generated tokens:                  51200     
+Total generated tokens (retokenized):    51045     
+Request throughput (req/s):              0.41      
+Input token throughput (tok/s):          2436.01   
+Output token throughput (tok/s):         649.60    
+Peak output token throughput (tok/s):    1746.00   
+Peak concurrent requests:                32        
+Total token throughput (tok/s):          3085.61   
+Concurrency:                             25.67     
+Accept length:                           2.83      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   63234.89  
+Median E2E Latency (ms):                 67821.62  
+---------------Time to First Token----------------
+Mean TTFT (ms):                          9099.85   
+Median TTFT (ms):                        9363.83   
+P99 TTFT (ms):                           13818.16  
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          33.86     
+Median TPOT (ms):                        35.37     
+P99 TPOT (ms):                           43.71     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           33.86     
+Median ITL (ms):                         18.06     
+P95 ITL (ms):                            28.91     
+P99 ITL (ms):                            609.42    
+Max ITL (ms):                            3866.04   
+==================================================
+
+Retrying benchmark...
+The metrics result file: /data/d00662834/metrics/20260107/test_ascend_deepseek_r1_w8a8_2p1d_32p_in6k_out1k6_15ms.txt
+Command: python3 -m sglang.bench_serving --backend sglang --model /root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8 --host 127.0.0.1 --port 6688 --dataset-name random --request-rate 16 --max-concurrency 32 --num-prompts 32 --random-input-len 6000 --random-output-len 1600 --random-range-ratio 1
+INFO:     127.0.0.1:47868 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47884 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47896 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47902 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47918 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47920 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47932 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47948 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47954 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47960 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47970 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47984 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47998 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48014 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48024 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48028 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48044 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48054 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48068 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48076 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48086 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48094 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48096 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48102 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48116 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48132 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48136 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48142 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48150 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48152 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48160 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48174 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48182 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39840 - "GET /get_server_info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39854 - "GET /get_server_info HTTP/1.1" 200 OK
+metrics is benchmark_args=Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=32, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=6000, random_output_len=1600, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=32, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=32, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=6000, random_output_len=1600, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=32, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+
+#Input tokens: 192000
+#Output tokens: 51200
+Starting warmup with 1 sequences...
+Warmup completed with 1 sequences. Starting main benchmark run...
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    16.0      
+Max request concurrency:                 32        
+Successful requests:                     32        
+Benchmark duration (s):                  46.49     
+Total input tokens:                      192000    
+Total input text tokens:                 192000    
+Total input vision tokens:               0         
+Total generated tokens:                  51200     
+Total generated tokens (retokenized):    51114     
+Request throughput (req/s):              0.69      
+Input token throughput (tok/s):          4129.82   
+Output token throughput (tok/s):         1101.29   
+Peak output token throughput (tok/s):    1758.00   
+Peak concurrent requests:                32        
+Total token throughput (tok/s):          5231.11   
+Concurrency:                             25.37     
+Accept length:                           3.04      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   36863.98  
+Median E2E Latency (ms):                 36835.98  
+---------------Time to First Token----------------
+Mean TTFT (ms):                          3548.40   
+Median TTFT (ms):                        3534.74   
+P99 TTFT (ms):                           5376.91   
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          20.84     
+Median TPOT (ms):                        21.47     
+P99 TPOT (ms):                           25.68     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           20.84     
+Median ITL (ms):                         17.90     
+P95 ITL (ms):                            28.17     
+P99 ITL (ms):                            55.31     
+Max ITL (ms):                            1845.45   
+==================================================
+
+.
+----------------------------------------------------------------------
+Ran 1 test in 480.308s
+
+OK

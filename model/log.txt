@@ -1,0 +1,1 @@
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:05<00:16,  5.58s/it]Fetching 4 files: 100%|██████████| 4/4 [01:06<00:00, 17.60s/it]Fetching 4 files: 100%|██████████| 4/4 [01:06<00:00, 16.70s/it]
