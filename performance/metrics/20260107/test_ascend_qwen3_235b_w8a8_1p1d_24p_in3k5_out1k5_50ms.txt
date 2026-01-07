@@ -1,5 +1,5 @@
-Image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release20260106
-deep-ep                   1.0.0+95728843.cann.8.3.rc2.b210
+Image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release20260107
+deep-ep                   1.0.0+bacee3f4.cann.8.3.rc2.b210
 sgl-kernel-npu            2025.12.25
 sglang                    0.5.6.post2
 sglang-router             0.3.0
@@ -8,8 +8,8 @@ torch_npu                 2.8.0.post2.dev20251224
 torchao                   0.9.0
 torchvision               0.23.0
 transformers              4.57.1
-benchmark_args=Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/vllm-ascend/Qwen3-235B-A22B-W8A8', served_model_name=None, tokenizer=None, num_prompts=3440, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1500, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=inf, use_trace_timestamps=False, max_concurrency=860, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
-Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/vllm-ascend/Qwen3-235B-A22B-W8A8', served_model_name=None, tokenizer=None, num_prompts=3440, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1500, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=inf, use_trace_timestamps=False, max_concurrency=860, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+benchmark_args=Namespace(backend='sglang-oai', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/vllm-ascend/Qwen3-235B-A22B-W8A8', served_model_name=None, tokenizer=None, num_prompts=3440, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1500, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=inf, use_trace_timestamps=False, max_concurrency=860, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+Namespace(backend='sglang-oai', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/vllm-ascend/Qwen3-235B-A22B-W8A8', served_model_name=None, tokenizer=None, num_prompts=3440, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1500, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=inf, use_trace_timestamps=False, max_concurrency=860, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
 
 #Input tokens: 12040000
 #Output tokens: 5160000
@@ -17,39 +17,39 @@ Starting warmup with 1 sequences...
 Warmup completed with 1 sequences. Starting main benchmark run...
 
 ============ Serving Benchmark Result ============
-Backend:                                 sglang    
+Backend:                                 sglang-oai
 Traffic request rate:                    inf       
 Max request concurrency:                 860       
-Successful requests:                     3440      
-Benchmark duration (s):                  714.08    
-Total input tokens:                      12040000  
-Total input text tokens:                 12040000  
+Successful requests:                     3439      
+Benchmark duration (s):                  441.71    
+Total input tokens:                      12036500  
+Total input text tokens:                 12036500  
 Total input vision tokens:               0         
-Total generated tokens:                  5160000   
-Total generated tokens (retokenized):    5157243   
-Request throughput (req/s):              4.82      
-Input token throughput (tok/s):          16860.94  
-Output token throughput (tok/s):         7226.12   
-Peak output token throughput (tok/s):    10359.00  
-Peak concurrent requests:                875       
-Total token throughput (tok/s):          24087.05  
-Concurrency:                             727.18    
-Accept length:                           2.81      
+Total generated tokens:                  5158500   
+Total generated tokens (retokenized):    5157447   
+Request throughput (req/s):              7.79      
+Input token throughput (tok/s):          27250.06  
+Output token throughput (tok/s):         11678.60  
+Peak output token throughput (tok/s):    5704.00   
+Peak concurrent requests:                879       
+Total token throughput (tok/s):          38928.65  
+Concurrency:                             751.80    
+Accept length:                           2.90      
 ----------------End-to-End Latency----------------
-Mean E2E Latency (ms):                   150948.13 
-Median E2E Latency (ms):                 148337.40 
+Mean E2E Latency (ms):                   96560.75  
+Median E2E Latency (ms):                 91804.93  
 ---------------Time to First Token----------------
-Mean TTFT (ms):                          111692.97 
-Median TTFT (ms):                        107722.88 
-P99 TTFT (ms):                           197222.06 
+Mean TTFT (ms):                          42929.53  
+Median TTFT (ms):                        38323.96  
+P99 TTFT (ms):                           107852.27 
 -----Time per Output Token (excl. 1st token)------
-Mean TPOT (ms):                          26.19     
-Median TPOT (ms):                        24.50     
-P99 TPOT (ms):                           49.53     
+Mean TPOT (ms):                          35.78     
+Median TPOT (ms):                        33.85     
+P99 TPOT (ms):                           69.19     
 ---------------Inter-Token Latency----------------
-Mean ITL (ms):                           26.20     
-Median ITL (ms):                         21.95     
-P95 ITL (ms):                            55.59     
-P99 ITL (ms):                            81.89     
-Max ITL (ms):                            1191.96   
+Mean ITL (ms):                           35.78     
+Median ITL (ms):                         29.54     
+P95 ITL (ms):                            74.42     
+P99 ITL (ms):                            112.70    
+Max ITL (ms):                            1831.62   
 ==================================================
