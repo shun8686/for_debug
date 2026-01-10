@@ -14,5 +14,42 @@ Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_
 #Input tokens: 2995200
 #Output tokens: 786432
 Starting warmup with 1 sequences...
-output.error='Traceback (most recent call last):\n  File "/usr/local/python3.11.13/lib/python3.11/site-packages/aiohttp/client_proto.py", line 144, in connection_lost\n    uncompleted = self._parser.feed_eof()\n                  ^^^^^^^^^^^^^^^^^^^^^^^\n  File "aiohttp/_http_parser.pyx", line 506, in aiohttp._http_parser.HttpParser.feed_eof\naiohttp.http_exceptions.TransferEncodingError: 400, message:\n  Not enough data to satisfy transfer length header.\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File "/usr/local/python3.11.13/lib/python3.11/site-packages/sglang/bench_serving.py", line 603, in async_request_sglang_generate\n    async for chunk_bytes in response.content:\n  File "/usr/local/python3.11.13/lib/python3.11/site-packages/aiohttp/streams.py", line 52, in __anext__\n    rv = await self.read_func()\n         ^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/local/python3.11.13/lib/python3.11/site-packages/aiohttp/streams.py", line 376, in readline\n    return await self.readuntil()\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/local/python3.11.13/lib/python3.11/site-packages/aiohttp/streams.py", line 410, in readuntil\n    await self._wait("readuntil")\n  File "/usr/local/python3.11.13/lib/python3.11/site-packages/aiohttp/streams.py", line 371, in _wait\n    await waiter\naiohttp.client_exceptions.ClientPayloadError: Response payload is not completed: <TransferEncodingError: 400, message=\'Not enough data to satisfy transfer length header.\'>\n'
-[ERROR] 2026-01-10-04:13:25 (PID:1492, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+Warmup completed with 1 sequences. Starting main benchmark run...
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    16.0      
+Max request concurrency:                 768       
+Successful requests:                     768       
+Benchmark duration (s):                  505.97    
+Total input tokens:                      2995200   
+Total input text tokens:                 2995200   
+Total input vision tokens:               0         
+Total generated tokens:                  786432    
+Total generated tokens (retokenized):    783707    
+Request throughput (req/s):              1.52      
+Input token throughput (tok/s):          5919.76   
+Output token throughput (tok/s):         1554.32   
+Peak output token throughput (tok/s):    1807.00   
+Peak concurrent requests:                704       
+Total token throughput (tok/s):          7474.08   
+Concurrency:                             341.08    
+Accept length:                           2.90      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   224708.39 
+Median E2E Latency (ms):                 225032.28 
+---------------Time to First Token----------------
+Mean TTFT (ms):                          205047.68 
+Median TTFT (ms):                        205732.64 
+P99 TTFT (ms):                           421431.91 
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          19.22     
+Median TPOT (ms):                        19.10     
+P99 TPOT (ms):                           27.35     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           19.22     
+Median ITL (ms):                         15.61     
+P95 ITL (ms):                            29.53     
+P99 ITL (ms):                            56.63     
+Max ITL (ms):                            337.64    
+==================================================
