@@ -43,7 +43,16 @@ def parse_benchmark_log(log_path):
         'median_itl_ms': r'Median ITL \(ms\):\s+(\d+\.\d+)',
         'p95_itl_ms': r'P95 ITL \(ms\):\s+(\d+\.\d+)',
         'p99_itl_ms': r'P99 ITL \(ms\):\s+(\d+\.\d+)',
-        'max_itl_ms': r'Max ITL \(ms\):\s+(\d+\.\d+)'
+        'max_itl_ms': r'Max ITL \(ms\):\s+(\d+\.\d+)',
+        'image_version': r'Image: (.*)',
+        'deepep_version': r'deep-ep\s+(.*)',
+        'sgl_kernel_npu_version': r'sgl-kernel-npu\s+(.*)',
+        'sglang_version': r'\bsglang\s+(.+)$',
+        'sglang_router_version': r'sglang=router\s+(.*)',
+        'torch_version': r'\btorch\s+(.+)$',
+        'torch_npu_version': r'\btorch_npu\s+(.+)$',
+        'transformers_version': r'\btransformers\s+(.+)$',
+        'cann_version': r'\bCANN: (.+)$'
     }
     
     # 提取指标值
@@ -127,6 +136,15 @@ def insert_to_mysql(metrics, log_path, db_config):
                 p99_itl_ms FLOAT,
                 max_itl_ms FLOAT,
                 log_file_path VARCHAR(255),
+                image_version VARCHAR(512),
+                deepep_version VARCHAR(255),
+                sgl_kernel_npu_version VARCHAR(255),
+                sglang_version VARCHAR(255),
+                sglang_router_version VARCHAR(255),
+                torch_version VARCHAR(255),
+                torch_npu_version VARCHAR(255),
+                transformers_version VARCHAR(255),
+                cann_version VARCHAR(255),
                 UNIQUE KEY idx_test_time_test_case (test_case, test_time)
             )
             """
@@ -142,10 +160,12 @@ def insert_to_mysql(metrics, log_path, db_config):
                 total_token_throughput, concurrency, accept_length, mean_e2e_latency_ms,
                 median_e2e_latency_ms, mean_ttft_ms, median_ttft_ms, p99_ttft_ms, mean_tpot_ms,
                 median_tpot_ms, p99_tpot_ms, mean_itl_ms, median_itl_ms, p95_itl_ms,
-                p99_itl_ms, max_itl_ms, log_file_path
+                p99_itl_ms, max_itl_ms, log_file_path, image_version, deepep_version, sgl_kernel_npu_version, sglang_version, sglang_router_version,
+                torch_version, torch_npu_version, transformers_version, cann_version
             ) VALUES (
                 %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                , %s, %s, %s, %s
             ) ON DUPLICATE KEY UPDATE
                 backend = VALUES(backend),
                 traffic_request_rate = VALUES(traffic_request_rate),
@@ -177,7 +197,16 @@ def insert_to_mysql(metrics, log_path, db_config):
                 p95_itl_ms = VALUES(p95_itl_ms),
                 p99_itl_ms = VALUES(p99_itl_ms),
                 max_itl_ms = VALUES(max_itl_ms),
-                log_file_path = VALUES(log_file_path)
+                log_file_path = VALUES(log_file_path),
+                image_version = VALUES(image_version),
+                deepep_version = VALUES(deepep_version),
+                sgl_kernel_npu_version = VALUES(sgl_kernel_npu_version),
+                sglang_version = VALUES(sglang_version),
+                sglang_router_version = VALUES(sglang_router_version),
+                torch_version = VALUES(torch_version),
+                torch_npu_version = VALUES(torch_npu_version),
+                transformers_version = VALUES(transformers_version),
+                cann_version = VALUES(cann_version)
             """
             
             # 执行插入或更新操作
@@ -191,7 +220,10 @@ def insert_to_mysql(metrics, log_path, db_config):
                 metrics['median_e2e_latency_ms'], metrics['mean_ttft_ms'], metrics['median_ttft_ms'],
                 metrics['p99_ttft_ms'], metrics['mean_tpot_ms'], metrics['median_tpot_ms'],
                 metrics['p99_tpot_ms'], metrics['mean_itl_ms'], metrics['median_itl_ms'],
-                metrics['p95_itl_ms'], metrics['p99_itl_ms'], metrics['max_itl_ms'], log_path
+                metrics['p95_itl_ms'], metrics['p99_itl_ms'], metrics['max_itl_ms'], log_path,
+                metrics['image_version'], metrics['deepep_version'], metrics['sgl_kernel_npu_version'], metrics['sglang_version'], 
+                metrics['sglang_router_version'], metrics['torch_version'], metrics['torch_npu_version'], metrics['transformers_version'],
+                metrics['cann_version']
             ))
         
         # 提交事务
