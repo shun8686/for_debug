@@ -163,9 +163,8 @@ def insert_to_mysql(metrics, log_path, db_config):
                 p99_itl_ms, max_itl_ms, log_file_path, image_version, deepep_version, sgl_kernel_npu_version, sglang_version, sglang_router_version,
                 torch_version, torch_npu_version, transformers_version, cann_version
             ) VALUES (
-                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                , %s, %s, %s, %s
+                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+                %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
             ) ON DUPLICATE KEY UPDATE
                 backend = VALUES(backend),
                 traffic_request_rate = VALUES(traffic_request_rate),
