@@ -1,3 +1,4 @@
+CANN: version=8.3.RC2
 Image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release1231
 sgl-kernel-npu            2025.12.25
 sglang                    0.5.6.post2

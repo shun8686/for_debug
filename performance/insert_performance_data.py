@@ -52,7 +52,7 @@ def parse_benchmark_log(log_path):
         'torch_version': r'\btorch\s+(.+)$',
         'torch_npu_version': r'\btorch_npu\s+(.+)$',
         'transformers_version': r'\btransformers\s+(.+)$',
-        'cann_version': r'\bCANN: (.+)$'
+        'cann_version': r'\bCANN: version=(.+)$'
     }
     
     # 提取指标值
