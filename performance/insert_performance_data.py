@@ -145,7 +145,7 @@ def insert_to_mysql(metrics, log_path, db_config):
                 torch_npu_version VARCHAR(255),
                 transformers_version VARCHAR(255),
                 cann_version VARCHAR(255),
-                UNIQUE KEY idx_test_time_test_case (test_case, test_time)
+                UNIQUE KEY idx_test_time_test_case (test_case, test_time, cann_version)
             )
             """
             cursor.execute(create_table_sql)
@@ -204,8 +204,7 @@ def insert_to_mysql(metrics, log_path, db_config):
                 sglang_router_version = VALUES(sglang_router_version),
                 torch_version = VALUES(torch_version),
                 torch_npu_version = VALUES(torch_npu_version),
-                transformers_version = VALUES(transformers_version),
-                cann_version = VALUES(cann_version)
+                transformers_version = VALUES(transformers_version)
             """
             
             # 执行插入或更新操作
