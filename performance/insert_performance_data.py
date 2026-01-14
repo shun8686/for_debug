@@ -47,11 +47,11 @@ def parse_benchmark_log(log_path):
         'image_version': r'Image: (.*)',
         'deepep_version': r'deep-ep\s+(.*)',
         'sgl_kernel_npu_version': r'sgl-kernel-npu\s+(.*)',
-        'sglang_version': r'\bsglang\s+(.+)$',
-        'sglang_router_version': r'sglang=router\s+(.*)',
-        'torch_version': r'\btorch\s+(.+)$',
-        'torch_npu_version': r'\btorch_npu\s+(.+)$',
-        'transformers_version': r'\btransformers\s+(.+)$',
+        'sglang_version': r'\bsglang\s+(.*)',
+        'sglang_router_version': r'sglang-router\s+(.*)',
+        'torch_version': r'\btorch\s+(.*)',
+        'torch_npu_version': r'\btorch_npu\s+(.*)',
+        'transformers_version': r'\btransformers\s+(.*)',
         'cann_version': r'CANN: version=(.*)'
     }
     
