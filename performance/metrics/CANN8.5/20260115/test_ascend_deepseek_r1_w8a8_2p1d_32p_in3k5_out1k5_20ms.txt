@@ -1,0 +1,56 @@
+Image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.5-a3-release20260114
+deep-ep                   1.0.0+86da4c53.cann.8.5.0.b200
+sgl-kernel-npu            2026.1.12
+sglang                    0.5.6.post2
+sglang-router             0.3.1
+torch                     2.8.0+cpu
+torch_npu                 2.8.0.post2.dev20251226
+torchao                   0.9.0
+torchvision               0.23.0
+transformers              4.57.1
+CANN: version=8.5.0
+benchmark_args=Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=768, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1500, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=768, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+Namespace(backend='sglang', base_url=None, host='127.0.0.1', port=6688, dataset_name='random', dataset_path='', model='/root/.cache/modelscope/hub/models/Howeee/DeepSeek-R1-0528-w8a8', served_model_name=None, tokenizer=None, num_prompts=768, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=3500, random_output_len=1500, random_range_ratio=1.0, image_count=1, image_resolution='1080p', random_image_count=False, image_format='jpeg', image_content='random', request_rate=16.0, use_trace_timestamps=False, max_concurrency=768, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, return_routed_experts=False, seed=1, disable_ignore_eos=False, extra_request_body=None, apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_num_steps=None, profile_by_stage=False, profile_stages=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix='', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_id=False, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', tag=None)
+
+#Input tokens: 2688000
+#Output tokens: 1152000
+Starting warmup with 1 sequences...
+Warmup completed with 1 sequences. Starting main benchmark run...
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang    
+Traffic request rate:                    16.0      
+Max request concurrency:                 768       
+Successful requests:                     768       
+Benchmark duration (s):                  726.21    
+Total input tokens:                      2688000   
+Total input text tokens:                 2688000   
+Total input vision tokens:               0         
+Total generated tokens:                  1152000   
+Total generated tokens (retokenized):    1149391   
+Request throughput (req/s):              1.06      
+Input token throughput (tok/s):          3701.42   
+Output token throughput (tok/s):         1586.32   
+Peak output token throughput (tok/s):    1876.00   
+Peak concurrent requests:                736       
+Total token throughput (tok/s):          5287.74   
+Concurrency:                             361.41    
+Accept length:                           2.92      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   341740.91 
+Median E2E Latency (ms):                 342339.95 
+---------------Time to First Token----------------
+Mean TTFT (ms):                          312823.48 
+Median TTFT (ms):                        313347.62 
+P99 TTFT (ms):                           634608.48 
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          19.29     
+Median TPOT (ms):                        19.25     
+P99 TPOT (ms):                           25.50     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           19.29     
+Median ITL (ms):                         15.15     
+P95 ITL (ms):                            29.31     
+P99 ITL (ms):                            57.16     
+Max ITL (ms):                            1065.30   
+==================================================
