@@ -27,12 +27,17 @@ done
 
 # check result
 failed_test_cases=${test_set_file}.failed
+poor_test_cases=${test_set_file}.poor
 > ${failed_test_cases}
+> ${poor_test_cases}
 for tc_info in ${test_set}
 do
-    test_case=$(echo $tc_info | cut -d'|' -f2)
+    test_case=$(echo $tc_info | cut -d'|' -f3)
     result=$(cat log/${test_case##*/}.log | grep "Serving Benchmark Result" | wc -l)
+    ok_num=$(cat log/${test_case##*/}.log | grep "^OK$" | wc -l)
     if [ ${result} -lt 2 ];then
-        echo "${tc_info}" >> ${failed_test_cases}
+    echo "${tc_info}" >> ${failed_test_cases}
+    elif [ "${ok_num}" -ne 1 ];then
+        echo "${tc_info}" >> ${poor_test_cases}  
     fi
 done

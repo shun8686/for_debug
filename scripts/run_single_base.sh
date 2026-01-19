@@ -1,10 +1,15 @@
 #!/bin/bash
 
+date
+export PATH=/usr/local/bin:$PATH
+
 sglang_source_path=$1
 test_case=$2
 npu_num=$3
 image=$4
 debug=$5
+
+perf_test_path=${sglang_source_path}/test/registered/ascend/performance
 
 SCRIPT_PATH=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 echo "Run path: ${SCRIPT_PATH}"
@@ -42,7 +47,8 @@ echo $PATH
 current_date=$(date +%Y%m%d)
 tc_name=${test_case##*/}
 tc_name=${tc_name%.*}
-test_data_output_path=/data/d00662834/metrics/${current_date}
+tag_info=$(echo "$image" | cut -d: -f2)
+test_data_output_path=/data/d00662834/metrics/${tag_info}/${current_date}
 mkdir -p ${test_data_output_path}
 metrics_data_file=${test_data_output_path}/${tc_name}.txt
 
@@ -57,10 +63,16 @@ echo "{ \"image\": $image,\
     jinja2 ${SCRIPT_PATH}/k8s_single.yaml.jinja2 -o ${SCRIPT_PATH}/${KUBE_YAML_FILE}
 
 cd ${SCRIPT_PATH}
-python3 -u run_ascend_ci.py
+python3 -u ${perf_test_path}/run_ascend_ci.py
 
 if [ -f ${metrics_data_file} ];then
   sed -i "1i\Image: ${image}" ${metrics_data_file}
+fi
+
+# check result and export logs
+result=$(cat ${metrics_data_file} | grep "Serving Benchmark Result" | wc -l)
+if [ ${result} -lt 1 ];then
+    echo "FAILED: ${tc_name}"
 fi
 
 if [ -z "${debug}" ];then

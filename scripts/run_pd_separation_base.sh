@@ -1,5 +1,8 @@
 #!/bin/bash
 
+date
+export PATH=/usr/local/bin:$PATH
+
 sglang_source_path=$1
 test_case=$2
 prefill_size=$3
@@ -7,6 +10,8 @@ decode_size=$4
 router_size=1
 image=$5
 debug=$6
+
+perf_test_path=${sglang_source_path}/test/registered/ascend/performance
 
 SCRIPT_PATH=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 echo "Run path: ${SCRIPT_PATH}"
@@ -39,6 +44,8 @@ echo "KUBE_JOB_NAME: $KUBE_JOB_NAME"
 
 pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple kubernetes
 pip3 install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple jinja2-cli
+whereis jinja2
+echo $PATH
 
 # Clear resources
 kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE} --ignore-not-found=true || true
@@ -56,13 +63,11 @@ while true; do
   fi
 done
 
-# clean env
-bash ${SCRIPT_PATH}/pkill.sh
-
 current_date=$(date +%Y%m%d)
 tc_name=${test_case##*/}
 tc_name=${tc_name%.*}
-test_data_output_path=/data/d00662834/metrics/${current_date}
+tag_info=$(echo "$image" | cut -d: -f2)
+test_data_output_path=/data/d00662834/metrics/${tag_info}/${current_date}
 mkdir -p ${test_data_output_path}
 metrics_data_file=${test_data_output_path}/${tc_name}.txt
 
@@ -80,15 +85,30 @@ echo "{ \"image\": $image,\
     jinja2 ${SCRIPT_PATH}/k8s_pd_separation.yaml.jinja2 -o ${SCRIPT_PATH}/${KUBE_YAML_FILE}
 
 cd ${SCRIPT_PATH}
-python3 -u run_ascend_ci.py
+python3 -u ${perf_test_path}/run_ascend_ci.py
 
+# add image info to metrics file
 if [ -f ${metrics_data_file} ];then
   sed -i "1i\Image: ${image}" ${metrics_data_file}
 fi
 
-kubectl logs -n $NAMESPACE ${KUBE_JOB_NAME}-sglang-prefill-0 > log/${tc_name}_prefill-0.log
-kubectl logs -n $NAMESPACE ${KUBE_JOB_NAME}-sglang-decode-0  > log/${tc_name}_decode-0.log
-kubectl logs -n $NAMESPACE ${KUBE_JOB_NAME}-sglang-router-0 > log/${tc_name}_router-0.log
+# check result and export logs
+result=$(cat ${metrics_data_file} | grep "Serving Benchmark Result" | wc -l)
+if [ ${result} -lt 1 ];then
+    echo "FAILED: ${tc_name}, exporting logs..."
+    for((i=0;i<${prefill_size};i++))
+    do
+        pod_name=${pod_name_prefix}-prefill-${i}
+        log_file=log/${tc_name}_prefill-${i}.log
+        kubectl logs -n ${NAMESPACE} ${pod_name} > ${log_file}
+    done
+    for((i=0;i<${decode_size};i++))
+    do
+	pod_name=${pod_name_prefix}-decode-${i}
+        log_file=log/${tc_name}_decode-${i}.log
+        kubectl logs -n ${NAMESPACE} ${pod_name} > ${log_file}
+    done
+fi
 
 if [ -z "${debug}" ];then
   kubectl delete -f ${SCRIPT_PATH}/${KUBE_YAML_FILE}
