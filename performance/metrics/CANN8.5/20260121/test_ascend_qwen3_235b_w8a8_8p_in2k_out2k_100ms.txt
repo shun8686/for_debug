@@ -22,35 +22,35 @@ Backend:                                 sglang
 Traffic request rate:                    inf       
 Max request concurrency:                 576       
 Successful requests:                     576       
-Benchmark duration (s):                  184.82    
+Benchmark duration (s):                  172.58    
 Total input tokens:                      1179648   
 Total input text tokens:                 1179648   
 Total input vision tokens:               0         
 Total generated tokens:                  1179648   
-Total generated tokens (retokenized):    1179234   
-Request throughput (req/s):              3.12      
-Input token throughput (tok/s):          6382.80   
-Output token throughput (tok/s):         6382.80   
-Peak output token throughput (tok/s):    15529.00  
+Total generated tokens (retokenized):    1179275   
+Request throughput (req/s):              3.34      
+Input token throughput (tok/s):          6835.36   
+Output token throughput (tok/s):         6835.36   
+Peak output token throughput (tok/s):    15397.00  
 Peak concurrent requests:                576       
-Total token throughput (tok/s):          12765.60  
-Concurrency:                             404.34    
-Accept length:                           2.95      
+Total token throughput (tok/s):          13670.71  
+Concurrency:                             418.63    
+Accept length:                           2.96      
 ----------------End-to-End Latency----------------
-Mean E2E Latency (ms):                   129736.09 
-Median E2E Latency (ms):                 126536.39 
+Mean E2E Latency (ms):                   125429.80 
+Median E2E Latency (ms):                 122316.34 
 ---------------Time to First Token----------------
-Mean TTFT (ms):                          24442.65  
-Median TTFT (ms):                        24323.23  
-P99 TTFT (ms):                           43011.87  
+Mean TTFT (ms):                          21576.51  
+Median TTFT (ms):                        21716.56  
+P99 TTFT (ms):                           38946.58  
 -----Time per Output Token (excl. 1st token)------
-Mean TPOT (ms):                          51.44     
-Median TPOT (ms):                        51.14     
-P99 TPOT (ms):                           75.91     
+Mean TPOT (ms):                          50.73     
+Median TPOT (ms):                        50.39     
+P99 TPOT (ms):                           74.25     
 ---------------Inter-Token Latency----------------
-Mean ITL (ms):                           51.44     
-Median ITL (ms):                         35.19     
-P95 ITL (ms):                            93.79     
-P99 ITL (ms):                            155.95    
-Max ITL (ms):                            37538.32  
+Mean ITL (ms):                           50.73     
+Median ITL (ms):                         35.66     
+P95 ITL (ms):                            80.04     
+P99 ITL (ms):                            143.02    
+Max ITL (ms):                            35466.36  
 ==================================================
