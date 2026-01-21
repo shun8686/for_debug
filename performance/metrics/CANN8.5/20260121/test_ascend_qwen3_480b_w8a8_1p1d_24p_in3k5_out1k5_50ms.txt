@@ -1,9 +1,8 @@
-Image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.5-a3-release20260117
-deep-ep                   1.0.0+e19eb1ff.cann.8.5.0.b232
-memfabric_hybrid          1.0.4
-sgl-kernel-npu            2026.1.12
+Image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.5-a3-release20260120
+memfabric_hybrid          1.0.5
+sgl_kernel_npu            2026.1.12
 sglang                    0.5.6.post2
-sglang-router             0.3.1
+sglang-router             0.3.2
 torch                     2.8.0+cpu
 torch_npu                 2.8.0.post2
 torchao                   0.9.0
@@ -23,34 +22,34 @@ Backend:                                 sglang
 Traffic request rate:                    inf       
 Max request concurrency:                 410       
 Successful requests:                     1640      
-Benchmark duration (s):                  376.42    
+Benchmark duration (s):                  362.76    
 Total input tokens:                      5740000   
 Total input text tokens:                 5740000   
 Total input vision tokens:               0         
 Total generated tokens:                  2460000   
-Total generated tokens (retokenized):    2003858   
-Request throughput (req/s):              4.36      
-Input token throughput (tok/s):          15249.10  
-Output token throughput (tok/s):         6535.33   
-Peak output token throughput (tok/s):    8686.00   
-Peak concurrent requests:                431       
-Total token throughput (tok/s):          21784.43  
-Concurrency:                             373.51    
+Total generated tokens (retokenized):    2452767   
+Request throughput (req/s):              4.52      
+Input token throughput (tok/s):          15823.24  
+Output token throughput (tok/s):         6781.39   
+Peak output token throughput (tok/s):    9489.00   
+Peak concurrent requests:                429       
+Total token throughput (tok/s):          22604.63  
+Concurrency:                             372.01    
 ----------------End-to-End Latency----------------
-Mean E2E Latency (ms):                   85728.91  
-Median E2E Latency (ms):                 81547.53  
+Mean E2E Latency (ms):                   82285.66  
+Median E2E Latency (ms):                 77851.83  
 ---------------Time to First Token----------------
-Mean TTFT (ms):                          12110.70  
-Median TTFT (ms):                        5729.88   
-P99 TTFT (ms):                           68602.22  
+Mean TTFT (ms):                          12223.61  
+Median TTFT (ms):                        5621.13   
+P99 TTFT (ms):                           65017.46  
 -----Time per Output Token (excl. 1st token)------
-Mean TPOT (ms):                          49.11     
-Median TPOT (ms):                        50.59     
-P99 TPOT (ms):                           52.43     
+Mean TPOT (ms):                          46.74     
+Median TPOT (ms):                        48.02     
+P99 TPOT (ms):                           48.87     
 ---------------Inter-Token Latency----------------
-Mean ITL (ms):                           49.11     
-Median ITL (ms):                         46.75     
-P95 ITL (ms):                            115.04    
-P99 ITL (ms):                            171.58    
-Max ITL (ms):                            1558.64   
+Mean ITL (ms):                           46.74     
+Median ITL (ms):                         42.03     
+P95 ITL (ms):                            127.85    
+P99 ITL (ms):                            176.82    
+Max ITL (ms):                            817.74    
 ==================================================
