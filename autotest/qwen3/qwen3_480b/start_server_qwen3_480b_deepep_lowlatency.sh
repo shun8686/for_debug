@@ -57,23 +57,24 @@ do
 
         # P节点
         python -m sglang.launch_server \
-	--model-path ${MODEL_PATH} \
-	--host ${D_IP[$i]} --port 8001 --trust-remote-code \
-	--nnodes 2 --node-rank $i \
-	--dist-init-addr ${D_IP[0]}:5000
-	--attention-backend ascend --device npu --quantization modelslim \
-	--max-running-requests 96 \
-        --context-length 8192 \
-        --dtype bfloat16 \
-	--chunked-prefill-size 1024 \
-	--max-prefill-tokens 458880 \
-	--disable-radix-cache \
-	--moe-a2a-backend deepep --deepep-mode low_latency \
-	--tp-size 16 --dp-size 4 \
- 	--enable-dp-attention  \
-	--enable-dp-lm-head \
-	--mem-fraction-static 0.7 \
-	--cuda-graph-bs 16 20 24 
+            --model-path ${MODEL_PATH} \
+            --host ${D_IP[$i]} --port 8001 --trust-remote-code \
+            --nnodes 2 --node-rank $i \
+            --dist-init-addr ${D_IP[0]}:5000 \
+            --attention-backend ascend --device npu --quantization modelslim \
+            --max-running-requests 96 \
+                --context-length 8192 \
+                --dtype bfloat16 \
+            --chunked-prefill-size 1024 \
+            --max-prefill-tokens 458880 \
+            --disable-radix-cache \
+            --moe-a2a-backend deepep --deepep-mode low_latency \
+            --tp-size 8 --dp-size 4 \
+            --enable-dp-attention  \
+            --enable-dp-lm-head \
+            --mem-fraction-static 0.7 \
+            --cuda-graph-bs 16 20 24 
+
         NODE_RANK=$i
         break
     fi
