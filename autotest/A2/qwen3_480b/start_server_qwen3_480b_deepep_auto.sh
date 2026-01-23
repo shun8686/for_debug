@@ -57,7 +57,7 @@ do
         NODE_RANK=$i
         python -m sglang.launch_server \
             --model-path ${MODEL_PATH} \
-            ---host 127.0.0.1 --port 6688 --trust-remote-code \
+            --host 127.0.0.1 --port 6688 --trust-remote-code \
             --nnodes 2 --node-rank $NODE_RANK \
             --dist-init-addr ${NODE_IP[0]}:5000 \
             --attention-backend ascend --device npu --quantization modelslim \
