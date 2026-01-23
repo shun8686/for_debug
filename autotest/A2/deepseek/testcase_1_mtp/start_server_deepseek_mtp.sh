@@ -1,6 +1,8 @@
 #pkill -9 python | pkill -9 sglang
 
 MODEL_PATH=/home/weights/vllm-ascend/DeepSeek-R1-0528-W8A8
+NIC_NAME=enp189s0f0
+NODE_IP=('80.48.37.205' '80.48.37.132')
 
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
@@ -41,8 +43,8 @@ LOCAL_HOST2=`hostname -I|awk -F " " '{print$2}'`
 
 echo "${LOCAL_HOST1}"
 echo "${LOCAL_HOST2}"
-export HCCL_SOCKET_IFNAME=enp189s0f0
-export GLOO_SOCKET_IFNAME=enp189s0f0
+export HCCL_SOCKET_IFNAME=$NIC_NAME
+export GLOO_SOCKET_IFNAME=$NIC_NAME
 
 export HCCL_BUFFSIZE=1024
 export SGLANG_NPU_USE_MLAPO=1

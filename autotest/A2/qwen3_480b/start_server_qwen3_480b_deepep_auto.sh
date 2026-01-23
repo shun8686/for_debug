@@ -1,5 +1,10 @@
 #pkill -9 python | pkill -9 sglang
 #pkill -9 sglang
+
+MODEL_PATH=/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot
+NIC_NAME=enp189s0f0
+NODE_IP=('80.48.37.205' '80.48.37.132')
+
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -8,8 +13,6 @@ sysctl -w kernel.sched_migration_cost_ns=50000
 # 设置PYTHONPATH
 #cd /home/chenxu/sglang
 #export PYTHONPATH=${PWD}/python:$PYTHONPATH
-
-MODEL_PATH=/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot/
 
 unset https_proxy
 unset http_proxy
@@ -35,12 +38,9 @@ export SGLANG_SET_CPU_AFFINITY=1
 export PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
 export SGLANG_DISAGGREGATION_BOOTSTRAP_TIMEOUT=600
 export HCCL_BUFFSIZE=2100
-export HCCL_SOCKET_IFNAME=lo
-export GLOO_SOCKET_IFNAME=lo
+export HCCL_SOCKET_IFNAME=$NIC_NAME
+export GLOO_SOCKET_IFNAME=$NIC_NAME
 export HCCL_OP_EXPANSION_MODE=AIV
-
-
-NODE_IP=('80.48.37.205' '80.48.37.132')
 
 LOCAL_HOST1=`hostname -I|awk -F " " '{print$1}'`
 LOCAL_HOST2=`hostname -I|awk -F " " '{print$2}'`

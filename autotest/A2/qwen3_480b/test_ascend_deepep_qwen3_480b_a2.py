@@ -7,7 +7,7 @@ from sglang.test.test_utils import CustomTestCase # type: ignore
 
 
 QWEN3_CODER_480B_A35B_W8A8_MODEL_PATH = "/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot"
-DEFAULT_URL_FOR_TEST = "http://127.0.0.1:8001"
+DEFAULT_URL_FOR_TEST = "http://127.0.0.1:6688"
 
 class TestDeepEpQwen(CustomTestCase):
 
@@ -33,8 +33,8 @@ class TestDeepEpQwen(CustomTestCase):
         expect_accuracy = 0.9
 
         print("Starting gsm8k test...")
-        host = "http://127.0.0.1"
-        port = int(self.base_url.split(":")[-1])
+        _, host, port = self.base_url.split(":")
+        host = host[2:]
         print(f"{host=}, {port=}")
         args = SimpleNamespace(
             num_shots=5,
@@ -42,8 +42,8 @@ class TestDeepEpQwen(CustomTestCase):
             num_questions=200,
             max_new_tokens=512,
             parallel=128,
-            host=host,
-            port=port,
+            host=f"http://{host}",
+            port=int(port),
         )
         metrics = run_gsm8k(args)
         self.assertGreaterEqual(

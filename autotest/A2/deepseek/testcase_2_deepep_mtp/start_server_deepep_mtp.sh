@@ -1,6 +1,7 @@
 #pkill -9 python | pkill -9 sglang
 
 MODEL_PATH=/home/weights/vllm-ascend/DeepSeek-R1-0528-W8A8
+NIC_NAME=enp189s0f0
 
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
@@ -39,8 +40,8 @@ LOCAL_HOST2=`hostname -I|awk -F " " '{print$2}'`
 
 echo "${LOCAL_HOST1}"
 echo "${LOCAL_HOST2}"
-export HCCL_SOCKET_IFNAME=enp189s0f0
-export GLOO_SOCKET_IFNAME=enp189s0f0
+export HCCL_SOCKET_IFNAME=$NIC_NAME
+export GLOO_SOCKET_IFNAME=$NIC_NAME
 
 export HCCL_BUFFSIZE=2048
 export SGLANG_DEEPEP_NUM_MAX_DISPATCH_TOKENS_PER_RANK=32
@@ -51,8 +52,6 @@ export SGLANG_ENABLE_SPEC_V2=1
 export HCCL_INTRA_PCIE_ENABLE=1
 export HCCL_INTRA_ROCE_ENABLE=0
 export ASCEND_MF_TRANSFER_PROTOCOL="device_rdma"
-
-NODE_RANK=0
 
 for i in "${!NODE_IP[@]}";
 do
