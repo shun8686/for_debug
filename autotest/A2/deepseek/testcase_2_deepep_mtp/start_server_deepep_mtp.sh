@@ -1,4 +1,7 @@
 #pkill -9 python | pkill -9 sglang
+
+MODEL_PATH=/home/weights/vllm-ascend/DeepSeek-R1-0528-W8A8
+
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -14,12 +17,19 @@ unset HTTPS_PROXY
 unset HTTP_PROXY
 unset ASCEND_LAUNCH_BLOCKING
 
-source /usr/local/Ascend/ascend-toolkit/set_env.sh
-source /usr/local/Ascend/nnal/atb/set_env.sh
-source /usr/local/Ascend/ascend-toolkit/latest/opp/vendors/customize/bin/set_env.bash
-source /usr/local/Ascend/8.5.0/bisheng_toolkit/set_env.sh
-
-MODEL_PATH=/home/weights/vllm-ascend/DeepSeek-R1-0528-W8A8
+cann_version=$(cat /usr/local/Ascend/ascend-toolkit/latest/aarch64-linux/ascend_toolkit_install.info | grep "^version=")
+echo "CANN: ${cann_version}"
+if [[ ${cann_version} == version=8.3.* ]];then
+    echo "Set env for CANN 8.3"
+    source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    source /usr/local/Ascend/nnal/atb/set_env.sh
+    source /usr/local/Ascend/ascend-toolkit/latest/opp/vendors/customize/bin/set_env.bash
+    source /usr/local/Ascend/8.5.0/bisheng_toolkit/set_env.sh
+else
+    echo "Set env for CANN 8.5"
+    source /usr/local/Ascend/cann/set_env.sh
+    source /usr/local/Ascend/nnal/atb/set_env.sh
+fi
 
 export PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
 export SGLANG_DISAGGREGATION_BOOTSTRAP_TIMEOUT=600
@@ -44,17 +54,25 @@ export ASCEND_MF_TRANSFER_PROTOCOL="device_rdma"
 
 NODE_RANK=0
 
-python -m sglang.launch_server --model-path $MODEL_PATH \
-    --host 127.0.0.1 --port 6688 --trust-remote-code --nnodes 2 --node-rank $NODE_RANK  \
-    --dist-init-addr 61.47.16.106:5000 \
-    --attention-backend ascend --device npu --quantization modelslim --mem-fraction-static 0.8 \
-    --max-running-requests 32 --disable-radix-cache \
-    --chunked-prefill-size 32768 --disable-cuda-graph \
-    --tp-size 16 --dp-size 1 --ep-size 16 \
-    --moe-a2a-backend deepep --deepep-mode auto  \
-    --speculative-algorithm NEXTN \
-    --speculative-num-steps 1 --speculative-eagle-topk 1 --speculative-num-draft-tokens 2
-
+for i in "${!NODE_IP[@]}";
+do
+    if [[ "$LOCAL_HOST1" == "${NODE_IP[$i]}" || "$LOCAL_HOST2" == "${NODE_IP[$i]}" ]];
+    then
+        echo "${NODE_IP[$i]}"
+        NODE_RANK=$i
+        python -m sglang.launch_server --model-path $MODEL_PATH \
+        --host 127.0.0.1 --port 6688 --trust-remote-code --nnodes 2 --node-rank $NODE_RANK  \
+        --dist-init-addr ${NODE_IP[0]}:5000 \
+        --attention-backend ascend --device npu --quantization modelslim --mem-fraction-static 0.8 \
+        --max-running-requests 32 --disable-radix-cache \
+        --chunked-prefill-size 32768 --disable-cuda-graph \
+        --tp-size 16 --dp-size 1 --ep-size 16 \
+        --moe-a2a-backend deepep --deepep-mode auto  \
+        --speculative-algorithm NEXTN \
+        --speculative-num-steps 1 --speculative-eagle-topk 1 --speculative-num-draft-tokens 2
+        break
+    fi
+done
 
 exit 1
 python -m sglang.bench_serving --dataset-name random --backend sglang --host 127.0.0.1 --port 7439 --max-concurrency 480 --random-input-len 2048 --random-output-len 2048 --num-prompts 480 --random-range-ratio 1

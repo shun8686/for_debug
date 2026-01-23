@@ -40,7 +40,7 @@ export GLOO_SOCKET_IFNAME=lo
 export HCCL_OP_EXPANSION_MODE=AIV
 
 
-D_IP=('80.48.37.205' '80.48.37.132')
+NODE_IP=('80.48.37.205' '80.48.37.132')
 
 LOCAL_HOST1=`hostname -I|awk -F " " '{print$1}'`
 LOCAL_HOST2=`hostname -I|awk -F " " '{print$2}'`
@@ -49,22 +49,21 @@ echo "${LOCAL_HOST1}"
 echo "${LOCAL_HOST2}"
 
 
-for i in "${!D_IP[@]}";
+for i in "${!NODE_IP[@]}";
 do
-    if [[ "$LOCAL_HOST1" == "${D_IP[$i]}" || "$LOCAL_HOST2" == "${D_IP[$i]}" ]];
+    if [[ "$LOCAL_HOST1" == "${NODE_IP[$i]}" || "$LOCAL_HOST2" == "${NODE_IP[$i]}" ]];
     then
-        echo "${D_IP[$i]}"
-
-        # P节点
+        echo "${NODE_IP[$i]}"
+        NODE_RANK=$i
         python -m sglang.launch_server \
             --model-path ${MODEL_PATH} \
-            --host ${D_IP[$i]} --port 8001 --trust-remote-code \
-            --nnodes 2 --node-rank $i \
-            --dist-init-addr ${D_IP[0]}:5000 \
+            --host ${NODE_IP[$i]} --port 8001 --trust-remote-code \
+            --nnodes 2 --node-rank $NODE_RANK \
+            --dist-init-addr ${NODE_IP[0]}:5000 \
             --attention-backend ascend --device npu --quantization modelslim \
             --max-running-requests 96 \
-                --context-length 8192 \
-                --dtype bfloat16 \
+            --context-length 8192 \
+            --dtype bfloat16 \
             --chunked-prefill-size 1024 \
             --max-prefill-tokens 458880 \
             --disable-radix-cache \
@@ -74,8 +73,6 @@ do
             --enable-dp-lm-head \
             --mem-fraction-static 0.7 \
             --cuda-graph-bs 16 20 24 
-
-        NODE_RANK=$i
         break
     fi
 done
