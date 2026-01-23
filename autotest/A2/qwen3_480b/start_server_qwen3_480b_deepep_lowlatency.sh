@@ -68,7 +68,7 @@ do
             --max-prefill-tokens 458880 \
             --disable-radix-cache \
             --moe-a2a-backend deepep --deepep-mode low_latency \
-            --tp-size 8 --dp-size 4 \
+            --tp-size 16 --dp-size 4 \
             --enable-dp-attention  \
             --enable-dp-lm-head \
             --mem-fraction-static 0.7 \
