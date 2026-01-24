@@ -42,6 +42,10 @@ export HCCL_SOCKET_IFNAME=$NIC_NAME
 export GLOO_SOCKET_IFNAME=$NIC_NAME
 export HCCL_OP_EXPANSION_MODE=AIV
 
+export HCCL_INTRA_PCIE_ENABLE=1
+export HCCL_INTRA_ROCE_ENABLE=0
+export ASCEND_MF_TRANSFER_PROTOCOL="device_rdma"
+
 LOCAL_HOST1=`hostname -I|awk -F " " '{print$1}'`
 LOCAL_HOST2=`hostname -I|awk -F " " '{print$2}'`
 
