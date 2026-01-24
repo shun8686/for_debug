@@ -1,9 +1,10 @@
 #pkill -9 python | pkill -9 sglang
 #pkill -9 sglang
 
-MODEL_PATH=/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot
+MODEL_PATH=/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Eco-Tech/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot
 NIC_NAME=enp189s0f0
-NODE_IP=('80.48.37.205' '80.48.37.132')
+NODE_IP=('61.47.16.106' '61.47.16.107')
+SERVER_PORT=6688
 
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
@@ -55,13 +56,12 @@ echo "${LOCAL_HOST2}"
 
 for i in "${!NODE_IP[@]}";
 do
-    if [[ "$LOCAL_HOST1" == "${NODE_IP[$i]}" || "$LOCAL_HOST2" == "${NODE_IP[$i]}" ]];
-    then
+    if [[ "$LOCAL_HOST1" == "${NODE_IP[$i]}" || "$LOCAL_HOST2" == "${NODE_IP[$i]}" ]];then
         echo "${NODE_IP[$i]}"
         NODE_RANK=$i
         python -m sglang.launch_server \
             --model-path ${MODEL_PATH} \
-            --host ${NODE_IP[$i]} --port 8001 --trust-remote-code \
+            --host 127.0.0.1 --port ${SERVER_PORT} --trust-remote-code \
             --nnodes 2 --node-rank $NODE_RANK \
             --dist-init-addr ${NODE_IP[0]}:5000 \
             --attention-backend ascend --device npu --quantization modelslim \

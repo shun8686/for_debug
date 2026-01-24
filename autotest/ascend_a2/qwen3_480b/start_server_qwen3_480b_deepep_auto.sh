@@ -1,9 +1,10 @@
 #pkill -9 python | pkill -9 sglang
 #pkill -9 sglang
 
-MODEL_PATH=/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot
+MODEL_PATH=/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Eco-Tech/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot
 NIC_NAME=enp189s0f0
-NODE_IP=('80.48.37.205' '80.48.37.132')
+NODE_IP=('61.47.16.106' '61.47.16.107')
+SERVER_PORT=6688
 
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
@@ -23,15 +24,15 @@ unset ASCEND_LAUNCH_BLOCKING
 cann_version=$(cat /usr/local/Ascend/ascend-toolkit/latest/aarch64-linux/ascend_toolkit_install.info | grep "^version=")
 echo "CANN: ${cann_version}"
 if [[ ${cann_version} == version=8.3.* ]];then
-    echo "Set env for CANN 8.3"
-    source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    source /usr/local/Ascend/nnal/atb/set_env.sh
-    source /usr/local/Ascend/ascend-toolkit/latest/opp/vendors/customize/bin/set_env.bash
-    source /usr/local/Ascend/8.5.0/bisheng_toolkit/set_env.sh
+echo "Set env for CANN 8.3"
+source /usr/local/Ascend/ascend-toolkit/set_env.sh
+source /usr/local/Ascend/nnal/atb/set_env.sh
+source /usr/local/Ascend/ascend-toolkit/latest/opp/vendors/customize/bin/set_env.bash
+source /usr/local/Ascend/8.5.0/bisheng_toolkit/set_env.sh
 else
-    echo "Set env for CANN 8.5"
-    source /usr/local/Ascend/cann/set_env.sh
-    source /usr/local/Ascend/nnal/atb/set_env.sh
+echo "Set env for CANN 8.5"
+source /usr/local/Ascend/cann/set_env.sh
+source /usr/local/Ascend/nnal/atb/set_env.sh
 fi
 
 export SGLANG_SET_CPU_AFFINITY=1
@@ -55,13 +56,12 @@ echo "${LOCAL_HOST2}"
 
 for i in "${!NODE_IP[@]}";
 do
-    if [[ "$LOCAL_HOST1" == "${NODE_IP[$i]}" || "$LOCAL_HOST2" == "${NODE_IP[$i]}" ]];
-    then
+    if [[ "$LOCAL_HOST1" == "${NODE_IP[$i]}" || "$LOCAL_HOST2" == "${NODE_IP[$i]}" ]];then
         echo "${NODE_IP[$i]}"
         NODE_RANK=$i
         python -m sglang.launch_server \
             --model-path ${MODEL_PATH} \
-            --host 127.0.0.1 --port 6688 --trust-remote-code \
+            --host 127.0.0.1 --port ${SERVER_PORT} --trust-remote-code \
             --nnodes 2 --node-rank $NODE_RANK \
             --dist-init-addr ${NODE_IP[0]}:5000 \
             --attention-backend ascend --device npu --quantization modelslim \
@@ -72,7 +72,7 @@ do
             --max-prefill-tokens 458880 \
             --disable-radix-cache \
             --moe-a2a-backend deepep --deepep-mode auto \
-            --tp-size 16 --dp-size 8 \
+            --tp-size 16 --dp-size 4 \
             --enable-dp-attention  \
             --enable-dp-lm-head \
             --mem-fraction-static 0.7 \
