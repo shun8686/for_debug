@@ -79,7 +79,7 @@ wait_server_ready() {
 launch_server() {
     log "Begin to launch server."
     NODE_RANK=$1
-    python -m sglang.launch_server \
+    nohup python -m sglang.launch_server \
         --model-path ${MODEL_PATH} \
         --host 127.0.0.1 --port ${SERVER_PORT} --trust-remote-code \
         --nnodes 2 --node-rank $NODE_RANK \
@@ -97,7 +97,7 @@ launch_server() {
         --enable-dp-lm-head \
         --mem-fraction-static 0.7 \
         --cuda-graph-bs 16 20 24 \
-        &
+        > $0.log 2>&1 &
 }
 
 run_test_case() {
