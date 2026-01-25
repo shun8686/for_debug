@@ -1,7 +1,7 @@
 #pkill -9 python | pkill -9 sglang
 #pkill -9 sglang
 
-MODEL_PATH=/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Eco-Tech/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot
+MODEL_PATH=/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot
 NIC_NAME=enp189s0f0
 NODE_IP=('61.47.16.106' '61.47.16.107')
 SERVER_PORT=6688
