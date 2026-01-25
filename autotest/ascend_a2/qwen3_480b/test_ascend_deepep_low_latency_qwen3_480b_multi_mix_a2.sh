@@ -52,8 +52,8 @@ log() {
 
 wait_server_ready() {
     log "Begin to check server health: $HEALTH_CHECK_URL"
-    CHECK_INTERVAL=10
-    MAX_RETRY=120
+    CHECK_INTERVAL=30
+    MAX_RETRY=50
     RETRY_COUNT=0
     while true; do
         HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$HEALTH_CHECK_URL")    
@@ -90,7 +90,8 @@ launch_server() {
         --enable-dp-attention  \
         --enable-dp-lm-head \
         --mem-fraction-static 0.7 \
-        --cuda-graph-bs 16 20 24 
+        --cuda-graph-bs 16 20 24 \
+        &
 }
 
 run_test_case() {
