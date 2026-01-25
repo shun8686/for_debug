@@ -97,7 +97,7 @@ launch_server() {
         --enable-dp-lm-head \
         --mem-fraction-static 0.7 \
         --cuda-graph-bs 16 20 24 \
-        > $0.log 2>&1 &
+        &
 }
 
 run_test_case() {
