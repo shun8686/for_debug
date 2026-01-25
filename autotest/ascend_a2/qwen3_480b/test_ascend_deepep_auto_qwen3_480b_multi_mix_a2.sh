@@ -65,6 +65,7 @@ wait_server_ready() {
         HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$HEALTH_CHECK_URL")    
         if [ "$HTTP_CODE" -eq 200 ]; then
             log "Response code is 200. The server is ready."
+            break
         fi
         RETRY_COUNT=$((RETRY_COUNT + 1))
         if [ "$RETRY_COUNT" -ge "$MAX_RETRY" ]; then
