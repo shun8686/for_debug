@@ -8,6 +8,12 @@ SERVER_PORT=6688
 HEALTH_CHECK_URL="http://127.0.0.1:${SERVER_PORT}/health"
 TEST_CASE_FILE=test_ascend_deepep_qwen3_480b_a2.py
 
+set_proxy() {
+    export http_proxy=61.251.170.143:30066
+    export https_proxy=$http_proxy
+    export no_proxy=127.0.0.1,localhost,local,.local
+}
+
 echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 sysctl -w vm.swappiness=0
 sysctl -w kernel.numa_balancing=0
@@ -95,6 +101,7 @@ launch_server() {
 }
 
 run_test_case() {
+    set_proxy
     test_case_file=$1
     if ! [ -e "$test_case_file" ];then
         echo "The test case file is not exist: $test_case_file"

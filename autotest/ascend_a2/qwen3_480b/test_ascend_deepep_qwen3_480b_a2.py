@@ -1,10 +1,12 @@
 import unittest
+import ssl
 from types import SimpleNamespace
 
 from sglang.test.run_eval import run_eval # type: ignore
 from sglang.test.few_shot_gsm8k import run_eval as run_gsm8k # type: ignore
 from sglang.test.test_utils import CustomTestCase # type: ignore
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
 QWEN3_CODER_480B_A35B_W8A8_MODEL_PATH = "/data/ascend-ci-share-pkking-sglang/modelscope/hub/models/Qwen3-Coder-480B-A35B-Instruct-w8a8-QuaRot"
 DEFAULT_URL_FOR_TEST = "http://127.0.0.1:6688"
