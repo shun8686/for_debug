@@ -11,6 +11,7 @@ DEFAULT_URL_FOR_TEST = "http://127.0.0.1:6688"
 
 class TestDeepEpQwen(CustomTestCase):
 
+    @classmethod
     def setUpClass(cls):
         cls.model = QWEN3_CODER_480B_A35B_W8A8_MODEL_PATH
         cls.base_url = DEFAULT_URL_FOR_TEST
