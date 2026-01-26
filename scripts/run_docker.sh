@@ -1,5 +1,12 @@
+#!/bin/bash
+
+image="swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.5-a3-release20260121"
+#image="swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release20260109"
+
+docker_name=lts-test-$(echo $image | cut -d: -f2)
+
 docker run -itd --privileged --network=host --shm-size=16g \
---name sgl-dingshun \
+--name ${docker_name} \
 -v /mnt:/mnt \
 -v /home:/home \
 -v /data/ascend-ci-share-pkking-sglang:/root/.cache \
@@ -29,4 +36,6 @@ docker run -itd --privileged --network=host --shm-size=16g \
 --device=/dev/hisi_hdc \
 --entrypoint=bash \
 --env HF_ENDPOINT=https://hf-mirror.com \
-swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.3.rc2-a3-release20260105
+${image}
+
+docker exec -it -uroot $docker_name /bin/bash

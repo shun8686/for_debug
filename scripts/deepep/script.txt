@@ -1,0 +1,1 @@
+/data/d00662834/0104_dev/sglang/test/registered/ascend/features/deepep/utils/run_ascend_testcase.sh 

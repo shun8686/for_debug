@@ -17,15 +17,21 @@ cd $SCRIPT_PATH
 test_set=`cat ${test_set_file}`
 for tc_info in ${test_set}
 do
+    # clean env
+    bash pkill.sh
+    sleep 10
+
     prefill_size=$(echo $tc_info | cut -d'|' -f1)
     decode_size=$(echo $tc_info | cut -d'|' -f2)
     test_case=$(echo $tc_info | cut -d'|' -f3)
     echo "testcase : ${test_case}"
     echo "bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1"
     bash run_pd_separation_base.sh ${sglang_source_path} ${test_case} ${prefill_size} ${decode_size} ${image} > log/${test_case##*/}.log 2>&1
+    
 done
 
 # check result
+
 failed_test_cases=${test_set_file}.failed
 poor_test_cases=${test_set_file}.poor
 > ${failed_test_cases}
@@ -38,6 +44,7 @@ do
     if [ ${result} -lt 2 ];then
     echo "${tc_info}" >> ${failed_test_cases}
     elif [ "${ok_num}" -ne 1 ];then
-        echo "${tc_info}" >> ${poor_test_cases}  
+	echo "${tc_info}" >> ${poor_test_cases}
     fi
 done
+

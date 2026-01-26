@@ -1,0 +1,565 @@
+Run path: /data/d00662834/debug/deepep
+Already up to date.
+image: swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:cann8.5-a3-release20260121
+KUBE_JOB_NAME: sglang-multi-debug
+WARNING: When the --extra-index-url option is used, the installation package is downloaded from an unverified URL. Exercise caution when using this option.
+WARNING: Running pip install with root privileges is generally not a good idea. Try `pip3 install --user` instead.
+Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+Requirement already satisfied: kubernetes in /usr/local/lib/python3.9/site-packages (34.1.0)
+Requirement already satisfied: six>=1.9.0 in /usr/lib/python3.9/site-packages (from kubernetes) (1.16.0)
+Requirement already satisfied: pyyaml>=5.4.1 in /root/.local/lib/python3.9/site-packages (from kubernetes) (6.0.2)
+Requirement already satisfied: requests-oauthlib in /usr/local/lib/python3.9/site-packages (from kubernetes) (2.0.0)
+Requirement already satisfied: urllib3<2.4.0,>=1.24.2 in /root/.local/lib/python3.9/site-packages (from kubernetes) (2.2.2)
+Requirement already satisfied: google-auth>=1.0.1 in /usr/local/lib/python3.9/site-packages (from kubernetes) (2.47.0)
+Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in /usr/local/lib/python3.9/site-packages (from kubernetes) (1.9.0)
+Requirement already satisfied: certifi>=14.05.14 in /root/.local/lib/python3.9/site-packages (from kubernetes) (2024.7.4)
+Requirement already satisfied: requests in /root/.local/lib/python3.9/site-packages (from kubernetes) (2.32.3)
+Requirement already satisfied: durationpy>=0.7 in /usr/local/lib/python3.9/site-packages (from kubernetes) (0.10)
+Requirement already satisfied: python-dateutil>=2.5.3 in /usr/lib/python3.9/site-packages (from kubernetes) (2.8.2)
+Requirement already satisfied: rsa<5,>=3.1.4 in /usr/local/lib/python3.9/site-packages (from google-auth>=1.0.1->kubernetes) (4.9.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.9/site-packages (from google-auth>=1.0.1->kubernetes) (0.4.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in /root/.local/lib/python3.9/site-packages (from requests->kubernetes) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /root/.local/lib/python3.9/site-packages (from requests->kubernetes) (3.7)
+Requirement already satisfied: oauthlib>=3.0.0 in /root/.local/lib/python3.9/site-packages (from requests-oauthlib->kubernetes) (3.2.2)
+Requirement already satisfied: pyasn1<0.7.0,>=0.6.1 in /usr/local/lib/python3.9/site-packages (from pyasn1-modules>=0.2.1->google-auth>=1.0.1->kubernetes) (0.6.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+WARNING: When the --extra-index-url option is used, the installation package is downloaded from an unverified URL. Exercise caution when using this option.
+WARNING: Running pip install with root privileges is generally not a good idea. Try `pip3 install --user` instead.
+Looking in indexes: https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+Requirement already satisfied: jinja2-cli in /usr/local/lib/python3.9/site-packages (1.0.0)
+Requirement already satisfied: jinja2>=3.1 in /usr/local/lib/python3.9/site-packages (from jinja2-cli) (3.1.6)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib64/python3.9/site-packages (from jinja2>=3.1->jinja2-cli) (3.0.3)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+jinja2: /usr/local/bin/jinja2
+/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+error: the path "/data/d00662834/debug/deepep/k8s_pd_separation.yaml" does not exist
+kube name space: sglang-multi-debug, pod name prefix: sglang-multi-debug-sglang
+No sglang job exist, start test case...
+/usr/local/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: 
+    You are using a Python version 3.9 past its end of life. Google will update
+    google-auth with critical bug fixes on a best-effort basis, but not
+    with any other fixes or features. Please upgrade your Python version,
+    and then update google-auth.
+    
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/usr/local/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: 
+    You are using a Python version 3.9 past its end of life. Google will update
+    google-auth with critical bug fixes on a best-effort basis, but not
+    with any other fixes or features. Please upgrade your Python version,
+    and then update google-auth.
+    
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+Apply k8s yaml... KUBE_NAME_SPACE:sglang-multi-debug, KUBE_CONFIG_MAP:sglang-info, KUBE_JOB_TYPE:pd-separation, KUBE_YAML_FILE:k8s_pd_separation.yaml
+ConfigMap rings-config-ascend-sglang-test is created
+ConfigMap sglang-info is created
+Role ascend-sglang-configmap-access is created
+RoleBinding ascend-sglang-configmap-binding is created
+Role ascend-sglang-pod-access is created
+RoleBinding ascend-sglang-pod-binding is created
+Volcano Job sglang-multi-debug is created
+Response info: sglang-multi-debug
+Waiting all pods to running...
+Pod: sglang-multi-debug-sglang-decode-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Running
+Pod: sglang-multi-debug-sglang-decode-1, status: Running
+Pod: sglang-multi-debug-sglang-prefill-0, status: Pending
+Pod: sglang-multi-debug-sglang-decode-0, status: Running
+Pod: sglang-multi-debug-sglang-decode-1, status: Running
+Pod: sglang-multi-debug-sglang-prefill-0, status: Running
+Pod: sglang-multi-debug-sglang-prefill-1, status: Running
+Pod: sglang-multi-debug-sglang-router-0, status: Running
+All sglang Pod is Running !
+ConfigMap sglang-info already exists. Updating...
+ConfigMap sglang-info updated successfully.
+{'api_version': 'v1',
+ 'binary_data': None,
+ 'data': {'sglang-multi-debug-sglang-decode-0': '172.22.3.191',
+          'sglang-multi-debug-sglang-decode-1': '172.22.3.209',
+          'sglang-multi-debug-sglang-prefill-0': '172.22.3.245',
+          'sglang-multi-debug-sglang-prefill-1': '172.22.3.244',
+          'sglang-multi-debug-sglang-router-0': '172.22.3.244'},
+ 'immutable': None,
+ 'kind': 'ConfigMap',
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2026, 1, 22, 14, 51, 49, tzinfo=tzutc()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': None,
+              'managed_fields': None,
+              'name': 'sglang-info',
+              'namespace': 'sglang-multi-debug',
+              'owner_references': None,
+              'resource_version': '179553362',
+              'self_link': None,
+              'uid': '0b283a4c-09ce-473a-b300-f847eee9c2a8'}}
+Starting to monitor logs for Pod: sglang-multi-debug-sglang-router-0
+Namespace: sglang-multi-debug
+Timeout set to: 10800 seconds
+NPU info:
+/data/d00662834/0104_dev/sglang/test/registered/ascend/performance/run_ascend_testcase.sh: line 9: npu-smi: command not found
+DNS info:
+nameserver 223.5.5.5
+nameserver 223.6.6.6
+nameserver 169.254.20.10
+nameserver 10.247.3.10
+search sglang-multi-debug.svc.cluster.local svc.cluster.local cluster.local
+options single-request-reopen timeout:2 ndots:5
+Writing to /root/.config/pip/pip.conf
+Writing to /root/.config/pip/pip.conf
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting kubernetes
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/0c/70/05b685ea2dffcb2adbf3cdcea5d8865b7bc66f67249084cf845012a0ff13/kubernetes-35.0.0-py2.py3-none-any.whl (2.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 10.0 MB/s  0:00:00
+Requirement already satisfied: certifi>=14.05.14 in /usr/local/python3.11.14/lib/python3.11/site-packages (from kubernetes) (2026.1.4)
+Requirement already satisfied: six>=1.9.0 in /usr/local/python3.11.14/lib/python3.11/site-packages (from kubernetes) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/python3.11.14/lib/python3.11/site-packages (from kubernetes) (2.9.0.post0)
+Requirement already satisfied: pyyaml>=5.4.1 in /usr/local/python3.11.14/lib/python3.11/site-packages (from kubernetes) (6.0.3)
+Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/34/db/b10e48aa8fff7407e67470363eac595018441cf32d5e1001567a7aeba5d2/websocket_client-1.9.0-py3-none-any.whl (82 kB)
+Requirement already satisfied: requests in /usr/local/python3.11.14/lib/python3.11/site-packages (from kubernetes) (2.32.5)
+Collecting requests-oauthlib (from kubernetes)
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Requirement already satisfied: urllib3!=2.6.0,>=1.24.2 in /usr/local/python3.11.14/lib/python3.11/site-packages (from kubernetes) (2.6.3)
+Collecting durationpy>=0.7 (from kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/b0/0d/9feae160378a3553fa9a339b0e9c1a048e147a4127210e286ef18b730f03/durationpy-0.10-py3-none-any.whl (3.9 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/python3.11.14/lib/python3.11/site-packages (from requests->kubernetes) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /usr/local/python3.11.14/lib/python3.11/site-packages (from requests->kubernetes) (3.11)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes)
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Installing collected packages: durationpy, websocket-client, oauthlib, requests-oauthlib, kubernetes
+
+Successfully installed durationpy-0.10 kubernetes-35.0.0 oauthlib-3.3.1 requests-oauthlib-2.0.0 websocket-client-1.9.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+performance
+vm.swappiness = 0
+kernel.numa_balancing = 0
+kernel.sched_migration_cost_ns = 50000
+CANN: version=8.5.0
+Set env for CANN 8.5
+Running test case test/registered/ascend/features/deepep/test_ascend_deepep_fused_deep_moe_deepseek_r1.py
+The nic name matched is enp23s0f3
+Init 172.22.3.244 cls.role='router'!
+[CI Test Method] TestDeepSeekV32.test_deepseek_r1
+Starting router in thread...
+launch_router start ......Waiting for router to be ready at http://127.0.0.1:6688/health
+
+Discovered 4 worker nodes (prefill: 2, decode: 2)
+Discovered 4 worker nodes
+Successfully queried ConfigMap sglang-info in namespace sglang-multi-debug
+Retrieved ConfigMap data: {'sglang-multi-debug-sglang-decode-0': '172.22.3.191', 'sglang-multi-debug-sglang-decode-1': '172.22.3.209', 'sglang-multi-debug-sglang-prefill-0': '172.22.3.245', 'sglang-multi-debug-sglang-prefill-1': '172.22.3.244', 'sglang-multi-debug-sglang-router-0': '172.22.3.244'}
+ConfigMap monitoring complete: prefill_url=['172.22.3.245:8000', '172.22.3.244:8000'], decode_url=['172.22.3.191:8000'], bootstrap_ports=['8995', '8996'], node_ip_list=['172.22.3.191', '172.22.3.245', '172.22.3.244']
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is not ready yet
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 3 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is ready
+Node 172.22.3.244:8000 is not ready yet
+Waiting for 2 more nodes to be ready...
+Node 172.22.3.191:8000 is not ready yet
+Node 172.22.3.245:8000 is ready
+Node 172.22.3.244:8000 is ready
+Waiting for 1 more nodes to be ready...
+Node 172.22.3.191:8000 is ready
+Node 172.22.3.245:8000 is ready
+Node 172.22.3.244:8000 is ready
+All 3 nodes' ports are ready!
+Setting ENV_VAR SGLANG_DP_ROUND_ROBIN=1
+Starting router with command: python3 -u -m sglang_router.launch_router --host 127.0.0.1 --port 6688 --pd-disaggregation --policy cache_aware --mini-lb --prefill http://172.22.3.245:8000 8995 --prefill http://172.22.3.244:8000 8996 --decode http://172.22.3.191:8000
+Router process started with PID: 359
+/usr/local/python3.11.14/lib/python3.11/subprocess.py:1127: ResourceWarning: subprocess 359 is still running
+  _warn("subprocess %s is still running" % self.pid,
+[33mMiniLB is only for debugging purposes, it only supports random policy![0m
+[MiniLB] Overriding policy to random
+INFO:     Started server process [360]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:6688 (Press CTRL+C to quit)
+INFO:     127.0.0.1:41174 - "GET /health HTTP/1.1" 200 OK
+Router http://127.0.0.1:6688/health is ready!
+Waiting 30 seconds for the server to fully initialize...
+Starting mmlu test...
+ChatCompletionSampler initialized with self.system_message=None self.temperature=0.0 self.max_tokens=2048 self.reasoning_effort=None self.extra_body=None
+INFO:     127.0.0.1:37102 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37140 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37132 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37122 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37108 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37086 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37136 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37078 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+
+  0%|          | 0/8 [00:00<?, ?it/s]
+ 12%|█▎        | 1/8 [00:57<06:43, 57.62s/it]
+ 25%|██▌       | 2/8 [01:37<04:42, 47.14s/it]
+100%|██████████| 8/8 [01:37<00:00, 12.18s/it]
+Total latency: 97.424 s
+Score: 0.625
+Writing report to /tmp/mmlu__root_.cache_modelscope_hub_models_Howeee_DeepSeek-R1-0528-w8a8.html
+{'other': np.float64(0.6), 'other:std': np.float64(0.48989794855663565), 'score:std': np.float64(0.4841229182759271), 'stem': np.float64(0.5), 'stem:std': np.float64(0.5), 'humanities': np.float64(1.0), 'humanities:std': np.float64(0.0), 'score': np.float64(0.625)}
+Writing results to /tmp/mmlu__root_.cache_modelscope_hub_models_Howeee_DeepSeek-R1-0528-w8a8.json
+Starting gsm8k test...
+INFO:     127.0.0.1:54248 - "GET /get_model_info HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54254 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54550 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54324 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54554 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54732 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54838 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55064 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54584 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54914 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54646 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55346 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55428 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54600 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55020 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54328 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55262 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55312 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54788 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55374 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54448 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54278 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55122 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54764 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54502 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54804 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55416 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55172 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54262 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55054 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54850 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54916 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54394 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55232 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54906 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54678 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54880 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54490 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54388 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55186 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55394 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55040 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55110 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54516 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54496 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55302 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55272 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55130 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55140 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54704 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54662 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54844 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54736 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54840 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54766 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54904 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54464 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55072 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54626 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54538 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55144 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55160 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55306 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54812 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54894 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55184 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55334 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55154 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54878 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54578 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55284 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54556 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54666 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55218 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54948 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54438 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54294 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52204 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52186 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54976 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55364 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55332 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54752 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55094 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55392 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55202 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54428 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52252 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54604 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52226 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52240 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55170 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55204 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54932 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33854 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55018 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54466 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54716 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55026 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33810 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54784 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33862 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52210 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54562 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54396 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55292 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54534 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55404 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55240 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52206 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38720 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54342 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38674 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55206 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54380 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38662 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38742 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54864 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52172 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33886 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54940 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47636 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55380 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55004 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33840 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47608 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47698 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38706 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55378 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47562 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54828 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38694 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47754 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47736 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52232 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47714 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33802 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54958 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47764 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54518 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38756 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33830 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47598 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33936 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33918 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47592 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54366 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52196 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33812 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54412 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55252 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47740 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47662 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47518 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52162 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54452 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54776 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47678 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47544 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54686 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33870 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38686 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47586 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47530 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52152 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38764 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33844 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38684 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33822 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47624 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47766 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47616 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54630 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55354 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54988 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52222 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47730 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47532 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47550 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33912 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47684 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47652 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47620 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55084 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38680 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33878 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33892 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33898 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47776 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47734 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33930 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47572 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54482 - "POST /generate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54616 - "POST /generate HTTP/1.1" 200 OK
+
+  0%|          | 0/200 [00:00<?, ?it/s]
+  0%|          | 1/200 [00:18<1:01:04, 18.41s/it]
+  2%|▏         | 3/200 [00:18<15:54,  4.85s/it]  
+  2%|▎         | 5/200 [00:18<07:49,  2.41s/it]
+  4%|▍         | 9/200 [00:20<03:56,  1.24s/it]
+  7%|▋         | 14/200 [00:23<02:52,  1.08it/s]
+  8%|▊         | 17/200 [00:25<02:31,  1.21it/s]
+ 12%|█▏        | 23/200 [00:28<02:01,  1.45it/s]
+ 14%|█▍        | 28/200 [00:30<01:38,  1.74it/s]
+ 15%|█▌        | 30/200 [00:32<01:48,  1.57it/s]
+ 16%|█▌        | 32/200 [00:34<01:57,  1.43it/s]
+ 16%|█▋        | 33/200 [00:36<02:16,  1.22it/s]
+ 18%|█▊        | 36/200 [00:37<02:03,  1.33it/s]
+ 20%|█▉        | 39/200 [00:39<01:53,  1.41it/s]
+ 20%|██        | 40/200 [00:39<01:38,  1.63it/s]
+ 20%|██        | 41/200 [00:41<02:01,  1.31it/s]
+ 22%|██▏       | 44/200 [00:43<01:51,  1.40it/s]
+ 25%|██▌       | 50/200 [00:43<00:56,  2.65it/s]
+ 30%|██▉       | 59/200 [00:45<00:40,  3.48it/s]
+ 32%|███▎      | 65/200 [00:47<00:39,  3.38it/s]
+ 36%|███▋      | 73/200 [00:47<00:24,  5.22it/s]
+ 39%|███▉      | 78/200 [00:49<00:28,  4.22it/s]
+ 43%|████▎     | 86/200 [00:49<00:18,  6.32it/s]
+ 44%|████▍     | 89/200 [00:49<00:15,  7.02it/s]
+ 48%|████▊     | 96/200 [00:50<00:10,  9.84it/s]
+ 51%|█████     | 102/200 [00:50<00:07, 12.43it/s]
+ 52%|█████▎    | 105/200 [00:50<00:07, 12.94it/s]
+ 57%|█████▋    | 114/200 [00:50<00:04, 18.78it/s]
+ 62%|██████▏   | 123/200 [00:50<00:03, 24.38it/s]
+ 64%|██████▎   | 127/200 [00:52<00:07, 10.27it/s]
+ 66%|██████▋   | 133/200 [00:52<00:05, 12.79it/s]
+ 68%|██████▊   | 136/200 [00:53<00:09,  6.54it/s]
+ 70%|███████   | 141/200 [00:55<00:12,  4.61it/s]
+ 74%|███████▍  | 149/200 [00:55<00:07,  7.17it/s]
+ 78%|███████▊  | 155/200 [00:57<00:07,  6.11it/s]
+ 79%|███████▉  | 158/200 [00:57<00:06,  6.37it/s]
+ 80%|███████▉  | 159/200 [00:57<00:05,  7.08it/s]
+ 80%|████████  | 161/200 [00:57<00:05,  7.46it/s]
+ 84%|████████▎ | 167/200 [00:58<00:03, 10.03it/s]
+ 86%|████████▋ | 173/200 [00:58<00:02, 11.51it/s]
+ 88%|████████▊ | 177/200 [00:58<00:01, 12.09it/s]
+ 91%|█████████ | 182/200 [00:58<00:01, 14.59it/s]
+ 92%|█████████▏| 184/200 [00:59<00:01, 10.69it/s]
+ 93%|█████████▎| 186/200 [00:59<00:01, 10.72it/s]
+ 94%|█████████▍| 188/200 [00:59<00:01, 10.72it/s]
+ 96%|█████████▌| 191/200 [00:59<00:00, 10.74it/s]
+ 96%|█████████▋| 193/200 [01:00<00:00,  8.05it/s]
+ 98%|█████████▊| 195/200 [01:00<00:00,  8.60it/s]
+ 98%|█████████▊| 197/200 [01:01<00:00,  6.88it/s]
+ 99%|█████████▉| 198/200 [01:03<00:00,  2.03it/s]
+100%|█████████▉| 199/200 [01:06<00:00,  1.09it/s]
+100%|██████████| 200/200 [01:10<00:00,  1.55s/it]
+100%|██████████| 200/200 [01:10<00:00,  2.84it/s]
+Accuracy: 0.990
+Invalid: 0.000
+Latency: 74.994 s
+Output throughput: 263.489 token/s
+.
+----------------------------------------------------------------------
+Ran 1 test in 567.775s
+
+OK
+
+Successfully detected complete test completion pattern!
+Monitoring completed successfully. Script exiting.
+configmap "rings-config-ascend-sglang-test" deleted
+configmap "sglang-info" deleted
+role.rbac.authorization.k8s.io "ascend-sglang-configmap-access" deleted
+rolebinding.rbac.authorization.k8s.io "ascend-sglang-configmap-binding" deleted
+role.rbac.authorization.k8s.io "ascend-sglang-pod-access" deleted
+rolebinding.rbac.authorization.k8s.io "ascend-sglang-pod-binding" deleted
+job.batch.volcano.sh "sglang-multi-debug" deleted
+Found exist sglang job, sleeping for 30 seconds...
+error: resource(s) were provided, but no name was specified
+Found exist sglang job, sleeping for 30 seconds...
+error: resource(s) were provided, but no name was specified
+No sglang job exist.
