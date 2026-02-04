@@ -1,6 +1,6 @@
 import ssl
 from types import SimpleNamespace
-from sglang.test.few_shot_gsm8k import run_eval as run_gsm8k
+from sglang.test.few_shot_gsm8k import run_eval as run_gsm8k # type: ignore
 
 ssl._create_default_https_context = ssl._create_unverified_context
 

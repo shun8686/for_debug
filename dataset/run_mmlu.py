@@ -13,6 +13,8 @@ args = SimpleNamespace(
     eval_name="mmlu",
     num_examples=128,
     num_threads=32,
+    thinking_mode="deepseek-v3",
+#   repeat=5
 )
 metrics = run_eval(args)
 print(metrics)
