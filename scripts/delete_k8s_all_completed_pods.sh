@@ -1,5 +1,7 @@
 export KUBECONFIG=/data/.cache/kb.yaml
-export NAMESPACE=sglang-single-debug
+
+#NAMESPACE=sglang-single-debug
+NAMESPACE=sglang-multi-debug
 
 kubectl get pods -n ${NAMESPACE} | grep "Completed"
 

@@ -5,45 +5,42 @@ test_set_file=$2
 image=$3
 install_sglang_from_source=$4
 
+run_k8s="bash run_k8s_test_base.sh "
+
 if [ "$#" -lt 4 ];then
   echo "Param num is less than 4. Exit."
   exit 1
 fi
 
-run_k8s="bash run_k8s_test_base.sh "
-
-echo "===========================SINGLE-NODE=================================="
-MAX_THREADS=$(grep -v "#" server.list | wc -l)
+echo "===========================MULTI-NODE=================================="
 KUBE_JOB_TYPE=multi-pd-mix
+MAX_THREADS=1
 
 SCRIPT_PATH=$(dirname $(readlink -f $0))
 cd $SCRIPT_PATH
 
 test_set=`cat ${test_set_file}`
-echo "Run test cases: ${test_set}"
 for tc_info in ${test_set}
 do
-    npu_size=$(echo $tc_info | cut -d'|' -f1)
+    node_size=$(echo $tc_info | cut -d'|' -f1)
     test_case=$(echo $tc_info | cut -d'|' -f2)
     while true
     do
-        p_num=$(ps -ef | grep "${run_k8s}" | grep "${KUBE_JOB_TYPE}" | grep -v grep | wc -l)
+        p_num=$(ps -ef | grep "${run_k8s}" | grep "$KUBE_JOB_TYPE" | grep -v grep | wc -l)
         if ([ ${p_num} -lt ${MAX_THREADS} ]);then
-	    break
+            break
         fi
         sleep 60
     done
     echo "testcase : ${test_case}"
-    nohup ${run_k8s} ${sglang_source_path} ${test_case} ${image} ${install_sglang_from_source} ${KUBE_JOB_TYPE} ${npu_size} > log/${test_case##*/}.log 2>&1 &
+    nohup ${run_k8s} ${sglang_source_path} ${test_case} ${image} ${install_sglang_from_source} ${KUBE_JOB_TYPE} ${node_size} > log/${test_case##*/}.log 2>&1 &
     sleep 5
 done
-
-
 
 # check result
 while true
 do
-    p_num=$(ps -ef | grep "${run_k8s}" | grep "${KUBE_JOB_TYPE}" | grep -v grep | wc -l)
+    p_num=$(ps -ef | grep "${run_k8s}" | grep "$KUBE_JOB_TYPE" | grep -v grep | wc -l)
     if ([ ${p_num} -eq 0 ]);then
         break
     fi
@@ -60,10 +57,8 @@ do
     result=$(cat log/${test_case##*/}.log | grep "Serving Benchmark Result" | wc -l)
     ok_num=$(cat log/${test_case##*/}.log | grep "^OK$" | wc -l)
     if [ ${result} -lt 2 ];then
-        echo "${tc_info}" >> ${failed_test_cases}
+    echo "${tc_info}" >> ${failed_test_cases}
     elif [ "${ok_num}" -ne 1 ];then
-        echo "${tc_info}" >> ${poor_test_cases} 
+        echo "${tc_info}" >> ${poor_test_cases}  
     fi
 done
-
-

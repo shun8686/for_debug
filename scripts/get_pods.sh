@@ -1,5 +1,6 @@
 export KUBECONFIG=/data/.cache/kb.yaml
 
+namespace=sgl-project
 match_str1="sglang-multi-debug"
 match_str2="sglang-single-debug"
 
