@@ -1,75 +1,61 @@
-import subprocess
+import os
 import re
-import ipaddress
 
 def get_valid_network_interface():
     """
-    Automatically identify the optimal network interface for SGLang multi-machine deployment
-    Returns: str - Valid network interface name; None - No valid interface found
+    K8s container optimized: Get enp196s0f* interface (target valid nic)
+    No external commands, no IP parsing (container network namespace isolation)
     """
-    try:
-        result = subprocess.check_output(
-            ["ip", "addr", "show"],
-            encoding="utf-8",
-            stderr=subprocess.STDOUT
-        )
-    except subprocess.CalledProcessError as e:
-        print(f"Failed to execute ip command: {e.output}")
+    # Target interface prefix (your valid nic: enp196s0f0/enp196s0f1)
+    target_prefix = "enp196s0f"
+    # Exclude virtual interfaces
+    exclude_prefixes = ["lo", "docker", "tunl", "cali", "veth", "br-", "virbr", "eth0@if", "kube-"]
+
+    # Read interfaces from /proc/net/dev (container's network namespace)
+    proc_net_dev = "/proc/net/dev"
+    if not os.path.exists(proc_net_dev):
+        print("Error: /proc/net/dev not found")
         return None
 
-    # Split into interface sections
-    interface_sections = re.split(r'\n(?=\d+:\s+[\w@]+:)', result)
-    valid_sections = [sec.strip() for sec in interface_sections if sec.strip() and re.match(r'^\d+:\s+[\w@]+:', sec)]
+    target_interfaces = []
+    all_non_virtual = []
 
-    valid_interfaces = []
-    for section in valid_sections:
-        # Extract interface name
-        name_match = re.search(r'\d+:\s+([\w@]+):', section)
-        if not name_match:
-            continue
-        ifname = name_match.group(1)
+    with open(proc_net_dev, "r") as f:
+        lines = f.readlines()[2:]  # Skip header
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            # Extract interface name
+            ifname = re.split(r'\s+', line, maxsplit=1)[0].rstrip(':')
+            
+            # Skip virtual interfaces
+            if any(ifname.startswith(p) for p in exclude_prefixes):
+                continue
+            
+            # Collect all non-virtual interfaces
+            all_non_virtual.append(ifname)
+            
+            # Collect target interfaces (enp196s0f*)
+            if ifname.startswith(target_prefix):
+                target_interfaces.append(ifname)
 
-        # Skip virtual/local interfaces
-        exclude_keywords = ["lo", "docker", "tunl", "cali", "veth", "br-", "virbr"]
-        if any(kw in ifname for kw in exclude_keywords):
-            continue
-
-        # Extract state info
-        state_tags_match = re.search(r'<([^>]+)>', section)
-        actual_state_match = re.search(r'state\s+(\w+)', section)
-        if not state_tags_match or not actual_state_match:
-            continue
-        state_tags = state_tags_match.group(1)
-        actual_state = actual_state_match.group(1)
-
-        # Check state validity
-        if "UP" not in state_tags or actual_state != "UP" or "NO-CARRIER" in state_tags:
-            continue
-
-        # Extract IPv4 address
-        ip_cidr_match = re.search(r'inet\s+(\d+\.\d+\.\d+\.\d+/\d+)', section)
-        if not ip_cidr_match:
-            continue
-        ip_cidr = ip_cidr_match.group(1)
-
-        # Parse IP and determine priority
-        try:
-            ip_obj = ipaddress.IPv4Interface(ip_cidr)
-            priority = 0 if ip_obj.is_private else 1
-            valid_interfaces.append({"name": ifname, "priority": priority})
-        except ValueError:
-            continue
-
-    if not valid_interfaces:
-        return None
-
-    # Select optimal interface (public IP first)
-    valid_interfaces.sort(key=lambda x: x["priority"], reverse=True)
-    return valid_interfaces[0]["name"]
+    # Priority 1: Return target interface (enp196s0f0/enp196s0f1)
+    if target_interfaces:
+        # Prefer enp196s0f0 if exists, else first in list
+        if "enp196s0f0" in target_interfaces:
+            return "enp196s0f0"
+        return target_interfaces[0]
+    
+    # Priority 2: Return first non-virtual interface (fallback)
+    if all_non_virtual:
+        return all_non_virtual[0]
+    
+    return None
 
 if __name__ == "__main__":
     nic_name = get_valid_network_interface()
     if nic_name:
-        print(nic_name)  # Only print the interface name (pure output)
+        print(nic_name)  # Only print pure interface name
     else:
         print("No valid network interface found")
