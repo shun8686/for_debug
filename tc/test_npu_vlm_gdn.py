@@ -24,7 +24,7 @@ class TestVlmGdnEnabledMultimodal(GSM8KAscendMixin, CustomTestCase):
         "--attention-backend",
         "ascend",
         "--disable-cuda-graph",
-        "--skip-server-warmup",
+#        "--skip-server-warmup",
         "--chunked-prefill-size",
         "128",
         "--max-running-requests",
